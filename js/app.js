@@ -7,7 +7,8 @@ document.addEventListener("mousemove", mouseMoveHandler, false);
 
 var x = canvas.width / 2;
 var y = canvas.height - 30;
-var dx = 2, dy = -2;
+var speed=1
+var dx = speed, dy = -speed;
 var ballraduis = 10;
 
 var paddleWidth = 75;
@@ -144,8 +145,8 @@ function draw() {
             else {
                 x = canvas.width/2;
                 y = canvas.height-30;
-                dx = 2;
-                dy = -2;
+                dx = speed;
+                dy = -speed;
                 paddleX = (canvas.width-paddleWidth)/2;
             }
         }
