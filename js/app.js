@@ -3,6 +3,7 @@ var ctx = canvas.getContext("2d");
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
 
 var x = canvas.width / 2;
 var y = canvas.height - 30;
@@ -23,9 +24,13 @@ var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
 var bricks=[];
-
 var score=0;
-
+var lives = 3;
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+}
 function drawScore(){
     ctx.font="16px Arial";
     ctx.fillStyle="#0095DD";
@@ -91,6 +96,13 @@ function keyUpHandler(e) {
     }
 }
 
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    }
+}
+
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
@@ -113,6 +125,7 @@ function draw() {
     drawBall();
     drawPaddle();
     drawScore();
+    drawLives();
     collisionDetecting();
     if (x + dx > canvas.width - ballraduis || x + dx < ballraduis) {
         dx = -dx;
@@ -123,8 +136,18 @@ function draw() {
         if (x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
         } else {
-            alert("Game Over!");
-            document.location.reload();
+            lives--;
+            if(!lives) {
+                alert("GAME OVER");
+                document.location.reload();
+            }
+            else {
+                x = canvas.width/2;
+                y = canvas.height-30;
+                dx = 2;
+                dy = -2;
+                paddleX = (canvas.width-paddleWidth)/2;
+            }
         }
     }
     if (rightPressed && paddleX < canvas.width - paddleWidth) {
@@ -135,5 +158,6 @@ function draw() {
 
     x += dx;
     y += dy;
+    requestAnimationFrame(draw);
 }
-setInterval(draw, 10);
+draw();
