@@ -4,10 +4,11 @@ var ctx = canvas.getContext("2d");
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener("click", startPlaying, false);
 
 var x = canvas.width / 2;
 var y = canvas.height - 30;
-var speed=1
+var speed=4;
 var dx = speed, dy = -speed;
 var ballraduis = 10;
 
@@ -27,6 +28,11 @@ var brickOffsetLeft = 30;
 var bricks=[];
 var score=0;
 var lives = 3;
+var start = false;
+function startPlaying(){
+    start = true;
+    draw();
+}
 function drawLives() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
@@ -99,8 +105,8 @@ function keyUpHandler(e) {
 
 function mouseMoveHandler(e) {
     var relativeX = e.clientX - canvas.offsetLeft;
-    if(relativeX > 0 && relativeX < canvas.width) {
-        paddleX = relativeX - paddleWidth/2;
+    if(relativeX > 0 && relativeX < canvas.width-paddleWidth) {
+        paddleX = relativeX;
     }
 }
 
@@ -138,6 +144,8 @@ function draw() {
             dy = -dy;
         } else {
             lives--;
+            start = false;
+            requestAnimationFrame(draw);
             if(!lives) {
                 alert("GAME OVER");
                 document.location.reload();
@@ -159,6 +167,7 @@ function draw() {
 
     x += dx;
     y += dy;
-    requestAnimationFrame(draw);
+    if(start)
+        requestAnimationFrame(draw);
 }
 draw();
