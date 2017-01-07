@@ -7,9 +7,9 @@ document.addEventListener("mousemove", mouseMoveHandler, false);
 
 var x = canvas.width / 2;
 var y = canvas.height - 30;
-var speed=1
+var speed=2;
 var dx = speed, dy = -speed;
-var ballraduis = 10;
+var ballraduis =10;
 
 var paddleWidth = 75;
 var paddleHeight = 10;
@@ -48,7 +48,7 @@ function collisionDetecting() {
         for(var r=0;r<brickRowCount;r++){
             var b=bricks[c][r];
             if(b.status==1){
-                if(x>b.x&&x<b.x+brickWidth&&y>b.y&&y<b.y+brickHeight){
+                if(x>b.x && x<b.x+brickWidth && y>b.y && y<b.y+brickHeight){
                     dy=-dy;
                     b.status=0;
                     score++;
