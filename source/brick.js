@@ -17,5 +17,7 @@ var Brick = function (rect, color )
   this.hit = function ()
   {
     this.status=0;
+    var audio = new Audio('sound/brick.mp3');
+    audio.play();
   }
 }
