@@ -12,7 +12,6 @@ var Game = function()
 	this.currentLevel = 1;
 	this.board = level1(this.dimensions)
 	this.draw = function () {
-
 		this.board.draw(this.ctx)
 	}
 	this.start = function () {
@@ -29,7 +28,6 @@ var Game = function()
 		var audio = new Audio('sound/go.mp3');
     	audio.play();
 	}
-
 }
 
 var game = new Game()
