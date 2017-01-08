@@ -36,10 +36,11 @@ function keyUpHandler(e) {
         this.frame.origin.x -= x;
     }
   }
+  this.hit =function()
+  {
+    var audio = new Audio('sound/paddle.mp3');
+    audio.play();
+  }
+
+  
 }
-// function mouseMoveHandler(e) {
-//     var relativeX = e.clientX - canvas.offsetLeft;
-//     if(relativeX > 0 && relativeX < canvas.width-paddleWidth) {
-//         paddleX = relativeX;
-//     }
-// }

@@ -1,5 +1,5 @@
-var dx = 1.5
-var dy = 1.5
+var dx = 3
+var dy = 3
 var play = false;
 document.addEventListener("click", togglePlaying, false);
 var Game = function()
@@ -17,6 +17,7 @@ var Game = function()
 	}
 	this.start = function ()
 	{
+		
 		if(play){
 			this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
 			this.board.ball.move(-dx, - dy)
@@ -25,17 +26,23 @@ var Game = function()
 			requestAnimationFrame(this.start.bind(this));
 		}
 	}
+	this.playSound = function ()
+	{
+		var audio = new Audio('sound/go.mp3');
+    	audio.play();
+	}
 
 }
 
 var game = new Game()
 game.draw()
-game.start()
 
 function togglePlaying(){
 	play = !play;
 	if(play)
+		game.playSound()
 		game.start();
+
 }
 
 
@@ -52,6 +59,7 @@ function collisionDetecting(ball, bricks, board) {
     	dy *= -1;
     }
      if (bottom.x > board.paddle.frame.origin.x && bottom.x < board.paddle.frame.origin.x + board.paddle.frame.size.width && bottom.y >= board.paddle.frame.origin.y ) {
+			board.paddle.hit()     	
             dy *= -1;
     }
 
