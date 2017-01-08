@@ -5,9 +5,10 @@ document.addEventListener("click", togglePlaying, false);
 var Game = function()
 {
 
-	this.dimensions = new Size(480,302);
+
 	this.canvas = document.getElementById("gamecanvas");
 	this.ctx = this.canvas.getContext("2d");
+	this.dimensions = new Size(this.canvas.width,this.canvas.height);
 	this.currentLevel = 1;
 	this.board = level1(this.dimensions)
 	this.draw = function()
@@ -17,7 +18,7 @@ var Game = function()
 	}
 	this.start = function ()
 	{
-		
+
 		if(play){
 			this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
 			this.board.ball.move(-dx, - dy)
@@ -52,19 +53,19 @@ function collisionDetecting(ball, bricks, board) {
 	var right = ball.right()
 	var top = ball.top()
 	var bottom = ball.bottom()
-	if ( left.x <= 0 || right.x > 480) {
+	if ( left.x <= 0 || right.x > game.canvas.width) {
         dx *= -1;
     }
     if(top.y <= 0 ){
     	dy *= -1;
     }
      if (bottom.x > board.paddle.frame.origin.x && bottom.x < board.paddle.frame.origin.x + board.paddle.frame.size.width && bottom.y >= board.paddle.frame.origin.y ) {
-			board.paddle.hit()     	
+			board.paddle.hit()
             dy *= -1;
     }
 
     collisionDetectingBricks(ball,bricks);
-  
+
 }
 
 

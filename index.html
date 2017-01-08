@@ -3,10 +3,34 @@
     <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <title>Game</title>
-      <link rel="stylesheet" type="text/css" href="stylesheet.css">
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-      <canvas id="gamecanvas" width="480px" height="302px"></canvas>
+      <div class="container">
+        <div id="home" class="menu">
+          <div class="btnContainer">
+            <button onclick="btnStartGame()">Start</button>
+            <button>Levels</button>
+            <button>Sounds ON</button>
+            <button>Music ON</button>
+          </div>
+        </div>
+        <div id="game">
+          <div id="play"></div>
+          <canvas id="gamecanvas" width="580" height="502"></canvas>
+        </div>
+      </div>
+      <script>
+      var menuContainer = document.getElementById("home");
+      var gameContainer = document.getElementById("game");
+      gameContainer.style.display='none';
+      menuContainer.style.display='table';
+      function btnStartGame(){
+        menuContainer.style.display='none';
+        gameContainer.style.display='block';
+      }
+      </script>
       <script src="source/size.js"></script>
       <script src="source/point.js"></script>
       <script src="source/rect.js"></script>
