@@ -1,7 +1,8 @@
-var xchunks=Levels[9].bricks[3].length;
-var ychunks=Levels[9].bricks.length;
-console.log(xchunks,ychunks);
-function reset(level,xchunks,ychunks) {
+var level=1;
+var xchunks = Levels[level].bricks[7].length
+var ychunks = Levels[level].bricks.length;
+
+function reset(level, xchunks, ychunks) {
 	var layout = Levels[level];
 	var xchunks = xchunks;
 	var ychunks = ychunks;
@@ -63,8 +64,9 @@ function render(ctx, bricks) {
 			ctx.closePath();
 
 		}
+	}
 }
-}
+
 function level1(dimensions) {
 	var paddleX = (dimensions.width - 75) / 2
 	var paddleY = (dimensions.height - 10)
@@ -82,37 +84,38 @@ function level1(dimensions) {
 		//     	bricks[row][col] = new Brick(brickFrame,"blue")    
 		// 	}    
 		// }
-	var bricks = reset(9,xchunks,ychunks);
-	resize(bricks,dimensions,xchunks,ychunks);
+	var bricks = reset(level, xchunks, ychunks);
+	resize(bricks, dimensions, xchunks, ychunks);
 	var boardFrame = new Rect(0, 0, dimensions.width, dimensions.height)
 	var board = new Board(paddle, ball, bricks, 3, boardFrame)
 	return board;
 
 }
-function resize(bricks,dimensions,xchunks,ychunks) {
 
-      var chunk  = Math.floor(Math.min(dimensions.width, dimensions.height) / (Math.max(xchunks, ychunks) + 4)); // room for court plus 2 chunk wall either side
-      var width  = xchunks * chunk;
-      var height = ychunks * chunk;
-      var left   = Math.floor((dimensions.width  - width)  / 2);
-      var top    = Math.floor((dimensions.height - height) / 2);
-      var right  = left + width;
-      var bottom = top  + height;
+function resize(bricks, dimensions, xchunks, ychunks) {
 
-    //   wall = {}
-    //   wall.size  = chunk;
-    //   wall.top   = Game.Math.bound({x: this.left - this.wall.size, y: this.top - this.wall.size*2, w: this.width + this.wall.size*2, h: this.wall.size*2               });
-    //   wall.left  = Game.Math.bound({x: this.left - this.wall.size, y: this.top - this.wall.size*2, w: this.wall.size,                h: this.wall.size*2 + this.height });
-    //   wall.right = Game.Math.bound({x: this.right,                 y: this.top - this.wall.size*2, w: this.wall.size,                h: this.wall.size*2 + this.height });
-      for(n = 0 ; n < bricks.numbricks ; n++) {
-        brick = bricks.bricks[n];
-        var x = left + (brick.pos.x1 * chunk);
-        var y = top  + (brick.pos.y  * chunk);
-        var w = (brick.pos.x2 - brick.pos.x1 + 1) * chunk;
-        var h = chunk;
-		brick.frame=new Rect(x,y,w,h);
-        //Game.Math.bound(brick);
-      }
+	var chunk = Math.floor(Math.min(dimensions.width, dimensions.height) / (Math.max(xchunks, ychunks) + 4)); // room for court plus 2 chunk wall either side
+	var width = xchunks * chunk;
+	var height = ychunks * chunk;
+	var left = Math.floor((dimensions.width - width) / 2);
+	var top = Math.floor((dimensions.height - height) / 2);
+	var right = left + width;
+	var bottom = top + height;
 
-      var rerender = true;
-    }
+	//   wall = {}
+	//   wall.size  = chunk;
+	//   wall.top   = Game.Math.bound({x: this.left - this.wall.size, y: this.top - this.wall.size*2, w: this.width + this.wall.size*2, h: this.wall.size*2               });
+	//   wall.left  = Game.Math.bound({x: this.left - this.wall.size, y: this.top - this.wall.size*2, w: this.wall.size,                h: this.wall.size*2 + this.height });
+	//   wall.right = Game.Math.bound({x: this.right,                 y: this.top - this.wall.size*2, w: this.wall.size,                h: this.wall.size*2 + this.height });
+	for (n = 0; n < bricks.numbricks; n++) {
+		brick = bricks.bricks[n];
+		var x = left + (brick.pos.x1 * chunk);
+		var y = top + (brick.pos.y * chunk);
+		var w = (brick.pos.x2 - brick.pos.x1 + 1) * chunk;
+		var h = chunk;
+		brick.frame = new Rect(x, y, w, h);
+		//Game.Math.bound(brick);
+	}
+
+	var rerender = true;
+}
