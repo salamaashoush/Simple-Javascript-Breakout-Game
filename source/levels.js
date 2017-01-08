@@ -1,5 +1,12 @@
-var level=1;
-var xchunks = Levels[level].bricks[7].length
+var level=9;
+var max=0;
+var bricks=Levels[level].bricks;
+for(var i=0;i<bricks.length;i++){
+	if(bricks[i].length>max){
+		max=i;
+	}
+}
+var xchunks = Levels[level].bricks[max].length
 var ychunks = Levels[level].bricks.length;
 
 function reset(level, xchunks, ychunks) {
