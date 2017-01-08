@@ -2,9 +2,9 @@ var dx = 3
 var dy = 3
 var play = false;
 document.addEventListener("click", togglePlaying, false);
-var Game = function () {
-
-
+document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
+var Game = function()
+{
 	this.dimensions = new Size(480, 302);
 	this.canvas = document.getElementById("gamecanvas");
 	this.ctx = this.canvas.getContext("2d");

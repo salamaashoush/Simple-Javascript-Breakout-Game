@@ -63,7 +63,7 @@ function render(ctx, bricks) {
 			ctx.closePath();
 
 		}
-	}
+}
 }
 function level1(dimensions) {
 	var paddleX = (dimensions.width - 75) / 2
@@ -89,7 +89,6 @@ function level1(dimensions) {
 	return board;
 
 }
-
 function resize(bricks,dimensions,xchunks,ychunks) {
 
       var chunk  = Math.floor(Math.min(dimensions.width, dimensions.height) / (Math.max(xchunks, ychunks) + 4)); // room for court plus 2 chunk wall either side
@@ -117,4 +116,3 @@ function resize(bricks,dimensions,xchunks,ychunks) {
 
       var rerender = true;
     }
-
