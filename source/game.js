@@ -1,6 +1,8 @@
 var dx = 1.5
 var dy = 1.5
-var Game = function() 
+var play = false;
+document.addEventListener("click", togglePlaying, false);
+var Game = function()
 {
 
 	this.dimensions = new Size(480,302);
@@ -10,17 +12,18 @@ var Game = function()
 	this.board = level1(this.dimensions)
 	this.draw = function()
 	{
-		
+
 		this.board.draw(this.ctx)
 	}
 	this.start = function ()
 	{
-		
-		this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
-		this.board.ball.move(-dx, - dy)
-		this.board.draw(this.ctx)
-		collisionDetecting(this.board.ball, this.board.bricks, this.board)
-		requestAnimationFrame(this.start.bind(this));
+		if(play){
+			this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
+			this.board.ball.move(-dx, - dy)
+			this.board.draw(this.ctx)
+			collisionDetecting(this.board.ball, this.board.bricks, this.board)
+			requestAnimationFrame(this.start.bind(this));
+		}
 	}
 
 }
@@ -29,7 +32,11 @@ var game = new Game()
 game.draw()
 game.start()
 
-
+function togglePlaying(){
+	play = !play;
+	if(play)
+		game.start();
+}
 
 
 
@@ -48,7 +55,7 @@ function collisionDetecting(ball, bricks, board) {
             dy *= -1;
     }
 
-    
+
     for(var c=0;c<bricks.length;c++){
         for(var r=0;r<bricks[c].length;r++){
             var b = bricks[c][r];
@@ -63,4 +70,3 @@ function collisionDetecting(ball, bricks, board) {
         }
     }
 }
-    
