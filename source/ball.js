@@ -43,7 +43,7 @@ var Ball = function (x, y, radius, color, speed,dx,dy)
   {
     if (rect.includes(this.top()) || rect.includes(this.bottom()))
       return new Point(1,-1)
-    else if (rect.includes(this.right() || rect.includes(this.left())))
+    else if (rect.includes(this.right()) || rect.includes(this.left()))
       return new Point(-1,1)
     else
       return null

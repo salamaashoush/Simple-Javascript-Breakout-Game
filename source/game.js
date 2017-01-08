@@ -48,7 +48,7 @@ function collisionDetecting(ball, bricks, board) {
 	var right = ball.right()
 	var top = ball.top()
 	var bottom = ball.bottom()
-	if (left.x <= 0 || right.x > 480) {
+	if (left.x <= 0 || right.x > game.dimensions.width) {
 		dx *= -1;
 	}
 	if (top.y <= 0) {
@@ -63,6 +63,7 @@ function collisionDetecting(ball, bricks, board) {
 		if (b.hit == false) {
 			hitPoint = ball.isInBoundsOf(b.frame)
 			if (hitPoint) {
+				console.log(hitPoint)
 				b.hit = true
 				dx *= hitPoint.x
 				dy *= hitPoint.y
