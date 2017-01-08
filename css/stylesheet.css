@@ -130,3 +130,22 @@ body{
 #gamecanvas{
   border:1px solid #ccc;
 }
+#splash{
+  position: relative;
+}
+#splash img{
+  width: 300px;
+}
+#progress-bar{
+  width: 600px;
+  height: 25px;
+  margin: auto 60px;
+  background-color: #ccc;
+  position: absolute;
+  bottom: 15%;
+}
+#bar{
+  background-color: #057068;
+  width: 1%;
+  height: 25px;
+}

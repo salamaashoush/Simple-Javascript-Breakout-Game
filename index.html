@@ -8,7 +8,13 @@
     </head>
     <body>
       <div class="container">
-        <div id="menu" class="window">
+        <div id="splash" class="window" style="">
+          <img src="img/logo.jpg" alt="" class="splash-logo">
+          <div id="progress-bar">
+            <div id="bar"></div>
+          </div>
+        </div>
+        <div id="menu" class="window" style="display:none">
           <div class="menu-items">
             <img src="img/logo.jpg" id="logo" alt="">
             <button onclick="navigateFromTo('menu','play')">Start</button>
@@ -74,6 +80,21 @@
         document.getElementById(sender).style.display='none';
         document.getElementById(id).style.display=display;
       }
+      function loading() {
+        var elem = document.getElementById("bar");
+        var width = 1;
+        var id = setInterval(progress, 25);
+        function progress() {
+          if (width >= 100) {
+            clearInterval(id);
+            navigateFromTo('splash','menu','table');
+          } else {
+            width++;
+            elem.style.width = width + '%';
+          }
+        }
+      }
+      loading();
       </script>
       <script src="source/levels2.js"></script>
       <script src="source/size.js"></script>
