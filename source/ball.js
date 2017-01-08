@@ -1,4 +1,4 @@
-var Ball = function (x, y, radius, color, speed)
+var Ball = function (x, y, radius, color, speed,dx,dy)
 {
   this.center = new Point(x,y)
   this.radius = radius
@@ -16,15 +16,15 @@ var Ball = function (x, y, radius, color, speed)
 
   this.move = function (dx, dy)
   {
-    this.center.y += dy
-    this.center.x += dx
-    
+    this.center.y += dy;
+    this.center.x += dx;
+
 
   }
   this.top = function ()
   {
      return new Point(this.center.x ,this.center.y - this.radius)
-     
+
   }
   this.bottom = function ()
   {
@@ -52,5 +52,5 @@ var Ball = function (x, y, radius, color, speed)
   // {
   //   return (rect.includes(this.top()) || rect.includes(this.bottom()) || rect.includes(this.right()) || rect.includes(this.left()))
   // }
-  
+
 }

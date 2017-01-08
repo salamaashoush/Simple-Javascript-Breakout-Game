@@ -1,12 +1,14 @@
-var dx = 1.5
-var dy = 1.5
+var dx = 3
+var dy = 3
 var play = false;
 document.addEventListener("click", togglePlaying, false);
 var Game = function () {
 
+
 	this.dimensions = new Size(480, 302);
 	this.canvas = document.getElementById("gamecanvas");
 	this.ctx = this.canvas.getContext("2d");
+	this.dimensions = new Size(this.canvas.width,this.canvas.height);
 	this.currentLevel = 1;
 	this.board = level1(this.dimensions)
 	this.draw = function () {
@@ -22,17 +24,23 @@ var Game = function () {
 			requestAnimationFrame(this.start.bind(this));
 		}
 	}
+	this.playSound = function ()
+	{
+		var audio = new Audio('sound/go.mp3');
+    	audio.play();
+	}
 
 }
 
 var game = new Game()
 game.draw()
-game.start()
 
 function togglePlaying() {
 	play = !play;
-	if (play)
+	if(play)
+		game.playSound()
 		game.start();
+
 }
 
 
@@ -64,3 +72,4 @@ function collisionDetecting(ball, bricks, board) {
 		}
 	}
 }
+
