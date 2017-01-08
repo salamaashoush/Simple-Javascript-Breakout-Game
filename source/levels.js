@@ -8,17 +8,16 @@ function level1(dimensions)
 	var ball = new Ball(paddleX+(paddleFrame.size.width/2),paddleY-10,10,"blue",2)
 	var bricks = [];
 	for(var row = 0; row < 3; row++){
-    	bricks[row] = [];    
-    	for(var col = 0; col < 3; col++){ 
+    	bricks[row] = [];
+    	for(var col = 0; col < 3; col++){
     		var brickX = (75 + 10) * col
     		var brickY = (20 + 10) * row
     		var brickFrame = new Rect (brickX,brickY,75,20)
-        	bricks[row][col] = new Brick(brickFrame,"blue")    
-    	}    
+        	bricks[row][col] = new Brick(brickFrame,"blue")
+    	}
 	}
 	var boardFrame = new Rect (0,0,dimensions.width,dimensions.height)
 	var board = new Board (paddle,ball,bricks,3,boardFrame)
 	return board;
 
 }
-

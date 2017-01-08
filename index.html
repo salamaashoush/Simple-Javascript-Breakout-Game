@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <title>Game</title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-      <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
       <div class="container">
-        <div id="home" class="menu">
+        <div id="home" class="menu window">
           <div class="btnContainer">
-            <button onclick="btnStartGame()">Start</button>
-            <button>Levels</button>
+            <img src="img/logo.jpg" alt="" width="150px">
+            <button onclick="navigateTo('game')">Start</button>
+            <button onclick="navigateTo('levels')">Levels</button>
             <button>Sounds ON</button>
             <button>Music ON</button>
           </div>
         </div>
-        <div id="game">
-          <div id="play"></div>
-          <canvas id="gamecanvas" width="580" height="502"></canvas>
+        <div id="levels" class="menu window">
+          <div class="lvlContainer">
+            <div class="levelCard">Level 01</div>
+            <div class="levelCard">Level 02</div>
+            <div class="levelCard">Level 03</div>
+            <div class="levelCard">Level 03</div>
+          </div>
+        </div>
+        <div id="game" class="">
+          <!--<div id="play">PLAY</div>-->
+          <canvas id="gamecanvas" width="720" height="480"></canvas>
         </div>
       </div>
       <script>
-      var menuContainer = document.getElementById("home");
-      var gameContainer = document.getElementById("game");
-      gameContainer.style.display='none';
-      menuContainer.style.display='table';
-      function btnStartGame(){
-        menuContainer.style.display='none';
-        gameContainer.style.display='block';
+      var menuCont = document.getElementById("home");
+      var gameCont = document.getElementById("game");
+      var lvlCont = document.getElementById("levels");
+      function navigateTo(id){
+        hideAllWindows();
+        document.getElementById(id).style.display='block';
       }
+      function hideAllWindows(){
+        menuCont.style.display = 'none';
+        gameCont.style.display = 'none';
+        lvlCont.style.display = 'none';
+      }
+      hideAllWindows();
+      menuCont.style.display = 'table';
       </script>
       <script src="source/size.js"></script>
       <script src="source/point.js"></script>

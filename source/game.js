@@ -1,7 +1,7 @@
 var dx = 3
 var dy = 3
 var play = false;
-document.addEventListener("click", togglePlaying, false);
+document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
 var Game = function()
 {
 
