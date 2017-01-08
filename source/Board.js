@@ -1,5 +1,6 @@
-var Board =  function(paddle, ball, bricks, lives) 
+var Board =  function(paddle, ball, bricks, lives, rect) 
 {
+  this.frame = rect;
   this.paddle = paddle;
   this.ball = ball;
   this.bricks = bricks;
