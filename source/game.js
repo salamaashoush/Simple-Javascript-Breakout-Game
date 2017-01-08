@@ -48,8 +48,15 @@ function collisionDetecting(ball, bricks, board) {
             dy *= -1;
     }
 
-    
-    for(var c=0;c<bricks.length;c++){
+    collisionDetectingBricks(ball,bricks);
+  
+}
+
+
+
+function collisionDetectingBricks(ball,bricks){
+	
+  for(var c=0;c<bricks.length;c++){
         for(var r=0;r<bricks[c].length;r++){
             var b = bricks[c][r];
             if(b.status==1){
@@ -62,5 +69,6 @@ function collisionDetecting(ball, bricks, board) {
             }
         }
     }
+
 }
     
