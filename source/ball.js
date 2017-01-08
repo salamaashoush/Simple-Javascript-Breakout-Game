@@ -1,9 +1,10 @@
-var Ball = function (x, y, radius, color, speed)
+var Ball = function (x, y, radius, color, speed,dx,dy)
 {
   this.center = new Point(x,y)
   this.radius = radius
   this.speed = speed
   this.color = color
+  this.accel=new Accel(dx,dy); 
   this.draw = function (ctx)
   {
     var center = this.center
@@ -16,8 +17,12 @@ var Ball = function (x, y, radius, color, speed)
 
   this.move = function (dx, dy)
   {
-    this.center.y += dy
-    this.center.x += dx
+    if(arguments.length){
+    accel.dx= dx;
+     accel.dy= dy;
+    }
+    this.center.y += accel.dy;
+    this.center.x += accel.dx;
     
 
   }
