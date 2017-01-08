@@ -1,4 +1,4 @@
-var level=9;
+var level=0;
 var max=0;
 var bricks=Levels[level].bricks;
 for(var i=0;i<bricks.length;i++){
@@ -33,6 +33,8 @@ function reset(level, xchunks, ychunks) {
 				brick = {
 					isbrick: true,
 					hit: false,
+					strenght:1,
+					unbreakable:c==='x'||c==='X'?true:false,
 					c: c,
 					pos: {
 						x1: x,
@@ -101,11 +103,11 @@ function level1(dimensions) {
 
 function resize(bricks, dimensions, xchunks, ychunks) {
 
-	var chunk = Math.floor(Math.min(dimensions.width, dimensions.height) / (Math.max(xchunks, ychunks) + 4)); // room for court plus 2 chunk wall either side
+	var chunk = Math.floor(Math.max(dimensions.width, dimensions.height) / (Math.max(xchunks, ychunks) + 4)); // room for court plus 2 chunk wall either side
 	var width = xchunks * chunk;
 	var height = ychunks * chunk;
 	var left = Math.floor((dimensions.width - width) / 2);
-	var top = Math.floor((dimensions.height - height) / 2);
+	var top = Math.floor((dimensions.height - height) / 4);
 	var right = left + width;
 	var bottom = top + height;
 

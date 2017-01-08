@@ -10,7 +10,8 @@ Colors = {
     p: "#FC74B4", // pink
     y: "#FC9838", // yellow
     s: "#BCBCBC", // silver
-    d: "#F0BC3C"  // gold
+    d: "#F0BC3C", // gold
+    x: "#000000"
   },
 
   pastel: {
@@ -18,7 +19,8 @@ Colors = {
     p: "#FFA5E0", // pink
     b: "#A5B3FF", // blue
     g: "#BFFFA5", // green
-    o: "#FFCBA5"  // orange
+    o: "#FFCBA5", // orange
+    x: "#000000"
   },
 
   vintage: {
@@ -49,12 +51,12 @@ Levels = [
 
   { colors: Colors.pastel,
     bricks: [
-      "", "", "", "", "", "",
+     
       "yyyyyYYYYYyyyyyYYYYYyyyyyYYYYY",
       "pppppPPPPPpppppPPPPPpppppPPPPP",
       "bbbbbBBBBBbbbbbBBBBBbbbbbBBBBB",
       "gggggGGGGGgggggGGGGGgggggGGGGG",
-      "oooooOOOOOoooooOOOOOoooooOOOOO"
+      "oooooOOOOOXXXXXxxxxxoooooOOOOO"
     ]
   },
 
