@@ -9,6 +9,7 @@ var Board =  function(paddle, ball, bricks, lives, rect)
   {
     var bricks = this.bricks
     this.paddle.draw(ctx)
+    this.paddle.move(7);
     this.ball.draw(ctx)
     for (var i = 0; i < bricks.length ; i++) {
       for (var j = 0; j < bricks.length ; j++) {
