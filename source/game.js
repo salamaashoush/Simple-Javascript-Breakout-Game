@@ -4,6 +4,7 @@ var play = false;
 document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
 var Game = function()
 {
+	this.nextgift=null;
 	this.dimensions = new Size(480, 302);
 	this.canvas = document.getElementById("gamecanvas");
 	this.ctx = this.canvas.getContext("2d");
@@ -18,6 +19,9 @@ var Game = function()
 			this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
 			this.board.ball.move(-dx, -dy)
 			this.board.draw(this.ctx)
+			if(this.nextgift!==null){
+				this.nextgift.draw(this.ctx);
+			}
 			collisionDetecting(this.board.ball, this.board.bricks, this.board)
 			requestAnimationFrame(this.start.bind(this));
 		}
@@ -67,6 +71,10 @@ function collisionDetecting(ball, bricks, board) {
 				}
 				if(b.strenght===0){
 					b.hit = true
+				}
+				if(b.hasGift){
+					var giftpos={x:b.frame.origin.x,y:b.frame.origin.y};
+					game.nextgift=randomGift(giftpos);
 				}
 				dx *= hitPoint.x
 				dy *= hitPoint.y

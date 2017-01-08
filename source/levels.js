@@ -35,6 +35,7 @@ function reset(level, xchunks, ychunks) {
 					hit: false,
 					strenght:1,
 					unbreakable:c==='x'||c==='X'?true:false,
+					hasGift:true,
 					c: c,
 					pos: {
 						x1: x,

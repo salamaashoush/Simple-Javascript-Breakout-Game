@@ -268,4 +268,17 @@ Levels = [
 
 ];
 
+var Gift=function(src,spos){
+  var src=src;
+  var spos=spos;
+  this.draw=function(ctx){
+      var img=new Image();
+      img.src=src;
+      ctx.drawImage(img,spos.x,spos.y++);
+  }
 
+}
+gifts=["img/heart.png"];
+function randomGift(spos){
+    return new Gift(gifts[Math.floor(Math.random() * gifts.length)],spos);
+}
