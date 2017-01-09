@@ -21,8 +21,20 @@ var Game = function () {
 			if (this.nextgift !== null) {
 				this.nextgift.draw(this.ctx);
 			}
-			collisionDetecting(this.board.ball, this.board.bricks.bricks, this.board)
-			requestAnimationFrame(this.start.bind(this));
+			if(this.board.ball.top().y > (this.board.paddle.frame.origin.y + this.board.paddle.frame.size.height)){
+				var ballFall = checkBallFall(this.board.ball.center.x, this.board.paddle.frame.size.width,this.dimensions.width)
+				this.board.lives --;
+				this.board.ball.place(ballFall , this.board.ball.center.y -30)
+				this.board.paddle.place(this.board.ball.center.x -(this.board.paddle.frame.size.width/2) ,(this.dimensions.height-this.board.paddle.frame.size.height))
+				this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
+				this.board.draw(this.ctx)
+				requestAnimationFrame(this.start.bind(this));
+				togglePlaying()
+				this.board.draw(this.ctx)	
+			}else{
+				collisionDetecting(this.board.ball, this.board.bricks.bricks, this.board)
+				requestAnimationFrame(this.start.bind(this));
+			}
 		}
 	}
 	this.playSound = function () {
@@ -35,6 +47,12 @@ var game = new Game()
 game.draw()
 
 function togglePlaying() {
+
+	// if (!play){
+	// game.board.ball.draw(game.ctx)
+	// game.board.paddle.draw(game.ctx)
+	// requestAnimationFrame(togglePlaying);
+	// }
 	play = !play;
 	if (play)
 		game.playSound()
@@ -79,13 +97,13 @@ function collisionDetectingFrames(ball, board) {
 		dy = hitPoint.dy
 		//console.log("NEW", dx, dy)
 	}
-	var bottom = new Rect(0, game.canvas.height, game.canvas.width, 30)
-	hitPoint = ball.isInBoundsOf(bottom, new Accel(0, 0))
-	if (hitPoint) {
-		dx = hitPoint.dx
-		dy = hitPoint.dy
-		//console.log("GameOver");
-	}
+	//var bottom = new Rect(0, game.canvas.height, game.canvas.width, 30)
+	//hitPoint = ball.isInBoundsOf(bottom, new Accel(0, 0))
+	// if (hitPoint) {
+	// 	dx = hitPoint.dx
+	// 	dy = hitPoint.dy
+	// 	//console.log("GameOver");
+	// }
 
 
 

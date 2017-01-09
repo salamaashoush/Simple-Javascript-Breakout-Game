@@ -83,7 +83,7 @@ function level1(dimensions) {
 	var paddleFrame = new Rect(paddleX, paddleY, 75, 10)
 	var paddle = new Paddle(paddleFrame, "blue", dimensions,0,0,20,7)
 
-	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 10, "blue", 2)
+	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 5, "blue", 2)
 		// var bricks =[];
 		// for(var row = 0; row < 3; row++){
 		// 	bricks[row] = [];    

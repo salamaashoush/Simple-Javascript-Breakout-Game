@@ -26,6 +26,14 @@ var Ball = function (x, y, radius, color, speed,dx,dy)
 
 
   }
+
+  this.place = function (dx, dy)
+  {
+    this.center.y = dy;
+    this.center.x = dx;
+
+
+  }  
   this.top = function ()
   {
      return new Point(this.center.x ,this.center.y - this.radius)

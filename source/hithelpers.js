@@ -19,3 +19,17 @@ var fincal = fin* Math.PI/180
 return new Accel(Math.round(adj*Math.cos(fincal)),Math.round(adj*Math.sin(fincal)));
 
 }
+
+function checkBallFall (x, paddlewidth, boardWidth)
+{
+	var rightOffset = x+(paddlewidth/2)-boardWidth;
+	var leftOffset = x-(paddlewidth/2);
+	if(rightOffset > 0){
+		return(x- rightOffset);
+	}
+	else if(leftOffset < 0){
+		return(x+ leftOffset)
+	}
+	else
+		return x
+}
