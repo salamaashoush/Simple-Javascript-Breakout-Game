@@ -22,7 +22,7 @@ var Game = function()
 			if(this.nextgift!==null){
 				this.nextgift.draw(this.ctx);
 			}
-			collisionDetecting(this.board.ball, this.board.bricks, this.board)
+			collisionDetecting(this.board.ball, this.board.bricks.bricks, this.board)
 			requestAnimationFrame(this.start.bind(this));
 		}
 	}
@@ -47,39 +47,88 @@ function togglePlaying() {
 
 
 function collisionDetecting(ball, bricks, board) {
+	
+
+    collisionDetectingBricks(ball,bricks);
+	  collisionDetectingFrames(ball,board)
+	 
+}
+function collisionDetectingFrames(ball,board)
+{
+
+	var hitPoint;
+	var allsides=[new Rect(0, 0, 3,game.canvas.height )
+	, new Rect(0, 0, game.canvas.width,3)
+	, new Rect(game.canvas.width, 0, 3,game.canvas.height)];
+	 var frame = this.frame
+
+	// console.log("IN",hitPoint);
+for(var u=0;u<allsides.length;u++){
+
+
+	 hitPoint = ball.isInBoundsOf(allsides[u],new Accel(0,0))
+
+	if (hitPoint){
+			console.log(u , allsides[u] , dx, dy,hitPoint);
+					
+                	dx = hitPoint.dx
+                	dy = hitPoint.dy
+					
+                }
+}
+ hitPoint = ball.isInBoundsOf(board.paddle.frame,board.paddle.accel)
+  if (hitPoint){
+	  console.log( "OLD",dx, dy)
+                	dx = hitPoint.dx
+                	dy = hitPoint.dy
+			console.log("NEW", dx, dy)		
+                }
+	var bottom = new Rect(0, game.canvas.height, game.canvas.width,30)
+	 hitPoint = ball.isInBoundsOf(bottom,new Accel(0,0))
+	 if (hitPoint){
+                	dx = hitPoint.dx
+                	dy = hitPoint.dy
+					console.log("GameOver");
+                }
+
+
+
+
+		/*		
 	var left = ball.left()
 	var right = ball.right()
 	var top = ball.top()
 	var bottom = ball.bottom()
-	if (left.x <= 0 || right.x > game.dimensions.width) {
-		dx *= -1;
-	}
-	if (top.y <= 0) {
-		dy *= -1;
-	}
-	if (bottom.x > board.paddle.frame.origin.x && bottom.x < board.paddle.frame.origin.x + board.paddle.frame.size.width && bottom.y >= board.paddle.frame.origin.y) {
-		dy *= -1;
-	}
+if ( left.x <= 0 || right.x > game.canvas.width) {
+        dx *= -1;
+    }
+    if(top.y <= 0 ){
+    	dy *= -1;
+    }
+     if (bottom.x > board.paddle.frame.origin.x && bottom.x < board.paddle.frame.origin.x + board.paddle.frame.size.width && bottom.y >= board.paddle.frame.origin.y ) {
+			board.paddle.hit()
+            dy *= -1;
+    }
+	*/			
 
-	for (var c = 0; c < bricks.bricks.length; c++) {
-		var b = bricks.bricks[c];
-		if (b.hit == false) {
-			hitPoint = ball.isInBoundsOf(b.frame)
-			if (hitPoint) {
-				if(!b.unbreakable){
-					b.strenght--;
-				}
-				if(b.strenght===0){
-					b.hit = true
-				}
-				if(b.hasGift){
-					var giftpos={x:b.frame.origin.x,y:b.frame.origin.y};
-					game.nextgift=randomGift(giftpos);
-				}
-				dx *= hitPoint.x
-				dy *= hitPoint.y
-			}
-		}
-	}
+}
+
+function collisionDetectingBricks(ball,bricks){
+console.log(bricks)
+    for(var c=0;c<bricks.length;c++){
+            var b = bricks[c];
+			console.log(b)
+            if(b.hit==false){
+            	 hitPoint = ball.isInBoundsOf(b.frame,new Accel(0,0))
+                if (hitPoint){
+                	dx = hitPoint.dx
+                	dy = hitPoint.dy
+					b.hit=true;
+
+                }
+            }
+        
+    }
+
 }
 

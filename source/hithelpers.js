@@ -1,36 +1,21 @@
-//angles range from 0 to 179;
-var line=function(angle){
-Object.defineProperty(this,'Types',
-{
-  enumerable: false,
-  configurable: false,
-  writable: false,
-  value: {Vertical:1,Horizontal:2,Other:10}
-}
-);
-this.angle=angle;
-this.getDefaultType=function(){
-if(this.angle===0)
-    return this.Types.Horizontal;
-else if(this.angle==90)
-    return this.Types.Vertical;
-else 
-    return this.Types.Other;
-}
-}
-line.prototype
-function hit(ball ,line ,accel ){
-if()
+function hitnewaccel(orgbaccel ,line ,accel ){
+    console.log(orgbaccel ,line ,accel)
+accel=accel||new Accel(0,0);
+var baccel=new Accel(orgbaccel.dx+Math.floor(accel.dx/6),orgbaccel.dy+Math.floor(accel.dy/6));
+var adj=Math.sqrt(baccel.dy*baccel.dy + baccel.dx*baccel.dx )
+var currangle=Math.asin(baccel.dy/adj) * 180/Math.PI;
 
+if(baccel.dx<0)
+currangle+= 90 * (baccel.dy/Math.abs(baccel.dy)) 
 
+var inbetwen=currangle-line.angle;
 
+var newangle=inbetwen;
 
+var fin=line.angle+(180-newangle);
 
+var fincal = fin* Math.PI/180
 
-
-
-return new Accel(dx,dy);
-
-
+return new Accel(Math.round(adj*Math.cos(fincal)),Math.round(adj*Math.sin(fincal)));
 
 }

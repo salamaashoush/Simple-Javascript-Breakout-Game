@@ -1,22 +1,27 @@
 
-var Paddle = function (rect, color,dimensions)
+var Paddle = function (rect, color,dimensions,dxa,dya,limitdx,factor)
 {
 var rightPressed,leftPressed;
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
+this.accel=new Accel(dxa,dya);
+this.limitx=limitdx;
+this.xfactor=factor;
+document.addEventListener("keydown", keyDownHandler.bind(this), false);
+document.addEventListener("keyup", keyUpHandler.bind(this), false);
 function keyDownHandler(e) {
-    if (e.keyCode == 39) {
-        rightPressed = true;
+  if(Math.abs(this.accel.dx)>=this.limitx)
+    {
+    
+    }
+   else if (e.keyCode == 39) {
+        this.accel.dx+=factor;
+        
     } else if (e.keyCode == 37) {
-        leftPressed = true;
+         this.accel.dx-=factor;
+
     }
 }
 function keyUpHandler(e) {
-    if (e.keyCode == 39) {
-        rightPressed = false;
-    } else if (e.keyCode == 37) {
-        leftPressed = false;
-    }
+ this.accel.dx=0;
 }
   this.color = color
   this.frame = rect
@@ -29,12 +34,19 @@ function keyUpHandler(e) {
     ctx.fill();
     ctx.closePath();
   }
-  this.move=function(x){
-    if (rightPressed && this.frame.origin.x < dimensions.width - this.frame.size.width) {
-        this.frame.origin.x += x;
-    }else if (leftPressed && this.frame.origin.x > 0) {
-        this.frame.origin.x -= x;
-    }
+  this.move=function(){
+
+    
+     //this.frame.origin.y+=this.accel.dy
+   
+  // if (this.frame.origin.x +this.accel.dx <= dimensions.width - this.frame.size.width  && this.frame.origin.x > 0) 
+   if (this.frame.origin.x +this.accel.dx <= dimensions.width  - this.frame.size.width && this.frame.origin.x+this.accel.dx >= 0) 
+             this.frame.origin.x+=this.accel.dx
+else
+        this.accel.dx=0;
+  //  }else if (leftPressed && this.frame.origin.x > 0) {
+   //     this.frame.origin.x -= x;
+   // }
   }
   this.hit =function()
   {
@@ -44,3 +56,4 @@ function keyUpHandler(e) {
 
   
 }
+

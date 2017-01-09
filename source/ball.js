@@ -4,6 +4,7 @@ var Ball = function (x, y, radius, color, speed,dx,dy)
   this.radius = radius
   this.speed = speed
   this.color = color
+   this.accel=new Accel(dx || 2, dy || 2)
   this.draw = function (ctx)
   {
     var center = this.center
@@ -16,6 +17,10 @@ var Ball = function (x, y, radius, color, speed,dx,dy)
 
   this.move = function (dx, dy)
   {
+    if(arguments.length){
+    this.accel.dx= dx;
+     this.accel.dy= dy;
+    }
     this.center.y += dy;
     this.center.x += dx;
 
@@ -39,12 +44,12 @@ var Ball = function (x, y, radius, color, speed,dx,dy)
   {
     return new Point(this.center.x - this.radius,this.center.y)
   }
-  this.isInBoundsOf = function (rect)
+  this.isInBoundsOf = function (rect,accl)
   {
-    if (rect.includes(this.top()) || rect.includes(this.bottom()))
-      return new Point(1,-1)
-    else if (rect.includes(this.right()) || rect.includes(this.left()))
-      return new Point(-1,1)
+    if ( rect.includes(this.top()) || rect.includes(this.bottom()) )
+       return hitnewaccel(this.accel ,new line(0) ,accl );
+    else if ( rect.includes(this.right()) || rect.includes(this.left()) )
+       return  hitnewaccel(this.accel ,new line(90) ,accl );
     else
       return null
   }

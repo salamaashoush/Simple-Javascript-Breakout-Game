@@ -81,7 +81,7 @@ function level1(dimensions) {
 	var paddleX = (dimensions.width - 75) / 2
 	var paddleY = (dimensions.height - 10)
 	var paddleFrame = new Rect(paddleX, paddleY, 75, 10)
-	var paddle = new Paddle(paddleFrame, "blue", dimensions)
+	var paddle = new Paddle(paddleFrame, "blue", dimensions,0,0,20,7)
 
 	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 10, "blue", 2)
 		// var bricks =[];
