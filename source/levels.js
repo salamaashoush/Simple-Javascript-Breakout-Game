@@ -82,18 +82,7 @@ function level1(dimensions) {
 	var paddleY = (dimensions.height - 10)
 	var paddleFrame = new Rect(paddleX, paddleY, 75, 10)
 	var paddle = new Paddle(paddleFrame, "blue", dimensions,0,0,20,7)
-
 	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 10, "blue", 2)
-		// var bricks =[];
-		// for(var row = 0; row < 3; row++){
-		// 	bricks[row] = [];    
-		// 	for(var col = 0; col < 3; col++){ 
-		// 		var brickX = (75 + 10) * col
-		// 		var brickY = (20 + 10) * row
-		// 		var brickFrame = new Rect (brickX,brickY,75,20)
-		//     	bricks[row][col] = new Brick(brickFrame,"blue")    
-		// 	}    
-		// }
 	var bricks = reset(level, xchunks, ychunks);
 	resize(bricks, dimensions, xchunks, ychunks);
 	var boardFrame = new Rect(0, 0, dimensions.width, dimensions.height)

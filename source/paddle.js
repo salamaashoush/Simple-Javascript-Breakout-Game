@@ -28,6 +28,11 @@ function keyUpHandler(e) {
   this.draw = function(ctx)
   {
     var frame = this.frame
+    //#this code to draw image instead of rectangle 
+    //  var img=new Image();
+    //   img.src="img/paddle1.png";
+    //   ctx.drawImage(img,frame.origin.x, frame.origin.y , frame.size.width, frame.size.height);
+    
     ctx.beginPath();
     ctx.rect(frame.origin.x, frame.origin.y , frame.size.width, frame.size.height);
     ctx.fillStyle = this.color;
