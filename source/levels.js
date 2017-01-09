@@ -1,4 +1,4 @@
-var level=0;
+var level=3;
 var max=0;
 var bricks=Levels[level].bricks;
 for(var i=0;i<bricks.length;i++){
@@ -33,7 +33,7 @@ function reset(level, xchunks, ychunks) {
 				brick = {
 					isbrick: true,
 					hit: false,
-					strenght:1,
+					strenght:2,
 					unbreakable:c==='x'||c==='X'?true:false,
 					hasGift:true,
 					c: c,

@@ -1,8 +1,9 @@
-var dx = 3
-var dy = 3
+var dx = 2
+var dy = 2
 var play = false;
 document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
 var Game = function () {
+	this.score = 0 ;
 	this.nextgift = null;
 	this.dimensions = new Size(480, 302);
 	this.canvas = document.getElementById("gamecanvas");
@@ -18,6 +19,8 @@ var Game = function () {
 			this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
 			this.board.ball.move(-dx, -dy)
 			this.board.draw(this.ctx)
+			drawLives(this.ctx)
+			drawScore(this.ctx)
 			if (this.nextgift !== null) {
 				this.nextgift.draw(this.ctx);
 			}
@@ -28,6 +31,7 @@ var Game = function () {
 				this.board.paddle.place(this.board.ball.center.x -(this.board.paddle.frame.size.width/2) ,(this.dimensions.height-this.board.paddle.frame.size.height))
 				this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
 				this.board.draw(this.ctx)
+				drawLives(this.ctx)
 				requestAnimationFrame(this.start.bind(this));
 				togglePlaying()
 				this.board.draw(this.ctx)	
@@ -142,6 +146,7 @@ function collisionDetectingBricks(ball, bricks) {
 				}
 				if(b.strenght===0){
 					b.hit=true;
+					game.score += b.score
 				}
 				if(b.hasGift){
 					var giftpos={x:b.frame.origin.x,y:b.frame.origin.y};
@@ -151,4 +156,16 @@ function collisionDetectingBricks(ball, bricks) {
 			}
 		}
 	}
+}
+
+function drawLives(ctx) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: "+game.board.lives, game.dimensions.width-65, 20);
+}
+
+function drawScore(ctx){
+    ctx.font="16px Arial";
+    ctx.fillStyle="#0095DD";
+    ctx.fillText("Score: "+game.score,8,20);
 }
