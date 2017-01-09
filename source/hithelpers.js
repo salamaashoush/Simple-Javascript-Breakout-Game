@@ -1,5 +1,5 @@
 function hitnewaccel(orgbaccel ,line ,accel ){
-    console.log(orgbaccel ,line ,accel)
+    //console.log(orgbaccel ,line ,accel)
 accel=accel||new Accel(0,0);
 var baccel=new Accel(orgbaccel.dx+Math.floor(accel.dx/6),orgbaccel.dy+Math.floor(accel.dy/6));
 var adj=Math.sqrt(baccel.dy*baccel.dy + baccel.dx*baccel.dx )
