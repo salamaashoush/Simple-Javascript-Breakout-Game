@@ -59,6 +59,12 @@ else
     audio.play();
   }
 
+  this.place = function (x, y)
+  { 
+    this.frame.origin.x = x
+    this.frame.origin.y =y
+  }
+
   
 }
 
