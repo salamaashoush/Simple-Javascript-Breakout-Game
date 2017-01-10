@@ -10,7 +10,7 @@ var Ball = function (x, y, radius, src, speed,dx,dy)
   {
     var center = this.center
     var img = new Image();
-    img.src = this.src;
+    img.src = this.src; 
     ctx.drawImage(img, center.x, center.y, this.radius*2, this.radius*2);
     // ctx.beginPath();
     // ctx.arc(center.x, center.y, this.radius, 0, Math.PI * 2);

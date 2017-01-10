@@ -29,7 +29,9 @@ var Paddle = function (rect, src, dimensions, dxa, dya, limitdx, factor) {
     //#this code to draw image instead of rectangle 
     var img = new Image();
     img.src = this.src;
+    img.onload = function(){ctx.drawImage(img, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);}; 
     ctx.drawImage(img, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    
 
     // ctx.beginPath();
     // ctx.rect(frame.origin.x, frame.origin.y , frame.size.width, frame.size.height);
