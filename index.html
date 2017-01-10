@@ -31,54 +31,91 @@
             </button>
             <span>Levels</span>
           </div>
-          <div class="lvl-card" onclick="navigateFromTo('level','play')">
+          <div class="lvl-container">
+            <div class="lvl-card" onclick="navigateFromTo('level','play')">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 1</span>
           </div>
-          <div class="lvl-card">
+            <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 2</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
-          <div class="lvl-card">
+            <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 3</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
-          <div class="lvl-card">
+            <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 4</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
-          <div class="lvl-card">
+            <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 5</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
-          <div class="lvl-card">
+            <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 6</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
-          <div class="lvl-card">
+            <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 7</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
-          <div class="lvl-card">
+            <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 8</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
+          </div>
         </div>
         <div id="play" class="window" style="display:none">
-          <canvas id="gamecanvas" width="700" height="460"></canvas>
+          <div id="player-controls">
+              <span id="profile">
+                  <i class="icon-user-1"></i>
+              </span>
+              <span id="score-lable">Score:</span>
+              <span id="score">0</span>
+              <span id="lives">
+                  <i class="icon-heart-2"></i>
+                  <i class="icon-heart-2"></i>
+                  <i class="icon-heart-2"></i>
+              </span>
+              <span id="btn-pause" onclick="togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
+              <span id="player-home" onclick="navigateFromTo('play','menu','table')">
+                  <i class="icon-home-1"></i>
+              </span>
+          </div>
+          <div id="player">
+            <div id="player-splash"></div>
+            <div id="player-splash-control" onclick="togglePlaying()">
+                <i class="icon-play-circled2"></i>
+            </div>
+            <canvas id="gamecanvas" width="750" height="500"></canvas>  
+          </div>
         </div>
         <div id="user" class="window" style="display:none">
 
         </div>
       </div>
       <script>
+      function updateLives(value){
+          var lives = document.getElementById("lives").children;
+          for(var i=0; i<lives.length; i++){
+              if(i<value)
+                  lives[i].className = "icon-heart-2";
+              else
+                  lives[i].className = "icon-heart-empty-2";
+          }
+      }
+      function updateScore(){
+          var score = document.getElementById("score");
+          score.textContent = (parseInt(score.textContent)+1).toString();
+      }
       function navigateFromTo(sender,id,display='block'){
         document.getElementById(sender).style.display='none';
         document.getElementById(id).style.display=display;
@@ -101,11 +138,11 @@
       </script>
       <script src="source/levels2.js"></script>
       <script src="source/size.js"></script>
-       <script src="source/accel.js"></script>
-         <script src="source/line.js"></script>
+      <script src="source/accel.js"></script>
+      <script src="source/line.js"></script>
       <script src="source/point.js"></script>
       <script src="source/rect.js"></script>
-    <script src="source/hithelpers.js"></script>
+      <script src="source/hithelpers.js"></script>
       <script src="source/ball.js"></script>
       <script src="source/paddle.js"></script>
       <script src="source/Board.js"></script>

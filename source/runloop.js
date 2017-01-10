@@ -1,4 +1,4 @@
-var dimensions = new Size (700,460);
+var dimensions = new Size (750,500);
 var level =0;
 var board =levelGenerator(dimensions,0);
 var canvas = document.getElementById("gamecanvas");
@@ -13,15 +13,21 @@ document.getElementById("gamecanvas").addEventListener("click", togglePlaying, f
 game.draw();
 
 
-
-
-
 function togglePlaying() {
-
 	play = !play;
-	if (play)
-	startGame(game)
-
+    var btn = document.getElementById("play-btn");
+    var bg = document.getElementById("player-splash");
+    var ctrl = document.getElementById("player-splash-control");
+	if (play){
+		startGame(game)
+        btn.className = "icon-pause-2";
+        bg.style.display = "none";
+        ctrl.style.display = "none";
+    }else{
+        btn.className = "icon-play";
+        bg.style.display = "block";
+        ctrl.style.display = "block";
+    }
 }
 
 

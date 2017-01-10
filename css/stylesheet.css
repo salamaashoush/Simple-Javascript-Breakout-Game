@@ -35,11 +35,11 @@ body{
   text-align: center;
 }
 .window{
-  width: 720px;
-  height: 480px;
+  width: 750px;
+  height: 550px;
   margin: auto;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 0;
   box-shadow: 0px 0px 20px #ccc;
   overflow: auto;
 }
@@ -80,7 +80,7 @@ body{
   width: 50px;
   border-radius: 25px;
   outline: 0;
-  font-size: 1em;
+  font-size: 30px;
   background-color: #fff;
   border: 0;
   //border: 1px solid #ccc;
@@ -89,18 +89,29 @@ body{
   position: absolute;
   left: 0;
 }
+#lvl-container{
+    display: block;
+    width: 100%;
+    height: 500px;
+    overflow-y: scroll
+}
 .menu-bar button:hover{
   //box-shadow: 0px 0px 15px #999;
   color: #F00;
 }
 .lvl-card{
   display: inline-block;
-  width: 200px;
+  width: 220px;
   height: 160px;
-  margin: 12px;
-  border: 1px solid #ccc;
+  margin: 10px;
+  border: 0px solid #ccc;
   position: relative;
   box-shadow: 0px 0px 10px #ccc;
+  animation: 2s lvl-show ease-in-out;
+}
+@keyframes lvl-show{
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 .lvl-poster{
   width: 100%;
@@ -120,16 +131,26 @@ body{
   position: absolute;
   bottom: 0;
   left: 0;
+  animation: 0.5s lvl-leave;
 }
 .lvl-name:hover{
   height: 50%;
   line-height: 100px;
+  animation: 0.5s lvl-hover;
+}
+@keyframes lvl-leave{
+    0% { height: 50%; line-height: 100px; }
+    100% { height: 25%; line-height: 40px; }
+}
+@keyframes lvl-hover{
+    0% { height: 25%; line-height: 40px; }
+    100% { height: 50%; line-height: 100px; }
 }
 .lvl-card, .lvl-poster, .lvl-name{
   cursor: pointer;
 }
 .lvl-lock{
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
   width: 100%;
   height: 100%;
   line-height: 160px;
@@ -140,8 +161,123 @@ body{
   top: 0;
   left: 0;
 }
+#player-controls{
+    display: block;
+    width: 100%;
+    height: 50px;
+    position: relative;
+}
+#profile{
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    border-radius: 25px;
+    color: #FFF;
+    background-color: #000;
+    position: absolute;
+    left: 0;
+}
+#score-lable{
+    display: block;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    left: 50px;
+}
+#score{
+    display: block;
+    width: 100px;
+    height: 40px;
+    color: #F00;
+    line-height: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+    position: absolute;
+    left: 130px;
+    top: 0px;
+}
+#btn-pause{
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    color: #000;
+    position: absolute;
+    right: 40px;
+}
+#btn-pause:hover, #player-home:hover{
+    color: #F00;
+    cursor: pointer;
+}
+#lives{
+    display: block;
+    font-size: 20px;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    right: 80px;
+    color: #F00;
+}
+#player-home{
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    line-height: 40px;
+    position: absolute;
+    right: 0;
+}
+#play{
+    overflow: hidden;
+}
+#player{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 #gamecanvas{
   border:1px solid #ccc;
+}
+#player-splash{
+    display: block;
+    width: 750px;
+    height: 500px;
+    position: absolute;
+    opacity: 0.75;
+    background-color: #000;
+    animation: 0.5s player-splash ease-in-out;
+}
+@keyframes player-splash{
+    0%{ opacity: 0; }
+    100%{ opacity: 0.75; }
+}
+#player-splash-control{
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin: 125px 250px;
+    line-height: 250px;
+    font-size: 150px;
+    color: #fff;
+    position: absolute;
+    animation: 0.5s player-btn ease-in-out;
+}
+#player-splash-control:hover{
+    color: #F00;
+    cursor: pointer;
+}
+@keyframes player-btn{
+    0%{ opacity: 0; }
+    100%{ opacity: 1; }
 }
 #splash{
   position: relative;
