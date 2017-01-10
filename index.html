@@ -5,27 +5,30 @@
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+      <link rel="stylesheet" type="text/css" href="css/fontello-embedded.css">
     </head>
     <body>
       <div class="container">
-        <div id="splash" class="window" style="">
+        <div id="splash" class="window" style="display:none">
           <img src="img/logo.jpg" alt="" class="splash-logo">
           <div id="progress-bar">
             <div id="bar"></div>
           </div>
         </div>
-        <div id="menu" class="window" style="display:none">
+        <div id="menu" class="window">
           <div class="menu-items">
             <img src="img/logo.jpg" id="logo" alt="">
-            <button onclick="navigateFromTo('menu','play')">Start</button>
-            <button onclick="navigateFromTo('menu','level')">Levels</button>
-            <button>Sounds ON</button>
-            <button>Music ON</button>
+            <button onclick="navigateFromTo('menu','play')">Start <i class="icon-gamepad"></i></button>
+            <button onclick="navigateFromTo('menu','level')">Levels  <i class="icon-check"></i></button>
+            <button>Sounds <i class="icon-volume-up"></i></button>
+            <button>Music <i class="icon-music"></i></button>
           </div>
         </div>
         <div id="level" class="window" style="display:none">
           <div class="menu-bar">
-            <button onclick="navigateFromTo('level','menu','table')">Home</button>
+            <button onclick="navigateFromTo('level','menu','table')">
+            <i class="icon-home-1"></i>
+            </button>
             <span>Levels</span>
           </div>
           <div class="lvl-card" onclick="navigateFromTo('level','play')">
@@ -35,37 +38,37 @@
           <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 2</span>
-            <span class="lvl-lock">LOCKED</span>
+            <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
           <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 3</span>
-            <span class="lvl-lock">LOCKED</span>
+            <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
           <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 4</span>
-            <span class="lvl-lock">LOCKED</span>
+            <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
           <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 5</span>
-            <span class="lvl-lock">LOCKED</span>
+            <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
           <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 6</span>
-            <span class="lvl-lock">LOCKED</span>
+            <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
           <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 7</span>
-            <span class="lvl-lock">LOCKED</span>
+            <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
           <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 8</span>
-            <span class="lvl-lock">LOCKED</span>
+            <span class="lvl-lock"><i class="icon-lock"></i></span>
           </div>
         </div>
         <div id="play" class="window" style="display:none">
@@ -94,7 +97,7 @@
           }
         }
       }
-      loading();
+      //loading();
       </script>
       <script src="source/levels2.js"></script>
       <script src="source/size.js"></script>
