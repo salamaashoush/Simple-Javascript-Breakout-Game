@@ -40,7 +40,7 @@ function reset(level, court) {
 				brick = {
 					isbrick: true,
 					hit: false,
-					strenght:2,
+					strenght:1,
 					unbreakable:c==='x'||c==='X'?true:false,
 					hasGift:true,
 					c: c,
