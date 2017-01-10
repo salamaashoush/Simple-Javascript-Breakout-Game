@@ -1,70 +1,65 @@
+var Paddle = function (rect, src, dimensions, dxa, dya, limitdx, factor) {
+  var rightPressed, leftPressed;
+  this.accel = new Accel(dxa, dya);
+  this.limitx = limitdx;
+  this.xfactor = factor;
+  document.addEventListener("keydown", keyDownHandler.bind(this), false);
+  document.addEventListener("keyup", keyUpHandler.bind(this), false);
 
-var Paddle = function (rect, color,dimensions,dxa,dya,limitdx,factor)
-{
-var rightPressed,leftPressed;
-this.accel=new Accel(dxa,dya);
-this.limitx=limitdx;
-this.xfactor=factor;
-document.addEventListener("keydown", keyDownHandler.bind(this), false);
-document.addEventListener("keyup", keyUpHandler.bind(this), false);
-function keyDownHandler(e) {
-  if(Math.abs(this.accel.dx)>=this.limitx)
-    {
-    
-    }
-   else if (e.keyCode == 39) {
-        this.accel.dx+=factor;
-        
+  function keyDownHandler(e) {
+    if (Math.abs(this.accel.dx) >= this.limitx) {
+
+    } else if (e.keyCode == 39) {
+      this.accel.dx += factor;
+
     } else if (e.keyCode == 37) {
-         this.accel.dx-=factor;
+      this.accel.dx -= factor;
 
     }
-}
-function keyUpHandler(e) {
- this.accel.dx=0;
-}
-  this.color = color
+  }
+
+  function keyUpHandler(e) {
+    this.accel.dx = 0;
+  }
+  //this.color = color
+  this.src=src
   this.frame = rect
-  this.draw = function(ctx)
-  {
+  this.draw = function (ctx) {
     var frame = this.frame
     //#this code to draw image instead of rectangle 
-    //  var img=new Image();
-    //   img.src="img/paddle1.png";
-    //   ctx.drawImage(img,frame.origin.x, frame.origin.y , frame.size.width, frame.size.height);
-    
-    ctx.beginPath();
-    ctx.rect(frame.origin.x, frame.origin.y , frame.size.width, frame.size.height);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-    ctx.closePath();
-  }
-  this.move=function(){
+    var img = new Image();
+    img.src = this.src;
+    ctx.drawImage(img, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
 
-    
-     //this.frame.origin.y+=this.accel.dy
-   
-  // if (this.frame.origin.x +this.accel.dx <= dimensions.width - this.frame.size.width  && this.frame.origin.x > 0) 
-   if (this.frame.origin.x +this.accel.dx <= dimensions.width  - this.frame.size.width && this.frame.origin.x+this.accel.dx >= 0) 
-             this.frame.origin.x+=this.accel.dx
-else
-        this.accel.dx=0;
-  //  }else if (leftPressed && this.frame.origin.x > 0) {
-   //     this.frame.origin.x -= x;
-   // }
+    // ctx.beginPath();
+    // ctx.rect(frame.origin.x, frame.origin.y , frame.size.width, frame.size.height);
+    // ctx.fillStyle = this.color;
+    // ctx.fill();
+    // ctx.closePath();
   }
-  this.hit =function()
-  {
+  this.move = function () {
+
+
+    //this.frame.origin.y+=this.accel.dy
+
+    // if (this.frame.origin.x +this.accel.dx <= dimensions.width - this.frame.size.width  && this.frame.origin.x > 0) 
+    if (this.frame.origin.x + this.accel.dx <= dimensions.width - this.frame.size.width && this.frame.origin.x + this.accel.dx >= 0)
+      this.frame.origin.x += this.accel.dx
+    else
+      this.accel.dx = 0;
+    //  }else if (leftPressed && this.frame.origin.x > 0) {
+    //     this.frame.origin.x -= x;
+    // }
+  }
+  this.hit = function () {
     var audio = new Audio('sound/paddle.mp3');
     audio.play();
   }
 
-  this.place = function (x, y)
-  { 
+  this.place = function (x, y) {
     this.frame.origin.x = x
-    this.frame.origin.y =y
+    this.frame.origin.y = y
   }
 
-  
-}
 
+}

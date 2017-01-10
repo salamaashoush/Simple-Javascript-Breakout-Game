@@ -5,7 +5,7 @@ document.getElementById("gamecanvas").addEventListener("click", togglePlaying, f
 var Game = function () {
 	this.score = 0 ;
 	this.nextgift = null;
-	this.dimensions = new Size(480, 302);
+	this.dimensions = new Size(700, 460);
 	this.canvas = document.getElementById("gamecanvas");
 	this.ctx = this.canvas.getContext("2d");
 	this.dimensions = new Size(this.canvas.width, this.canvas.height);
@@ -42,7 +42,7 @@ var Game = function () {
 		}
 	}
 	this.playSound = function () {
-		var audio = new Audio('sound/go.mp3');
+		var audio = new Audio(Defaults.sounds.go);
 		audio.play();
 	}
 }

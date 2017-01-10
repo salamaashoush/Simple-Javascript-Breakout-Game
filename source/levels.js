@@ -60,8 +60,8 @@ function reset(level, xchunks, ychunks) {
 function render(ctx, bricks) {
 	var n, brick;
 
-	//ctx.translate(0.5, 0.5); // crisp 1px lines for the brick borders
-	ctx.strokeStyle = "#80D010";
+	// ctx.translate(0.5, 0.5); // crisp 1px lines for the brick borders
+	ctx.strokeStyle = Defaults.color.border;
 	ctx.lineWidth = 1;
 	for (n = 0; n < bricks.numbricks; n++) {
 		brick = bricks.bricks[n];
@@ -78,11 +78,11 @@ function render(ctx, bricks) {
 }
 
 function level1(dimensions) {
-	var paddleX = (dimensions.width - 75) / 2
-	var paddleY = (dimensions.height - 10)
-	var paddleFrame = new Rect(paddleX, paddleY, 75, 10)
-	var paddle = new Paddle(paddleFrame, "blue", dimensions,0,0,20,7)
-	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 5, "blue", 2)
+	var paddleX = (dimensions.width - 90) / 2
+	var paddleY = (dimensions.height - 20)
+	var paddleFrame = new Rect(paddleX, paddleY, 90, 20)
+	var paddle = new Paddle(paddleFrame, Defaults.color.paddle, dimensions,0,0,20,7)
+	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 5, Defaults.color.ball,2);
 		// var bricks =[];
 		// for(var row = 0; row < 3; row++){
 		// 	bricks[row] = [];    
@@ -103,7 +103,7 @@ function level1(dimensions) {
 
 function resize(bricks, dimensions, xchunks, ychunks) {
 
-	var chunk = Math.floor(Math.max(dimensions.width, dimensions.height) / (Math.max(xchunks, ychunks) + 4)); // room for court plus 2 chunk wall either side
+	var chunk = Math.floor(Math.max(dimensions.width, dimensions.height) / (Math.max(xchunks, ychunks))); // room for court plus 2 chunk wall either side
 	var width = xchunks * chunk;
 	var height = ychunks * chunk;
 	var left = Math.floor((dimensions.width - width) / 2);

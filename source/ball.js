@@ -1,18 +1,22 @@
-var Ball = function (x, y, radius, color, speed,dx,dy)
+var Ball = function (x, y, radius, src, speed,dx,dy)
 {
   this.center = new Point(x,y)
   this.radius = radius
   this.speed = speed
-  this.color = color
+  // this.color = color
+  this.src = src;
    this.accel=new Accel(dx || 2, dy || 2)
   this.draw = function (ctx)
   {
     var center = this.center
-    ctx.beginPath();
-    ctx.arc(center.x, center.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-    ctx.closePath();
+    var img = new Image();
+    img.src = this.src;
+    ctx.drawImage(img, center.x, center.y, this.radius*2, this.radius*2);
+    // ctx.beginPath();
+    // ctx.arc(center.x, center.y, this.radius, 0, Math.PI * 2);
+    // ctx.fillStyle = this.color;
+    // ctx.fill();
+    // ctx.closePath();
   }
 
   this.move = function (dx, dy)
