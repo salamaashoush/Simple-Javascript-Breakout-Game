@@ -27,7 +27,7 @@ var Game = function () {
 			if(this.board.ball.top().y > (this.board.paddle.frame.origin.y + this.board.paddle.frame.size.height)){
 				var ballFall = checkBallFall(this.board.ball.center.x, this.board.paddle.frame.size.width,this.dimensions.width)
 				this.board.lives --;
-				this.board.ball.place(ballFall , this.board.ball.center.y -30)
+				this.board.ball.place(ballFall , this.board.ball.center.y -50)
 				this.board.paddle.place(this.board.ball.center.x -(this.board.paddle.frame.size.width/2) ,(this.dimensions.height-this.board.paddle.frame.size.height))
 				this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height)
 				this.board.draw(this.ctx)
@@ -52,11 +52,6 @@ game.draw()
 
 function togglePlaying() {
 
-	// if (!play){
-	// game.board.ball.draw(game.ctx)
-	// game.board.paddle.draw(game.ctx)
-	// requestAnimationFrame(togglePlaying);
-	// }
 	play = !play;
 	if (play)
 		game.playSound()
