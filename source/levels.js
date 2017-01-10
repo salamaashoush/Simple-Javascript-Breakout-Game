@@ -1,18 +1,25 @@
-var level=3;
+
+function calcBricks (level)
+{
 var max=0;
 var bricks=Levels[level].bricks;
 for(var i=0;i<bricks.length;i++){
 	if(bricks[i].length>max){
-		max=i;
+		 max=i;
 	}
 }
-var xchunks = Levels[level].bricks[max].length
-var ychunks = Levels[level].bricks.length;
+	var xchunks = Levels[level].bricks[max].length;
+	var ychunks = Levels[level].bricks.length;
+	return court ={
+		xchunks : Levels[level].bricks[max].length,
+	    ychunks : Levels[level].bricks.length
+	};
+}
 
-function reset(level, xchunks, ychunks) {
+function reset(level, court) {
 	var layout = Levels[level];
-	var xchunks = xchunks;
-	var ychunks = ychunks;
+	var xchunks = court.xchunks
+	var ychunks = court.ychunks
 	var line, brick, score, c, n, x, y, nx, ny = Math.min(layout.bricks.length, ychunks);
 	var bricks = [];
 	for (y = 0; y < ny; y++) {
@@ -49,7 +56,6 @@ function reset(level, xchunks, ychunks) {
 	}
 	var numbricks = bricks.length;
 	var numhits = 0;
-	//this.resize();
 	return {
 		bricks: bricks,
 		score: score,
@@ -60,7 +66,6 @@ function reset(level, xchunks, ychunks) {
 function render(ctx, bricks) {
 	var n, brick;
 
-	// ctx.translate(0.5, 0.5); // crisp 1px lines for the brick borders
 	ctx.strokeStyle = Defaults.color.border;
 	ctx.lineWidth = 1;
 	for (n = 0; n < bricks.numbricks; n++) {
@@ -77,45 +82,30 @@ function render(ctx, bricks) {
 	}
 }
 
-function level1(dimensions) {
+function levelGenerator(dimensions, level) {
 	var paddleX = (dimensions.width - 90) / 2
 	var paddleY = (dimensions.height - 20)
 	var paddleFrame = new Rect(paddleX, paddleY, 90, 20)
 	var paddle = new Paddle(paddleFrame, Defaults.color.paddle, dimensions,0,0,20,7)
 	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 5, Defaults.color.ball,2);
-		// var bricks =[];
-		// for(var row = 0; row < 3; row++){
-		// 	bricks[row] = [];    
-		// 	for(var col = 0; col < 3; col++){ 
-		// 		var brickX = (75 + 10) * col
-		// 		var brickY = (20 + 10) * row
-		// 		var brickFrame = new Rect (brickX,brickY,75,20)
-		//     	bricks[row][col] = new Brick(brickFrame,"blue")    
-		// 	}    
-		// }
-	var bricks = reset(level, xchunks, ychunks);
-	resize(bricks, dimensions, xchunks, ychunks);
+	var court = calcBricks(level)
+	var bricks = reset(level, court);
+	resize(bricks, dimensions, court);
 	var boardFrame = new Rect(0, 0, dimensions.width, dimensions.height)
 	var board = new Board(paddle, ball, bricks, 3, boardFrame)
 	return board;
 
 }
 
-function resize(bricks, dimensions, xchunks, ychunks) {
+function resize(bricks, dimensions, court) {
 
-	var chunk = Math.floor(Math.max(dimensions.width, dimensions.height) / (Math.max(xchunks, ychunks))); // room for court plus 2 chunk wall either side
-	var width = xchunks * chunk;
-	var height = ychunks * chunk;
+	var chunk = Math.floor(Math.max(dimensions.width, dimensions.height) / (Math.max(court.xchunks, court.ychunks))); // room for court plus 2 chunk wall either side
+	var width = court.xchunks * chunk;
+	var height = court.ychunks * chunk;
 	var left = Math.floor((dimensions.width - width) / 2);
 	var top = Math.floor((dimensions.height - height) / 4);
 	var right = left + width;
 	var bottom = top + height;
-
-	//   wall = {}
-	//   wall.size  = chunk;
-	//   wall.top   = Game.Math.bound({x: this.left - this.wall.size, y: this.top - this.wall.size*2, w: this.width + this.wall.size*2, h: this.wall.size*2               });
-	//   wall.left  = Game.Math.bound({x: this.left - this.wall.size, y: this.top - this.wall.size*2, w: this.wall.size,                h: this.wall.size*2 + this.height });
-	//   wall.right = Game.Math.bound({x: this.right,                 y: this.top - this.wall.size*2, w: this.wall.size,                h: this.wall.size*2 + this.height });
 	for (n = 0; n < bricks.numbricks; n++) {
 		brick = bricks.bricks[n];
 		var x = left + (brick.pos.x1 * chunk);
@@ -123,7 +113,6 @@ function resize(bricks, dimensions, xchunks, ychunks) {
 		var w = (brick.pos.x2 - brick.pos.x1 + 1) * chunk;
 		var h = chunk;
 		brick.frame = new Rect(x, y, w, h);
-		//Game.Math.bound(brick);
 	}
 
 	var rerender = true;

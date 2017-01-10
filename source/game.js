@@ -10,7 +10,7 @@ var Game = function () {
 	this.ctx = this.canvas.getContext("2d");
 	this.dimensions = new Size(this.canvas.width, this.canvas.height);
 	this.currentLevel = 1;
-	this.board = level1(this.dimensions)
+	this.board = levelGenerator(this.dimensions,4)
 	this.draw = function () {
 		this.board.draw(this.ctx)
 	}
@@ -163,4 +163,29 @@ function drawScore(ctx){
     ctx.font="16px Arial";
     ctx.fillStyle="#0095DD";
     ctx.fillText("Score: "+game.score,8,20);
+}
+
+function calcBricksCount (bricks)
+{		var count = 0
+		for (var c = 0; c < bricks.length; c++) {
+		var b = bricks[c];
+		if (! b.unbreakable)
+			count ++;
+		}
+		return count;
+}
+
+function calcBricksHit (bricks)
+{		var count = 0
+		for (var c = 0; c < bricks.length; c++) {
+		var b = bricks[c];
+		if (b.hit)
+			count ++;
+		}
+		return count;
+}
+
+function win (bricks)
+{
+	return (calcBricksCount(bricks) == calcBricksHit(bricks))
 }
