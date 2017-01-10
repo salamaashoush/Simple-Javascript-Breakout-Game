@@ -156,7 +156,6 @@ function win (bricks)
 
 function startGame(game)
 {
-	
 		if (play) {
 			this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
 			this.game.board.ball.move(-dx, -dy)
@@ -169,8 +168,10 @@ function startGame(game)
 			if(this.game.board.ball.top().y > (this.game.board.paddle.frame.origin.y + this.game.board.paddle.frame.size.height)){
 				var ballFall = checkBallFall(this.game.board.ball.center.x, this.game.board.paddle.frame.size.width,this.game.dimensions.width)
 				this.game.board.lives --;
+				if(outOflives(this.game.board.lives)){
+					checkHighScore(this.game.score)
+				}
 				this.game.board.ball.place(ballFall , this.game.board.ball.center.y -50)
-				this.game.board.ball.move(1 ,-1 )
 				this.game.board.paddle.place(this.game.board.ball.center.x -(this.game.board.paddle.frame.size.width/2) ,(this.game.dimensions.height-this.game.board.paddle.frame.size.height))
 				this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
 				this.game.board.draw(this.game.ctx)
@@ -193,4 +194,39 @@ function startGame(game)
 				}
 			}
 		}
+}
+
+function highScoreBadge (score)
+{
+		console.log("highScore")
+}
+
+function saveHighScore (score)
+{
+	var highscore = localStorage.getItem("highscore");
+	if(highscore !== null){
+   if (score > highscore) {
+      localStorage.setItem("highscore", score );
+      }
+}else{
+      localStorage.setItem("highscore", score );
+}
+}
+
+function getHighScore ()
+{
+	var score = localStorage.highscore;
+	return score;
+}
+function checkHighScore (score)
+{
+	var highScore = getHighScore()
+	if(score > highScore || highScore === undefined){
+		saveHighScore(score)
+		highScoreBadge(score)
+	}
+}
+function outOflives (lives)
+{
+	return (lives < 0)
 }
