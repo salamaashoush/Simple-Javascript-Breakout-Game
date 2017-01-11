@@ -42,7 +42,7 @@ function reset(level, court) {
 					hit: false,
 					strenght:1,
 					unbreakable:c==='x'||c==='X'?true:false,
-					hasGift:true,
+					hasGift: false,
 					c: c,
 					pos: {
 						x1: x,

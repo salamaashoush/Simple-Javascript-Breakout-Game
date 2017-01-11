@@ -10,7 +10,6 @@ var dy = 2
 var play = false;
 document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
 
-game.draw();
 
 
 function togglePlaying() {
@@ -172,20 +171,24 @@ function startGame(game)
 				this.game.nextgift.draw(this.game.ctx);
 			}
 			if(this.game.board.ball.top().y > (this.game.board.paddle.frame.origin.y + this.game.board.paddle.frame.size.height)){
-				var ballFall = checkBallFall(this.game.board.ball.center.x, this.game.board.paddle.frame.size.width,this.game.dimensions.width)
+				var ballX = this.game.board.ball.center.x;
+				var ballY = this.game.board.ball.center.y 
+				var paddleW = this.game.board.paddle.frame.size.width;
+				var paddleX = this.game.board.paddle.frame.origin.x;
+				var ballFall = checkBallFall(ballX, paddleW,this.game.dimensions.width);
+				var paddleY = this.game.board.paddle.frame.origin.y;
+				var paddleH=this.game.board.paddle.frame.size.height
+				var paddleDx = this.game.board.paddle.accel.dx; 
+				var paddleAcc = this.game.board.paddle.limitx;	
+
 				this.game.board.lives --;
 				if(outOflives(this.game.board.lives)){
 					checkHighScore(this.game.score)
 				}
-				this.game.board.ball.place(ballFall , this.game.board.ball.center.y -50)
-				this.game.board.paddle.place(this.game.board.ball.center.x -(this.game.board.paddle.frame.size.width/2) ,(this.game.dimensions.height-this.game.board.paddle.frame.size.height))
-				this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
-				this.game.board.draw(this.game.ctx)
-				drawScore(this.game.ctx)
-				drawLives(this.game.ctx)
-				requestAnimationFrame(startGame);
 				togglePlaying()
-				this.game.board.draw(this.game.ctx)	
+				this.game.board.ball.place(ballFall , ballY -50)
+				this.game.ctx.clearRect(paddleX -paddleDx,paddleY,paddleW + 10,paddleH)
+				this.game.board.paddle.place(ballX -(paddleW/2) ,(this.game.dimensions.height-paddleH))
 			}else{
 				collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
 				if(win(this.game.board.bricks.bricks)){
