@@ -21,14 +21,16 @@ function hitnewaccel(orgbaccel, line, accel) {
 }
 
 function checkBallFall(x, paddlewidth, boardWidth) {
+	console.log({x:x,paddlewidth:paddlewidth,boardWidth:boardWidth});
 	var rightOffset = x + (paddlewidth / 2) - boardWidth;
 	var leftOffset = x - (paddlewidth / 2);
+	console.log({rightOffset:rightOffset,leftOffset:leftOffset});
 	if (rightOffset > 0) {
 		return (x - rightOffset);
 	} else if (leftOffset < 0) {
-		return (x + leftOffset)
+		return (x - leftOffset);
 	} else {
-		return x
+		return x;
 	}
 
 }

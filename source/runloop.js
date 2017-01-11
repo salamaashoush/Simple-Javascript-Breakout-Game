@@ -185,10 +185,10 @@ function startGame(game)
 				if(outOflives(this.game.board.lives)){
 					checkHighScore(this.game.score)
 				}
-				togglePlaying()
 				this.game.board.ball.place(ballFall , ballY -50)
+				this.game.board.paddle.place(ballFall-(paddleW/2) ,(this.game.dimensions.height-paddleH))
 				this.game.ctx.clearRect(paddleX -paddleDx,paddleY,paddleW + 10,paddleH)
-				this.game.board.paddle.place(ballX -(paddleW/2) ,(this.game.dimensions.height-paddleH))
+				togglePlaying()
 			}else{
 				collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
 				if(win(this.game.board.bricks.bricks)){
