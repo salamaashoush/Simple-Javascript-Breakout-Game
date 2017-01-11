@@ -114,9 +114,9 @@
                   lives[i].className = "icon-heart-empty-2";
           }
       }
-      function updateScore(){
-          var score = document.getElementById("score");
-          score.textContent = (parseInt(score.textContent)+1).toString();
+      function updateScore(score){
+          var scoreDiv = document.getElementById("score");
+          scoreDiv.textContent = score.toString();
       }
       function navigateFromTo(sender,id,display='block'){
         document.getElementById(sender).style.display='none';

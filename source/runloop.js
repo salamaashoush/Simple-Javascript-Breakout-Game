@@ -122,11 +122,6 @@ function collisionDetectingBricks(ball, bricks) {
 	}
 }
 
-function drawLives(ctx) {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Lives: "+game.board.lives, game.dimensions.width-65, 20);
-}
 
 function drawScore(ctx){
     ctx.font="16px Arial";
@@ -162,26 +157,25 @@ function win (bricks)
 function startGame(game)
 {
 		if (play) {
-			this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
-			this.game.board.ball.move(-dx, -dy)
-			this.game.board.draw(this.game.ctx)
-			drawLives(this.game.ctx)
-			drawScore(this.game.ctx)
+			this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height);
+			this.game.board.ball.move(-dx, -dy);
+			this.game.board.draw(this.game.ctx);
+			updateScore(this.game.score);
 			if (this.game.nextgift !== null) {
 				this.game.nextgift.draw(this.game.ctx);
 			}
 			if(this.game.board.ball.top().y > (this.game.board.paddle.frame.origin.y + this.game.board.paddle.frame.size.height)){
 				var ballX = this.game.board.ball.center.x;
-				var ballY = this.game.board.ball.center.y 
+				var ballY = this.game.board.ball.center.y;
 				var paddleW = this.game.board.paddle.frame.size.width;
 				var paddleX = this.game.board.paddle.frame.origin.x;
 				var ballFall = checkBallFall(ballX, paddleW,this.game.dimensions.width);
 				var paddleY = this.game.board.paddle.frame.origin.y;
-				var paddleH=this.game.board.paddle.frame.size.height
+				var paddleH=this.game.board.paddle.frame.size.height;
 				var paddleDx = this.game.board.paddle.accel.dx; 
 				var paddleAcc = this.game.board.paddle.limitx;	
-
 				this.game.board.lives --;
+				updateLives(this.game.board.lives );
 				if(outOflives(this.game.board.lives)){
 					checkHighScore(this.game.score)
 				}
