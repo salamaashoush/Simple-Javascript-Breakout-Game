@@ -53,7 +53,7 @@ Levels = [
     colors: Colors.pastel,
     bricks: [
 
-      "yyyyy",
+      "yyyyyYYY",
   
     ]
   },
@@ -299,6 +299,20 @@ Balls={
   green:"img/greenball.png",
   orange:"img/orangeball.png",
   blue:"img/blueball.png",
+}
+Badges={
+  slug:"img/badges/slug.png",
+  thug:"img/badges/thug.png",
+  twox:"img/badges/2xspeed.png",
+  complete50:"img/badges/50%.png",
+  complete100:"img/badges/100%.png",
+  bestscore:"img/badges/bestscore.png",
+  bigball:"img/badges/bigball.png",
+  first:"img/badges/first.png",
+  skip:"img/badges/skiplevel.png"
+}
+var Badge=function(){
+  
 }
 Defaults = {
   sounds: {
