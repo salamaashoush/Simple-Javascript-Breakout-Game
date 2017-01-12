@@ -3,7 +3,6 @@ var dy = 2
 var play = false;
 document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
 var Game = function () {
-	this.score = 0 ;
 	this.nextgift = null;
 	this.dimensions = dimensions
 	this.canvas = document.getElementById("gamecanvas");

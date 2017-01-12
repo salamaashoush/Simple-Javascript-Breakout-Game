@@ -1,10 +1,12 @@
-var Game = function (ctx, dimensions, board) {
-	this.score = 0 ;
+var Game = function (ctx, dimensions, board ,player) {
+	this.player = player;
 	this.nextgift = null;
 	this.dimensions = dimensions;
 	this.ctx = ctx;
 	this.currentLevel = 0;
 	this.board = board;
+	this.board.paddle.src = player.paddleColor
+	this.board.ball.src = player.ballColor
 	this.draw = function () {
 		this.board.draw(this.ctx)
 	}
