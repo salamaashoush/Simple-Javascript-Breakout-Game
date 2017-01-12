@@ -7,6 +7,7 @@
       <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
       <link rel="stylesheet" type="text/css" href="css/fontello-embedded.css">
       <link rel="stylesheet" type="text/css" href="css/bg-animation.css">
+      <link rel="stylesheet" type="text/css" href="css/menu-clouds.css">
     </head>
     <body>
       <div class="container">
@@ -17,18 +18,38 @@
           </div>
         </div>
         <div id="menu" class="window">
-          <div class="menu-items">
-            <img src="img/logo.jpg" id="logo" alt="">
-            <button onclick="navigateFromTo('menu','play')">Start <i class="icon-gamepad"></i></button>
-            <button onclick="navigateFromTo('menu','level')">Levels  <i class="icon-check"></i></button>
-            <button onclick="navigateFromTo('menu','profile')">Profile  <i class="icon-user-1"></i></button>
-            <button>Sounds <i class="icon-volume-up"></i></button>
-            <button>Music <i class="icon-music"></i></button>
-          </div>
+            <div id="menu-top">
+                <div id="menu-logo">
+                    <i class="icon-pied-piper"></i>
+                </div>
+            </div>
+            <div id="menu-bottom">
+                <div class="menu-item">
+                    <div class="menu-control btn" onclick="navigateFromTo('menu','profile')">
+                        <div class="control-icon"><i class="icon-user"></i></div>
+                        <div class="control-lable">Profile</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-control btn" onclick="navigateFromTo('menu','play')">
+                        <div class="control-icon"><i class="icon-gamepad"></i></div>
+                        <div class="control-lable">Play</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-control btn" onclick="navigateFromTo('menu','level')">
+                        <div class="control-icon"><i class="icon-lock"></i></div>
+                        <div class="control-lable">Levels</div>
+                    </div>
+                </div>
+            </div>
+            <div id="menu-clouds-top"></div>
+            <div id="menu-clouds-bottom"></div>
+            <div id="menu-clouds"></div>
         </div>
         <div id="level" class="window" style="display:none">
           <div class="menu-bar">
-            <button onclick="navigateFromTo('level','menu','table')">
+            <button class="btn" onclick="navigateFromTo('level','menu','table')">
             <i class="icon-home-1"></i>
             </button>
             <span>Levels</span>
@@ -42,56 +63,61 @@
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 2</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
-          </div>
+            </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 3</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
-          </div>
+            </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 4</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
-          </div>
+            </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 5</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
-          </div>
+            </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 6</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
-          </div>
+            </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 7</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
-          </div>
+            </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 8</span>
             <span class="lvl-lock"><i class="icon-lock"></i></span>
-          </div>
+            </div>
+            <div class="lvl-card">
+            <img src="img/poster.png" alt="" class="lvl-poster">
+            <span class="lvl-name">Level 9</span>
+            <span class="lvl-lock"><i class="icon-lock"></i></span>
+            </div>
           </div>
         </div>
         <div id="play" class="window" style="display:none">
           <div id="player-controls">
-              <span id="profile-thumbnail" class="player-btn">
+              <span id="profile-thumbnail" class="btn player-btn">
                   <i class="icon-user-1"></i>
               </span>
-              <span id="player-name" class="player-btn">Ehab</span>
-              <span id="lives" class="player-btn">
+              <span id="player-name" class="btn player-btn">Ehab</span>
+              <span id="lives" class="btn player-btn">
                   <i class="icon-heart-2"></i>
                   <i class="icon-heart-2"></i>
                   <i class="icon-heart-2"></i>
               </span>
-              <span id="score-lable" class="player-btn">Score:</span>
-              <span id="score" class="player-btn">0</span>
-              <span id="btn-pause" class="player-btn" onclick="togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
-              <span id="btn-sound" class="player-btn" onclick="toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
-              <span id="btn-music" class="player-btn" onclick="toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
-              <span id="player-home" class="player-btn" onclick="navigateFromTo('play','menu','table')">
+              <span id="score-lable" class="btn player-btn">Score:</span>
+              <span id="score" class="btn player-btn">0</span>
+              <span id="btn-pause" class="btn player-btn" onclick="togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
+              <span id="btn-sound" class="btn player-btn" onclick="toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
+              <span id="btn-music" class="btn player-btn" onclick="toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
+              <span id="player-home" class="btn player-btn" onclick="navigateFromTo('play','menu','table')">
                   <i class="icon-home-1"></i>
               </span>
           </div>
@@ -115,7 +141,7 @@
         </div>
         <div id="profile" class="window" style="display:none">
           <div class="menu-bar">
-            <button onclick="navigateFromTo('profile','menu','table')">
+            <button class="btn" onclick="navigateFromTo('profile','menu','table')">
             <i class="icon-home-1"></i>
             </button>
             <span>Profile</span>
