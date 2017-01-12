@@ -3,11 +3,12 @@ var level = 0;
 var players = {};
 var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
-//var player = new Player("Ali", Paddles.blue, Balls.orange);
-//savePlayers("players",players);
-var player=new Player();
+var player = new Player("Ali","male", Paddles.blue, Balls.orange);
+players[player.name]=player.getUserInfo();
+savePlayers("players",players);
+//var player=new Player();
 //console.log(getAllPlayers());
-player.parseSavedPlayer(getPlayer("Ali"));
+//player.parseSavedPlayer(getPlayer("Ali"));
 
 
 var board = levelGenerator(dimensions, 0, player);

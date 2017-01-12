@@ -1,5 +1,4 @@
 function savePlayers(key,players) {
-	players[player.name] = player.getUserInfo();
 	localStorage.setItem(key, JSON.stringify(players));
 }
 
