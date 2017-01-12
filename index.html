@@ -16,11 +16,12 @@
             <div id="bar"></div>
           </div>
         </div>
-        <div id="menu" class="window" style="display:none">
+        <div id="menu" class="window">
           <div class="menu-items">
             <img src="img/logo.jpg" id="logo" alt="">
             <button onclick="navigateFromTo('menu','play')">Start <i class="icon-gamepad"></i></button>
             <button onclick="navigateFromTo('menu','level')">Levels  <i class="icon-check"></i></button>
+            <button onclick="navigateFromTo('menu','profile')">Profile  <i class="icon-user-1"></i></button>
             <button>Sounds <i class="icon-volume-up"></i></button>
             <button>Music <i class="icon-music"></i></button>
           </div>
@@ -74,11 +75,12 @@
           </div>
           </div>
         </div>
-        <div id="play" class="window">
+        <div id="play" class="window" style="display:none">
           <div id="player-controls">
-              <span id="profile" class="player-btn">
+              <span id="profile-thumbnail" class="player-btn">
                   <i class="icon-user-1"></i>
               </span>
+              <span id="player-name" class="player-btn">Ehab</span>
               <span id="lives" class="player-btn">
                   <i class="icon-heart-2"></i>
                   <i class="icon-heart-2"></i>
@@ -87,8 +89,8 @@
               <span id="score-lable" class="player-btn">Score:</span>
               <span id="score" class="player-btn">0</span>
               <span id="btn-pause" class="player-btn" onclick="togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
-              <span id="btn-sound" class="player-btn"><i class="icon-volume-up"></i></span>
-              <span id="btn-music" class="player-btn"><i class="icon-music"></i></span>
+              <span id="btn-sound" class="player-btn" onclick="toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
+              <span id="btn-music" class="player-btn" onclick="toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
               <span id="player-home" class="player-btn" onclick="navigateFromTo('play','menu','table')">
                   <i class="icon-home-1"></i>
               </span>
@@ -111,11 +113,80 @@
             </div>
           </div>
         </div>
-        <div id="user" class="window" style="display:none">
-
+        <div id="profile" class="window" style="display:none">
+          <div class="menu-bar">
+            <button onclick="navigateFromTo('profile','menu','table')">
+            <i class="icon-home-1"></i>
+            </button>
+            <span>Profile</span>
+          </div>
+          <div id="profile-container" class="profile">
+            <div id="profile-top">
+                <div id="profile-charachter">
+                    <div id="profile-avatar">
+                    </div>
+                    <div id="profile-details">
+                        <div class="details-section details-lable">Nickname</div>
+                        <div class="details-section details-input">
+                            <input type="text">
+                        </div>
+                        <div class="details-section details-lable">Gender</div>
+                        <div class="details-section details-input">
+                            <input type="radio" name="gender" value="m"> Male
+                            <input type="radio" name="gender" value="f"> Female
+                        </div>
+                    </div>
+                </div>
+                <div id="profile-badges">
+                    <div id="badge-sec2" class="badge-section">
+                        <i class="icon-angellist"></i> High Score: 999
+                    </div>
+                    <div id="badge-sec1" class="badge-section">
+                        Badges <i class="icon-emo-beer"></i>
+                    </div>
+                    <div id="badge-sec3" class="badge-section">
+                        <div class="badge-icon"><img src="img/badges/100%25.png" alt=""></div>
+                        <div class="badge-icon"><img src="img/badges/2xspeed.png" alt=""></div>
+                        <div class="badge-icon"><img src="img/badges/bestscore.png" alt=""></div>
+                        <div class="badge-icon"><img src="img/badges/skiplevel.png" alt=""></div>
+                        <div class="badge-icon"><img src="img/badges/thug.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <div id="profile-bottom">
+                <div id="paddle-slider" class="slider">
+                  <span class="btn-nav right-nav"><i class="icon-right-open"></i></span>
+                  <span class="btn-nav left-nav"><i class="icon-left-open"></i></span>
+                  <div class="paddle-img"><img src="img/bluepaddle.png" alt=""></div>
+                </div>
+                <div id="ball-slider" class="slider">
+                  <span class="btn-nav right-nav"><i class="icon-right-open"></i></span>
+                  <span class="btn-nav left-nav"><i class="icon-left-open"></i></span>
+                  <div class="paddle-img"><img src="img/blueball.png" alt=""></div>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
       <script>
+      var switchSound = false;
+      var switchMusic = false;
+      function toggleSound(){
+          var btn = document.getElementById("btn-toggle-sound");
+          switchSound = !switchSound;
+          if(switchSound)
+              btn.className = "icon-volume-off-1";
+          else
+              btn.className = "icon-volume-high";
+      }
+      function toggleMusic(){
+          var btn = document.getElementById("btn-toggle-music");
+          switchSound = !switchSound;
+          if(switchSound)
+              btn.className = "icon-music-1";
+          else
+              btn.className = "icon-music-outline";
+      }
       function updateLives(value){
           var lives = document.getElementById("lives").children;
           for(var i=0; i<lives.length; i++){
