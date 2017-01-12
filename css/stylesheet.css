@@ -92,11 +92,11 @@ body{
   position: absolute;
   left: 0;
 }
-#lvl-container{
+#lvl-container, #profile-container{
     display: block;
     width: 100%;
     height: 500px;
-    overflow-y: scroll
+    overflow-y: auto;
 }
 .menu-bar button:hover{
   //box-shadow: 0px 0px 15px #999;
@@ -170,7 +170,7 @@ body{
     height: 50px;
     position: relative;
 }
-#profile{
+#profile-thumbnail{
     display: block;
     width: 40px;
     height: 40px;
@@ -186,7 +186,7 @@ body{
     width: 80px;
     font-size: 25px;
     font-weight: bold;
-    left: 150px;
+    left: 160px;
 }
 #score{
     width: 100px;
@@ -194,7 +194,7 @@ body{
     font-size: 25px;
     font-weight: bold;
     text-align: left;
-    left: 230px;
+    left: 240px;
 }
 .player-btn{
     display: block;
@@ -217,10 +217,20 @@ body{
     color: #F00;
     cursor: pointer;
 }
+#player-name{
+    height: 20px;
+    width: 120px;
+    font-size: 20px;
+    line-height: 20px;
+    left: 40px;
+}
 #lives{
     font-size: 20px;
     width: 120px;
+    height: 20px;
+    line-height: 20px;
     left: 40px;
+    top: 20px;
     color: #F00;
 }
 #player-home{
@@ -289,4 +299,128 @@ body{
   background-color: #057068;
   width: 1%;
   height: 25px;
+}
+
+#profile-top{
+    display: block;
+    width: 100%;
+    height: 200px;
+}
+#profile-bottom{
+    display: block;
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+.slider{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    display: table;
+    background: radial-gradient(rgba(255,255,0,0.5), rgba(0,0,0,0));
+}
+#ball-slider{
+    right: 0;
+}
+#paddle-slider{
+    left: 0;
+}
+.paddle-img{
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.slider img{
+    max-width: 75%;
+    max-height: 75%;
+}
+#img-middle{
+    height: 100%;
+    display: inline-block;
+}
+#profile-charachter{
+    display: block;
+    float: left;
+    position: relative;
+    width: 400px;
+    height: 100%;
+}
+#profile-avatar{
+    position: absolute;
+    left: 0;
+    width: 160px;
+    height: 160px;
+    margin: 20px;
+    border-radius: 100px;
+    background-image: url("../img/profile.jpg");
+    background-size: contain;
+}
+#profile-details{
+    display: block;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+}
+.details-section{
+    width: 100%;
+}
+.details-lable{
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.details-input{
+    line-height: 60px;
+}
+.details-input input[type="text"]{
+    height: 30px;
+    width: 180px;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid #999;
+}
+#profile-badges{
+    display: block;
+    float: left;
+    width: 350px;
+    height: 200px;
+}
+#badge-sec1{
+    line-height: 60px;
+    font-size: 30px;
+}
+#badge-sec2{
+    line-height: 60px;
+    font-size: 30px;
+}
+#badge-sec3{
+    display: table;
+    width: 100%;
+    height: 80px;
+}
+.badge-icon{
+    display: table-cell;
+    vertical-align: middle;
+}
+#badge-sec3 img{
+    width: 50px;
+    height: 50px;
+}
+.left-nav{
+    left: 0px;
+    //background: linear-gradient(to left,rgba(0,0,0,0), rgba(0,0,0,0.5));
+}
+.right-nav{
+    right: 0px;
+    //background: linear-gradient(to right,rgba(0,0,0,0), rgba(0,0,0,0.5));
+}
+.btn-nav{
+    width: 50px;
+    font-size: 30px;
+    line-height: 300px;
+    position: absolute;
+}
+.btn-nav:hover{
+    cursor: pointer;
 }
