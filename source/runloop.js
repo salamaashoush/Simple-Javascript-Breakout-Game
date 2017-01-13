@@ -52,56 +52,27 @@ function collisionDetectingFrames(ball, board) {
 
 	var hitPoint;
 	var allsides = [new Rect(0, 0, 3, canvas.height), new Rect(0, 0, canvas.width, 3), new Rect(canvas.width, 0, 3, canvas.height)];
-	var frame = this.frame
 
-	// console.log("IN",hitPoint);
+
 	for (var u = 0; u < allsides.length; u++) {
 
 
-		hitPoint = ball.isInBoundsOf(allsides[u], new Accel(0, 0))
+		hitPoint = ball.isInBoundsOf(allsides[u])
 
 		if (hitPoint) {
-			//console.log(u, allsides[u], dx, dy, hitPoint);
-
-			dx = hitPoint.dx
-			dy = hitPoint.dy
+			dx *= hitPoint.x
+			dy *= hitPoint.y
 
 		}
 	}
-	hitPoint = ball.isInBoundsOf(board.paddle.frame, board.paddle.accel)
-	if (hitPoint) {
-		//console.log("OLD", dx, dy)
-		dx = hitPoint.dx
-		dy = hitPoint.dy
-		//console.log("NEW", dx, dy)
-	}
-	//var bottom = new Rect(0, game.canvas.height, game.canvas.width, 30)
-	//hitPoint = ball.isInBoundsOf(bottom, new Accel(0, 0))
-	// if (hitPoint) {
-	// 	dx = hitPoint.dx
-	// 	dy = hitPoint.dy
-	// 	//console.log("GameOver");
-	// }
-
-
-
-
-	/*		
-	var left = ball.left()
-	var right = ball.right()
-	var top = ball.top()
-	var bottom = ball.bottom()
-if ( left.x <= 0 || right.x > game.canvas.width) {
-        dx *= -1;
-    }
-    if(top.y <= 0 ){
-    	dy *= -1;
-    }
-     if (bottom.x > board.paddle.frame.origin.x && bottom.x < board.paddle.frame.origin.x + board.paddle.frame.size.width && bottom.y >= board.paddle.frame.origin.y ) {
-			board.paddle.hit()
-            dy *= -1;
-    }
-	*/
+	
+	// hitPoint = ball.isInBoundsOf(board.paddle.frame)
+		if (ball.bottom().y >= board.paddle.frame.origin.y && ball.bottom().x > board.paddle.frame.origin.x && ball.bottom().x < board.paddle.frame.origin.x + board.paddle.frame.size.width) {
+			// console.log(hitPoint.y)
+			if(dy > 0)
+			dy *= -1;
+		}
+	
 
 }
 
@@ -109,12 +80,11 @@ function collisionDetectingBricks(ball, bricks) {
 	//console.log(bricks)
 	for (var c = 0; c < bricks.length; c++) {
 		var b = bricks[c];
-		//console.log(b)
 		if (b.hit == false) {
-			hitPoint = ball.isInBoundsOf(b.frame, new Accel(0, 0))
+			hitPoint = ball.isInBoundsOf(b.frame)
 			if (hitPoint) {
-				dx = hitPoint.dx
-				dy = hitPoint.dy
+				dx *= hitPoint.x
+				dy *= hitPoint.y
 				if (!b.unbreakable) {
 					b.strenght--;
 				}
@@ -162,13 +132,14 @@ function win(bricks) {
 function startGame(game) {
 	if (play) {
 		this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height);
-		this.game.board.ball.move(-dx, -dy);
+		this.game.board.ball.move(dx, dy);
 		this.game.board.draw(this.game.ctx);
 		updateScore(this.game.player.score);
+		collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
 		if (this.game.nextgift !== null) {
 			this.game.nextgift.draw(this.game.ctx);
 		}
-		if (this.game.board.ball.top().y > (this.game.board.paddle.frame.origin.y + this.game.board.paddle.frame.size.height)) {
+		if (this.game.board.ball.top().y > this.game.dimensions.height - (this.game.board.paddle.frame.size.height/2)) {
 			var ballX = this.game.board.ball.center.x;
 			var ballY = this.game.board.ball.center.y;
 			var paddleW = this.game.board.paddle.frame.size.width;
@@ -176,8 +147,7 @@ function startGame(game) {
 			var ballFall = checkBallFall(ballX, paddleW, this.game.dimensions.width);
 			var paddleY = this.game.board.paddle.frame.origin.y;
 			var paddleH = this.game.board.paddle.frame.size.height;
-			var paddleDx = this.game.board.paddle.accel.dx;
-			var paddleAcc = this.game.board.paddle.limitx;
+
 			this.game.board.lives--;
 			updateLives(this.game.board.lives);
 			if (outOflives(this.game.board.lives)) {
@@ -186,18 +156,16 @@ function startGame(game) {
 				this.game.player.highscore = this.game.player.score;
 			}
 			this.game.board.ball.place(ballFall, ballY - 50)
-			this.game.board.paddle.place(ballFall - (paddleW / 2), (this.game.dimensions.height - paddleH))
-			this.game.ctx.clearRect(paddleX - paddleDx, paddleY, paddleW + 10, paddleH)
+			this.game.ctx.clearRect(0 ,0 , this.game.dimensions.width , this.game.dimensions.height)
+			this.game.board.paddle.frame.origin = new Point (ballFall - (paddleW / 2), (this.game.dimensions.height - paddleH))
+			render(this.game.ctx,this.game.board.bricks)
 			togglePlaying()
 		} else {
-			collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
 			if (win(this.game.board.bricks.bricks)) {
 				level++
 				this.game.board = levelGenerator(this.game.dimensions, level, this.game.player)
 				this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
-				this.board.draw(this.game.ctx)
 				togglePlaying()
-
 			} else {
 				requestId = requestAnimationFrame(startGame);
 			}

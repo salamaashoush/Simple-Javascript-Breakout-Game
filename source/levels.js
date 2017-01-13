@@ -87,8 +87,8 @@ function levelGenerator(dimensions, level ,player) {
 	var paddleX = (dimensions.width - 90) / 2
 	var paddleY = (dimensions.height - 20)
 	var paddleFrame = new Rect(paddleX, paddleY, 90, 20)
-	var paddle = new Paddle(paddleFrame, player.paddleColor, dimensions,0,0,20,7)
-	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 5, player.ballColor,2);
+	var paddle = new Paddle(paddleFrame, player.paddleColor, dimensions)
+	var ball = new Ball(paddleX + (paddleFrame.size.width / 2), paddleY - 10, 5, player.ballColor);
 	var court = calcBricks(level)
 	var bricks = reset(level, court);
 	resize(bricks, dimensions, court);
