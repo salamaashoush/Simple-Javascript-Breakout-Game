@@ -69,6 +69,12 @@ body{
     line-height: 350px;
     font-size: 200px;
 }
+#menu-volume-btn{
+    right: 10px;
+}
+#menu-music-btn{
+    right: 50px;
+}
 .menu-item{
     display: table-cell;
     vertical-align: middle;
