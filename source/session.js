@@ -1,5 +1,6 @@
 function savePlayer(player) {
-	localStorage.setItem("player", JSON.stringify(player));
+	splayer=player.getUserInfo();
+	localStorage.setItem("player", JSON.stringify(splayer));
 }
 
 function updatePlayers(player) {
