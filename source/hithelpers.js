@@ -15,6 +15,7 @@ function collisionDetectingFrames(ball, board) {
 		}
 	}
 		if (ball.bottom().y >= board.paddle.frame.origin.y && ball.bottom().x > board.paddle.frame.origin.x && ball.bottom().x < board.paddle.frame.origin.x + board.paddle.frame.size.width) {
+			soundManager.paddleHit();
 			if(dy > 0)
 			dy *= -1;
 		}
@@ -26,6 +27,7 @@ function collisionDetectingBricks(ball, bricks) {
 		if (b.hit == false) {
 			hitPoint = ball.isInBoundsOf(b.frame)
 			if (hitPoint) {
+				soundManager.brickHit();
 				dx *= hitPoint.x
 				dy *= hitPoint.y
 				if (!b.unbreakable) {
@@ -51,6 +53,7 @@ function collisionDetectingBricks(ball, bricks) {
 
 
 function checkBallFall(x, paddlewidth, boardWidth) {
+	soundManager.loseLife();
 	var rightOffset = x + (paddlewidth / 2) - boardWidth;
 	var leftOffset = x - (paddlewidth / 2);
 	if (rightOffset > 0) {

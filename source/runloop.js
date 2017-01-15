@@ -1,5 +1,5 @@
 var dimensions = new Size(750, 500);
-// var level = 0;
+var soundManager = new soundManager();
 var players = {};
 var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
@@ -30,6 +30,7 @@ function togglePlaying() {
 	var bg = document.getElementById("player-splash");
 	var ctrl = document.getElementById("player-splash-control");
 	if (play) {
+		soundManager.gameStart();
 		startGame(game)
 		btn.className = "icon-pause-2";
 		bg.style.display = "none";
@@ -47,7 +48,7 @@ function togglePlaying() {
 
 
 function startGame(game) {
-	if (play) {
+	if (play) {		
 		this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height);
 		this.game.board.ball.move(dx, dy);
 		this.game.board.draw(this.game.ctx);
@@ -69,6 +70,7 @@ function startGame(game) {
 			this.game.board.lives--;
 			updateLives(this.game.board.lives);
 			if (outOflives(this.game.board.lives)) {
+				soundManager.gameOver();
 				checkSlug(this.game);
 				this.game.player.highscore = this.game.player.score;
 				lost(this.game);
@@ -81,6 +83,7 @@ function startGame(game) {
 		} else {
 			if (win(this.game.board.bricks.bricks)) {
 				checkThugLife(this.game);
+				soundManager.levelUp();
 				this.game.player.currentLevel ++;
 				savePlayer(this.game.player);
 				if(this.game.player.currentLevel >9){
