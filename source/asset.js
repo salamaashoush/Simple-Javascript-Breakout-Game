@@ -202,7 +202,7 @@ Levels = [
       "  ooOOYYyyYYyyYYyyYYyyYYOOoo  ",
       "  ooyyYYyyYYyyYYyyYYyyYYyyoo  ",
       "  ooyyYYyyYYyyYYyyYYyyYYyyoo  ",
-      "  bbBBbbBBbbBBbbBBbbBBbbBBbb  "
+      "  bbBBbbBBbbBBbbBBbbBBbbBBbb  ",
     ]
   },
 

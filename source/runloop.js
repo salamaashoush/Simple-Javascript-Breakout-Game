@@ -65,6 +65,7 @@ function startGame(game) {
 			if (outOflives(this.game.board.lives)) {
 				checkSlug(this.game);
 				this.game.player.highscore = this.game.player.score;
+				lost(this.game);
 			}
 			this.game.board.ball.place(ballFall, ballY - 50)
 			this.game.ctx.clearRect(0 ,0 , this.game.dimensions.width , this.game.dimensions.height)
@@ -101,5 +102,16 @@ function levelChanger (level)
 
 function finishgame ()
 {
+
+}
+
+function lost (game)
+{	
+	this.game.player.lives = 3;
+	this.game.player.score = 0;
+	levelChanger(0);
+	updateScore(this.game.player.score);
+	updateLives(this.game.board.lives);
+	navigateFromTo('play','menu');
 
 }
