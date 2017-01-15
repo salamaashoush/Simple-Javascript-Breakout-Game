@@ -11,7 +11,7 @@ savePlayers("players",players);
 //player.parseSavedPlayer(getPlayer("Ali"));
 
 
-var board = levelGenerator(dimensions, 0, player);
+var board = levelGenerator(dimensions, 3, player);
 var game = new Game(ctx, dimensions, board, player);
 var dx = 2
 var dy = 2
@@ -41,43 +41,28 @@ function togglePlaying() {
 
 
 function collisionDetecting(ball, bricks, board) {
-
-
 	collisionDetectingBricks(ball, bricks);
 	collisionDetectingFrames(ball, board)
-
 }
 
 function collisionDetectingFrames(ball, board) {
-
 	var hitPoint;
 	var allsides = [new Rect(0, 0, 3, canvas.height), new Rect(0, 0, canvas.width, 3), new Rect(canvas.width, 0, 3, canvas.height)];
 
-
 	for (var u = 0; u < allsides.length; u++) {
-
-
 		hitPoint = ball.isInBoundsOf(allsides[u])
-
 		if (hitPoint) {
 			dx *= hitPoint.x
 			dy *= hitPoint.y
-
 		}
 	}
-	
-	// hitPoint = ball.isInBoundsOf(board.paddle.frame)
 		if (ball.bottom().y >= board.paddle.frame.origin.y && ball.bottom().x > board.paddle.frame.origin.x && ball.bottom().x < board.paddle.frame.origin.x + board.paddle.frame.size.width) {
-			// console.log(hitPoint.y)
 			if(dy > 0)
 			dy *= -1;
 		}
-	
-
 }
 
 function collisionDetectingBricks(ball, bricks) {
-	//console.log(bricks)
 	for (var c = 0; c < bricks.length; c++) {
 		var b = bricks[c];
 		if (b.hit == false) {
@@ -135,6 +120,7 @@ function startGame(game) {
 		this.game.board.ball.move(dx, dy);
 		this.game.board.draw(this.game.ctx);
 		updateScore(this.game.player.score);
+		checkHighScore(this.game.player.score);
 		collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
 		if (this.game.nextgift !== null) {
 			this.game.nextgift.draw(this.game.ctx);
@@ -151,8 +137,7 @@ function startGame(game) {
 			this.game.board.lives--;
 			updateLives(this.game.board.lives);
 			if (outOflives(this.game.board.lives)) {
-				checkHighScore(this.game.player.score);
-				console.log(this.game.player.getUserInfo());
+				checkSlug(this.game);
 				this.game.player.highscore = this.game.player.score;
 			}
 			this.game.board.ball.place(ballFall, ballY - 50)
@@ -162,22 +147,15 @@ function startGame(game) {
 			togglePlaying()
 		} else {
 			if (win(this.game.board.bricks.bricks)) {
-				level++
-				this.game.board = levelGenerator(this.game.dimensions, level, this.game.player)
+				checkThugLife(this.game);
+				this.game.player.currentLevel ++;
+				this.game.board = levelGenerator(this.game.dimensions, this.game.player.currentLevel, this.game.player)
 				this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
 				togglePlaying()
 			} else {
 				requestId = requestAnimationFrame(startGame);
 			}
 		}
-	}
-}
-
-
-function stop() {
-	if (requestId) {
-		window.cancelAnimationFrame(requestId);
-		requestId = undefined;
 	}
 }
 
@@ -188,16 +166,12 @@ function highScoreBadge(score) {
 
 function saveHighScore(score) {
 	var highscore = localStorage.getItem("highscore");
-	if (highscore !== null) {
 		if (score > highscore) {
-			localStorage.setItem("highscore", JSON.stringify(sp));
+			localStorage.setItem("highscore", score);
 		}
-	} else {
-		localStorage.setItem("highscore", JSON.parse(sp));
-	}
 }
 function getHighScore() {
-	var score = JSON.parse(localStorage.highscore);
+	var score = parseInt(localStorage.highscore);
 	return score;
 }
 
@@ -211,4 +185,18 @@ function checkHighScore(score) {
 
 function outOflives(lives) {
 	return (lives < 0);
+}
+
+function checkThugLife (game){
+
+	if (game.player.lives == 3){
+		game.player.addBadge(Badges.thug);
+	}
+}
+
+function checkSlug (game)
+{
+	if(game.player.currentLevel == 0)
+		game.player.addBadge(Badges.slug);
+
 }
