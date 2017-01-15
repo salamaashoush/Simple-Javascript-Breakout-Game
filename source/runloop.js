@@ -3,11 +3,17 @@ var level = 0;
 var players = {};
 var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
-var player = new Player("Ali","male", Paddles.blue, Balls.orange);
-players[player.name]=player.getUserInfo();
-savePlayers("players",players);
-var board = levelGenerator(dimensions, level, player);
+var player=null;
+if(restorePlayerSession()){
+	player=restorePlayerSession();
+}else{
+	player=new Player("Ali","male", Paddles.blue, Balls.orange);
+	splayer=player.getUserInfo();
+	savePlayer(splayer);
+	console.log("saved");
+}
 
+var board = levelGenerator(dimensions, level, player);
 var game = new Game(ctx, dimensions, board, player);
 var dx = 2
 var dy = 2

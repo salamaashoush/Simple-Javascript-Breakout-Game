@@ -100,13 +100,13 @@ function levelGenerator(dimensions, level ,player) {
 
 function resize(bricks, dimensions, court) {
 
-	var chunk = Math.floor(Math.max(dimensions.width, dimensions.height) / (Math.max(court.xchunks, court.ychunks))); // room for court plus 2 chunk wall either side
+	var chunk = Math.floor(Math.max(dimensions.width-100, dimensions.height-50) / (Math.max(court.xchunks, court.ychunks))); // room for court plus 2 chunk wall either side
 	var width = court.xchunks * chunk;
 	var height = court.ychunks * chunk;
 	var left = Math.floor((dimensions.width - width) / 2);
 	var top = Math.floor((dimensions.height - height) / 4);
 	var right = left + width;
-	var bottom = top + height -10;
+	var bottom = top + height;
 	for (n = 0; n < bricks.numbricks; n++) {
 		brick = bricks.bricks[n];
 		var x = left + (brick.pos.x1 * chunk);
