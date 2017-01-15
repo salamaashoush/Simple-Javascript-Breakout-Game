@@ -55,7 +55,7 @@
                  this.play();
              }, false);
              audio.play();
-             audio.volume=0.5
+             audio.volume=0.2
          }
      };
     //   this.menuBackground = function () {
