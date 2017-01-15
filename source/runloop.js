@@ -11,7 +11,7 @@ if(restorePlayerSession()){
 	savePlayer(player);
 	console.log("saved");
 }
-
+soundManager.gameBackground();
 var board = levelGenerator(dimensions, player.currentLevel, player);
 var game = new Game(ctx, dimensions, board, player);
 var dx = 2
