@@ -1,5 +1,5 @@
 var dimensions = new Size(750, 500);
-var level = 0;
+// var level = 0;
 var players = {};
 var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
@@ -8,17 +8,17 @@ if(restorePlayerSession()){
 	player=restorePlayerSession();
 }else{
 	player=new Player("Ali","male", Paddles.blue, Balls.orange);
-	splayer=player.getUserInfo();
-	savePlayer(splayer);
+	savePlayer(player);
 	console.log("saved");
 }
 
-var board = levelGenerator(dimensions, level, player);
+var board = levelGenerator(dimensions, player.currentLevel, player);
 var game = new Game(ctx, dimensions, board, player);
 var dx = 2
 var dy = 2
 var play = false;
 var requestId = 0;
+
 
 document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
 
@@ -82,6 +82,7 @@ function startGame(game) {
 			if (win(this.game.board.bricks.bricks)) {
 				checkThugLife(this.game);
 				this.game.player.currentLevel ++;
+				savePlayer(this.game.player);
 				if(this.game.player.currentLevel >9){
 					finishgame();
 				}
@@ -115,9 +116,9 @@ function lost (game)
 {	
 	this.game.player.lives = 3;
 	this.game.player.score = 0;
-	levelChanger(0);
+	levelChanger(player.currentLevel);
 	updateScore(this.game.player.score);
 	updateLives(this.game.board.lives);
-	navigateFromTo('play','menu');
+	navigateFromTo('play','menu');	
 
 }
