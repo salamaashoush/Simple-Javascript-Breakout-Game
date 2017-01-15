@@ -336,9 +336,10 @@ body{
 }
 #paddle-slider{
     left: 0;
+    overflow: scroll;
 }
-.paddle-img{
-    width: 100%;
+.slider-img{
+    width: 375px;
     display: table-cell;
     vertical-align: middle;
 }
