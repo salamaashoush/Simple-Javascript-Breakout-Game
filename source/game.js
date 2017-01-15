@@ -10,5 +10,9 @@ var Game = function (ctx, dimensions, board ,player) {
 	this.draw = function () {
 		this.board.draw(this.ctx)
 	}
+	this.levelChanger = function (level)
+	{
+		this.player.currentLevel = level;
+	}
 	
 }

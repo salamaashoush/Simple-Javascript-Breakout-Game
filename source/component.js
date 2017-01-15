@@ -1,3 +1,18 @@
+
+var Size = function (width, height)
+{
+	this.width = width
+	this.height = height
+
+}
+
+var Point = function (x, y)
+{
+	this.x = x
+	this.y = y
+
+}
+
 var Rect = function(x, y, width, height)
 {	
 	this.origin = new Point (x, y)

@@ -333,3 +333,69 @@ Defaults = {
     highscore: "#AFD775"
   }
 }
+
+function highScoreBadge(score) {
+  game.player.addBadge(Badges.bestscore);
+
+}
+
+function saveHighScore(score) {
+  var highscore = localStorage.getItem("highscore");
+    if (score > highscore) {
+      localStorage.setItem("highscore", score);
+    }
+}
+function getHighScore() {
+  var score = parseInt(localStorage.highscore);
+  return score;
+}
+
+function checkHighScore(score) {
+  var highScore = getHighScore();
+  if (score > highScore || highScore === undefined) {
+    saveHighScore(score);
+    highScoreBadge(score);
+  }
+}
+
+function outOflives(lives) {
+  return (lives < 0);
+}
+
+function checkThugLife (game){
+
+  if (game.player.lives == 3){
+    game.player.addBadge(Badges.thug);
+  }
+}
+
+function checkSlug (game)
+{
+  if(game.player.currentLevel == 0)
+    game.player.addBadge(Badges.slug);
+
+}
+
+function calcBricksCount(bricks) {
+  var count = 0
+  for (var c = 0; c < bricks.length; c++) {
+    var b = bricks[c];
+    if (!b.unbreakable)
+      count++;
+  }
+  return count;
+}
+
+function calcBricksHit(bricks) {
+  var count = 0
+  for (var c = 0; c < bricks.length; c++) {
+    var b = bricks[c];
+    if (b.hit)
+      count++;
+  }
+  return count;
+}
+
+function win(bricks) {
+  return (calcBricksCount(bricks) == calcBricksHit(bricks))
+}

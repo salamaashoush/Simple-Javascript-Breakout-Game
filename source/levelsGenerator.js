@@ -106,7 +106,7 @@ function resize(bricks, dimensions, court) {
 	var left = Math.floor((dimensions.width - width) / 2);
 	var top = Math.floor((dimensions.height - height) / 4);
 	var right = left + width;
-	var bottom = top + height;
+	var bottom = top + height -10;
 	for (n = 0; n < bricks.numbricks; n++) {
 		brick = bricks.bricks[n];
 		var x = left + (brick.pos.x1 * chunk);

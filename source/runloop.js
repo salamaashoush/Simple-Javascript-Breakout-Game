@@ -6,12 +6,8 @@ var ctx = canvas.getContext("2d");
 var player = new Player("Ali","male", Paddles.blue, Balls.orange);
 players[player.name]=player.getUserInfo();
 savePlayers("players",players);
-//var player=new Player();
-//console.log(getAllPlayers());
-//player.parseSavedPlayer(getPlayer("Ali"));
+var board = levelGenerator(dimensions, level, player);
 
-
-var board = levelGenerator(dimensions, 3, player);
 var game = new Game(ctx, dimensions, board, player);
 var dx = 2
 var dy = 2
@@ -40,79 +36,9 @@ function togglePlaying() {
 }
 
 
-function collisionDetecting(ball, bricks, board) {
-	collisionDetectingBricks(ball, bricks);
-	collisionDetectingFrames(ball, board)
-}
 
-function collisionDetectingFrames(ball, board) {
-	var hitPoint;
-	var allsides = [new Rect(0, 0, 3, canvas.height), new Rect(0, 0, canvas.width, 3), new Rect(canvas.width, 0, 3, canvas.height)];
 
-	for (var u = 0; u < allsides.length; u++) {
-		hitPoint = ball.isInBoundsOf(allsides[u])
-		if (hitPoint) {
-			dx *= hitPoint.x
-			dy *= hitPoint.y
-		}
-	}
-		if (ball.bottom().y >= board.paddle.frame.origin.y && ball.bottom().x > board.paddle.frame.origin.x && ball.bottom().x < board.paddle.frame.origin.x + board.paddle.frame.size.width) {
-			if(dy > 0)
-			dy *= -1;
-		}
-}
 
-function collisionDetectingBricks(ball, bricks) {
-	for (var c = 0; c < bricks.length; c++) {
-		var b = bricks[c];
-		if (b.hit == false) {
-			hitPoint = ball.isInBoundsOf(b.frame)
-			if (hitPoint) {
-				dx *= hitPoint.x
-				dy *= hitPoint.y
-				if (!b.unbreakable) {
-					b.strenght--;
-				}
-				if (b.strenght === 0) {
-					b.hit = true;
-					game.player.score += b.score
-				}
-				if (b.hasGift) {
-					var giftpos = {
-						x: b.frame.origin.x,
-						y: b.frame.origin.y
-					};
-					game.nextgift = randomGift(giftpos);
-				}
-
-			}
-		}
-	}
-}
-
-function calcBricksCount(bricks) {
-	var count = 0
-	for (var c = 0; c < bricks.length; c++) {
-		var b = bricks[c];
-		if (!b.unbreakable)
-			count++;
-	}
-	return count;
-}
-
-function calcBricksHit(bricks) {
-	var count = 0
-	for (var c = 0; c < bricks.length; c++) {
-		var b = bricks[c];
-		if (b.hit)
-			count++;
-	}
-	return count;
-}
-
-function win(bricks) {
-	return (calcBricksCount(bricks) == calcBricksHit(bricks))
-}
 
 function startGame(game) {
 	if (play) {
@@ -149,9 +75,14 @@ function startGame(game) {
 			if (win(this.game.board.bricks.bricks)) {
 				checkThugLife(this.game);
 				this.game.player.currentLevel ++;
+				if(this.game.player.currentLevel >9){
+					finishgame();
+				}
+				else{
 				this.game.board = levelGenerator(this.game.dimensions, this.game.player.currentLevel, this.game.player)
 				this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
 				togglePlaying()
+				}
 			} else {
 				requestId = requestAnimationFrame(startGame);
 			}
@@ -159,44 +90,16 @@ function startGame(game) {
 	}
 }
 
-function highScoreBadge(score) {
-	game.player.addBadge(Badges.bestscore);
-
-}
-
-function saveHighScore(score) {
-	var highscore = localStorage.getItem("highscore");
-		if (score > highscore) {
-			localStorage.setItem("highscore", score);
-		}
-}
-function getHighScore() {
-	var score = parseInt(localStorage.highscore);
-	return score;
-}
-
-function checkHighScore(score) {
-	var highScore = getHighScore();
-	if (score > highScore || highScore === undefined) {
-		saveHighScore(score);
-		highScoreBadge(score);
-	}
-}
-
-function outOflives(lives) {
-	return (lives < 0);
-}
-
-function checkThugLife (game){
-
-	if (game.player.lives == 3){
-		game.player.addBadge(Badges.thug);
-	}
-}
-
-function checkSlug (game)
+function levelChanger (level)
 {
-	if(game.player.currentLevel == 0)
-		game.player.addBadge(Badges.slug);
+	if(level <= 9){
+	var board = levelGenerator(dimensions,level,player);
+	game.board = board;
+	}
+	
+}
+
+function finishgame ()
+{
 
 }
