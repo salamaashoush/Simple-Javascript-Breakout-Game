@@ -1,17 +1,31 @@
-function savePlayers(key,players) {
-	localStorage.setItem(key, JSON.stringify(players));
+function savePlayer(player) {
+	splayer=player.getUserInfo();
+	localStorage.setItem("player", JSON.stringify(splayer));
 }
 
 function updatePlayers(player) {
-	var players=getAllPlayers();
-	players[player.name] = player.getUserInfo();
-	localStorage.setItem("players", JSON.stringify(players));
+	var player = getPlayer();
+ 	player.getUserInfo();
+	localStorage.setItem("player", JSON.stringify(player));
 }
 
-function getAllPlayers() {
-    return JSON.parse(localStorage.getItem("players"));
+
+function getPlayer() {
+	var player = localStorage.getItem("player");
+	if (player == null) {
+		return null;
+	} else {
+		return JSON.parse(localStorage.getItem("player"));
+	}
 }
 
-function getPlayer(name) {
-    return getAllPlayers()[name];
+function restorePlayerSession() {
+	var splayer = getPlayer();
+	if (splayer) {
+		player = new Player();
+		player.parseSavedPlayer(splayer);
+		return player;
+	}else{
+		return null;
+	}
 }
