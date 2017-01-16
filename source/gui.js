@@ -2,12 +2,14 @@ var badgesObj = {
     bdg1:"img/badges/2xspeed.png",
     bdg2:"img/badges/bestscore.png",
     bdg3:"img/badges/skiplevel.png",
-    bdg4:"img/badges/thug.png"
+    bdg4:"img/badges/thug.png",
+    bdg5:"img/badges/thug.png"
 }
 var GUI = function(){
     var userName = document.getElementById("user-name");
     var playerName = document.getElementById("player-name");
     var badgesSection = document.getElementById("badge-sec3");
+    var playerBadges = document.getElementById("player-badges");
     var playerPaddle = document.getElementById("player-paddle");
     var playerBall = document.getElementById("player-ball");
     
@@ -33,6 +35,7 @@ var GUI = function(){
     }
     this.initBadges = function(){
         badgesSection.innerHTML = "";
+        playerBadges.innerHTML = "";
         for(var bdg in badgesObj){
             var divObj = document.createElement("div");
             var imgObj = document.createElement("img");
@@ -40,7 +43,8 @@ var GUI = function(){
             divObj.className = "badge-icon";
             imgObj.setAttribute("src",badgesObj[bdg]);
             divObj.appendChild(imgObj);
-            badgesSection.appendChild(divObj); 
+            badgesSection.appendChild(divObj);
+            playerBadges.appendChild(divObj);
         }
     }
     this.initToolKit = function(){

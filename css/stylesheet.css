@@ -462,6 +462,23 @@ body{
     width: 350px;
     height: 200px;
 }
+#player-badges{
+    display: block;
+    border-radius: 20px;
+    height: 40px;
+    width: 220px;
+    right: 160px;
+    text-align: right;
+}
+#player-badges .badge-icon{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+#player-badges .badge-icon img{
+    width: 40px;
+    height: 40px;
+}
 #badge-sec1{
     line-height: 60px;
     font-size: 30px;
@@ -475,8 +492,10 @@ body{
 }
 #badge-sec3{
     display: table;
-    width: 100%;
-    height: 80px;
+    width: 340px;
+    height: 70px;
+    border-radius: 40px;
+    border: 2px solid #F00;
 }
 .badge-icon{
     display: table-cell;

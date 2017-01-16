@@ -96,7 +96,7 @@
             </div>
           </div>
         </div>
-        <div id="play" class="window" style="display:none">
+        <div id="play" class="window">
           <div id="player-controls">
               <span id="profile-thumbnail" class="btn player-btn"></span>
               <span id="player-name" class="btn player-btn">Ehab</span>
@@ -107,6 +107,7 @@
               </span>
               <span id="score-lable" class="btn player-btn">Score:</span>
               <span id="score" class="btn player-btn">0</span>
+              <span id="player-badges" class="player-btn"></span>
               <span id="btn-pause" class="btn player-btn" onclick="togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
               <span id="btn-sound" class="btn player-btn" onclick="toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
               <span id="btn-music" class="btn player-btn" onclick="toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
@@ -132,7 +133,7 @@
             </div>
           </div>
         </div>
-        <div id="profile" class="window">
+        <div id="profile" class="window"  style="display:none">
           <div class="menu-bar">
             <button class="btn" onclick="navigateFromTo('profile','menu','table')">
             <i class="icon-home-1"></i>
