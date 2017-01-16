@@ -336,13 +336,13 @@ if(tgame.board.ball.dx>1)
 ,
 function(tgame){
   console.log(tgame);
-  if(tgame.board.lives<3)
-tgame.board.lives++;
+  if(tgame.player.lives<3)
+tgame.player.lives++;
 }
 ,
 function(tgame){
   console.log(tgame);
-tgame.board.lives--;
+tgame.player.lives--;
 }
 ,
 function(tgame){
