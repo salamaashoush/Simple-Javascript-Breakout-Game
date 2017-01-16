@@ -71,13 +71,13 @@ Levels = [
       "          yy      yy          ",
       "            yy  yy            ",
       "            yy  yy            ",
-      "          ssSSssSSss          ",
-      "          ssSSssSSss          ",
+      "          xxXXxxXXxx          ",
+      "          xxXXxxXXxx          ",
       "        SSsswwsswwssSS        ",
       "        SSsswwsswwssSS        ",
       "      ssSSssSSssSSssSSss      ",
       "      ssSSssSSssSSssSSss      ",
-      "      ss  ssSSssSSss  ss      ",
+      "      ss  xxXXxxXXxx  ss      ",
       "      ss  ss      ss  ss      ",
       "      ss  ss      ss  ss      ",
       "            ss  ss            ",
@@ -103,7 +103,7 @@ Levels = [
       "oollggbbrroollggbbrrooll",
       "oollggbbrroollggbbrroollgg",
       "oollggbbrroollggbbrroollggbb",
-      "ssSSssSSssSSssSSssSSssSSssSSrr"
+      "xxXXxxXXxxXXxxXXxxXXxxXXxxXXrr"
     ]
   },
 
@@ -111,15 +111,15 @@ Levels = [
     colors: Colors.arkanoid,
     bricks: [
       "", "",
-      "              ss              ",
-      "          bbBBssggGG          ",
+      "              xx              ",
+      "          bbBBxxggGG          ",
       "        BBbbWWwwWWGGgg        ",
       "      bbBBwwWWwwWWwwggGG      ",
       "      bbBBwwWWwwWWwwggGG      ",
       "      bbBBwwWWwwWWwwggGG      ",
-      "      ss  ss  ss  ss  ss      ",
-      "              ss              ",
-      "              ss              ",
+      "      xx  xx  xx  xx  xx      ",
+      "              xx              ",
+      "              xx              ",
       "          oo  oo              ",
       "          ooOOoo              ",
       "            OO                "
@@ -133,17 +133,17 @@ Levels = [
       "  yyYYyyYYyyYY  YYyyYYyyYYyy  ",
       "  bbBBbbBBbbBB  BBbbBBbbBBbb  ",
       "  ggGGggGGggGG  GGggGGggGGgg  ",
-      "  ooOOooOOooOO  OOooOOooOOoo  ",
+      "  xxXXxxXXxxXX  xxXXxxXXxxXX  ",
       "", "",
       "  yyYYyyYYyyYY  YYyyYYyyYYyy  ",
       "  bbBBbbBBbbBB  BBbbBBbbBBbb  ",
       "  ggGGggGGggGG  GGggGGggGGgg  ",
-      "  ooOOooOOooOO  OOooOOooOOoo  ",
+      "  xxXXxxXXxxXX  xxXXxxXXxxXX  ",
       "", "",
       "  yyYYyyYYyyYY  YYyyYYyyYYyy  ",
       "  bbBBbbBBbbBB  BBbbBBbbBBbb  ",
       "  ggGGggGGggGG  GGggGGggGGgg  ",
-      "  ooOOooOOooOO  OOooOOooOOoo  "
+      "  xxXXxxXXxxXX  xxXXxxXXxxXX  "
     ]
   },
 
@@ -171,7 +171,7 @@ Levels = [
     colors: Colors.vintage,
     bricks: [
       "", "",
-      "  aabbccddeeffggFFEEDDCCBBAA  ",
+      "  xxXXxxXXxxXXxxXXxxXXxxXXxx  ",
       "   aabbccddeeffFFEEDDCCBBAA   ",
       "    aabbccddeeffEEDDCCBBAA    ",
       "     aabbccddeeEEDDCCBBAA     ",
@@ -180,12 +180,12 @@ Levels = [
       "        aabbccddCCBBAA        ",
       "         aabbccCCBBAA         ",
       "          aabbccBBAA          ",
-      "      hh   aabbCCAA   hh      ",
+      "      xx   aabbCCAA   xx      ",
       "     hhHH   aabbAA   hhHH     ",
       "    hhiiHH   aaAA   hhiiHH    ",
       "   hhiiIIHH   aa   hhiiIIHH   ",
       "  hhiijjIIHH      hhiijjIIHH  ",
-      " hhiijjJJIIHH    hhiijjJJIIHH "
+      " xxXXxxXXxxXX    xxXXxxXXxxXX "
     ]
   },
 
