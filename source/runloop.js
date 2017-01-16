@@ -65,7 +65,7 @@ function startGame(game) {
 			if(this.game.nextgift[giftname].hascollided(this.game.board.paddle.frame)){
 				this.game.nextgift[giftname].bonusfun(this.game.board);
 				delete this.game.nextgift[giftname];
-				updateLives(this.game.board.lives);
+				updateLives(this.game.player.lives);
 			}
 		}
 
@@ -79,9 +79,9 @@ function startGame(game) {
 			var paddleY = this.game.board.paddle.frame.origin.y;
 			var paddleH = this.game.board.paddle.frame.size.height;
 
-			this.game.board.lives--;
-			updateLives(this.game.board.lives);
-			if (outOflives(this.game.board.lives)) {
+			this.game.player.lives--;
+			updateLives(this.game.player.lives);
+			if (outOflives(this.game.player.lives)) {
 				soundManager.gameOver();
 				checkSlug(this.game);
 				this.game.player.highscore = this.game.player.score;

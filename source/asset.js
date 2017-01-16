@@ -11,7 +11,7 @@ Colors = {
     y: "#FC9838", // yellow
     s: "#BCBCBC", // silver
     d: "#F0BC3C", // gold
-    x: "#8e44ad"
+    x: "#2c3e50"
   },
 
   pastel: {
@@ -20,7 +20,8 @@ Colors = {
     b: "#A5B3FF", // blue
     g: "#BFFFA5", // green
     o: "#FFCBA5", // orange
-    x: "#8e44ad"
+    k: "#8e44ad",
+    x: "#2c3e50"
   },
 
   vintage: {
@@ -36,13 +37,13 @@ Colors = {
     j: "#694702", // brown
     k: "#E9CB95", // peach
     l: "#79D2EF",// blue
-    x: "#8e44ad"
+    x: "#2c3e50"
   },
 
   liquidplanner: {
     a: '#62C4E7', // light blue
     b: '#00A5DE', // dark  blue
-    x: '#8e44ad', // light gray
+    x: "#2c3e50", // light gray
     y: '#7B797E'// dark  gray
   },
 
@@ -53,11 +54,13 @@ Levels = [
  { colors:Colors.pastel,
     bricks: [
       "", "",
-      "yyyyyxxxxxyyyyyYYYYYyyyyyYYYYY",
-      "ppxxxPPPPPpppppPPPPPpppppPPPPP",
-      "xxbbbBBBBBbbbbbBBBBBbbbbbBBBBB",
-      "ggxxxGGGGGgggggGGGGGgggggGGGGG",
-      "oooooOOOOOoooooOOOOOoooooOOOOO"
+      "yyyyyYYYYYyyyyyYYYYYyyyyyYYYYYyy",
+      "yykyykkkkkyykyyyyykkkkkyykkkkkyy",
+      "ppkppPPkPPppkpppppkgggkppkppppPP",
+      "bbkbbBBkBBbbkbbbbbkgggkbbkkkkkbb",
+      "ggkggGGkGGggkgggggkgggkggggggkgg",
+      "ookooOOkOOookoooookkkkkookkkkkoo",
+      "oooooOOOOOoooooOOOOOoooooOOOOOoo",
     ]
   },
 
@@ -148,7 +151,7 @@ Levels = [
     colors: Colors.vintage,
     bricks: [
       "", "", "",
-      "   AAaaAAaaAAaaAAaaAAaaAAaa   ",
+      "   xxXXxxXXxxXXxxXXxxXXxxXX   ",
       "    BBbbBBbbBBbbBBbbBBbbBB    ",
       "     CCccCCccCCccCCccCCcc     ",
       "      DDddDDddDDddDDddDD      ",
@@ -159,7 +162,8 @@ Levels = [
       "           IIiiIIii           ",
       "            JJjjJJ            ",
       "             KKkk             ",
-      "              LL              "
+      "              LL              ",
+      "xxxLLLxxxXXXxxxXXXxxxLLLxxxXXX"
     ]
   },
 
@@ -190,22 +194,21 @@ Levels = [
     bricks: [
       "                              ",
       "                              ",
-      "  bbBBbbBBbbBBbbBBbbBBbbBBbb  ",
+      "  xxXXxxXXxxXXxxXXxxXXxxXXxx  ",
       "  ooggGGggGGggGGggGGggGGggoo  ",
       "  ooggGGggGGggGGggGGggGGggoo  ",
       "  ooppPPppPPppPPppPPppPPppoo  ",
-      "  ooppPPppPPppBBppPPppPPppoo  ",
-      "  ooppPPppPPbbBBbbPPppPPppoo  ",
-      "  ooppPPppBBbbOObbBBppPPppoo  ",
-      "  ooppPPbbBBooOOooBBbbPPppoo  ",
-      "  ooppBBbbOOooYYooOObbBBppoo  ",
-      "  oobbBBOOooyyYYyyooOOBBbboo  ",
-      "  oobbooOOYYyyYYyyYYOOoobboo  ",
+      "  ooppPPppPPppxxppPPppPPppoo  ",
+      "  ooppPPppPPxxXXxxPPppPPppoo  ",
+      "  ooppPPxxXXooOOooxxXXPPppoo  ",
+      "  ooppxxXXOOooYYooOOxxXXppoo  ",
+      "  ooxxXXOOooyyYYyyooOOxxXXoo  ",
+      "  ooxxooOOYYyyYYyyYYOOooxxoo  ",
       "  ooOOooyyYYyyYYyyYYyyooOOoo  ",
       "  ooOOYYyyYYyyYYyyYYyyYYOOoo  ",
       "  ooyyYYyyYYyyYYyyYYyyYYyyoo  ",
       "  ooyyYYyyYYyyYYyyYYyyYYyyoo  ",
-      "  bbBBbbBBbbBBbbBBbbBBbbBBbb  ",
+      "  xxXXxxXXxxXXxxXXxxXXxxXXxx  ",
     ]
   },
 
