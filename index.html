@@ -18,7 +18,7 @@
             <div id="bar"></div>
           </div>
         </div>
-        <div id="menu" class="window">
+        <div id="menu" class="window" style="display:none">
             <div id="menu-top">
                 <span id="menu-music-btn" class="btn player-btn"><i class="icon-music"></i></span>
                 <span id="menu-volume-btn" class="btn player-btn"><i class="icon-volume-up"></i></span>
@@ -65,50 +65,40 @@
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 2</span>
-            <span class="lvl-lock"><i class="icon-lock"></i></span>
             </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 3</span>
-            <span class="lvl-lock"><i class="icon-lock"></i></span>
             </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 4</span>
-            <span class="lvl-lock"><i class="icon-lock"></i></span>
             </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 5</span>
-            <span class="lvl-lock"><i class="icon-lock"></i></span>
             </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 6</span>
-            <span class="lvl-lock"><i class="icon-lock"></i></span>
             </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 7</span>
-            <span class="lvl-lock"><i class="icon-lock"></i></span>
             </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 8</span>
-            <span class="lvl-lock"><i class="icon-lock"></i></span>
             </div>
             <div class="lvl-card">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 9</span>
-            <span class="lvl-lock"><i class="icon-lock"></i></span>
             </div>
           </div>
         </div>
         <div id="play" class="window" style="display:none">
           <div id="player-controls">
-              <span id="profile-thumbnail" class="btn player-btn">
-                  <i class="icon-user-1"></i>
-              </span>
+              <span id="profile-thumbnail" class="btn player-btn"></span>
               <span id="player-name" class="btn player-btn">Ehab</span>
               <span id="lives" class="btn player-btn">
                   <i class="icon-heart-2"></i>
@@ -142,7 +132,40 @@
             </div>
           </div>
         </div>
-        <div id="profile" class="window" style="display:none">
+        <div id="profile" class="window">
+          <div class="menu-bar">
+            <button class="btn" onclick="navigateFromTo('profile','menu','table')">
+            <i class="icon-home-1"></i>
+            </button>
+            <span>Profile</span>
+          </div>
+          <div id="profile-container" class="profile">
+            <div id="profile-top">
+                <div id="profile-charachter">
+                    <div id="profile-avatar">
+                    </div>
+                    <div id="user-details">
+                        <div id="user-gender"><i class="icon-male"></i></div>
+                        <div id="user-name" class="details-section details-lable">Nickname</div>
+                        <div id="highscore-icon" class="details-section"><i class="icon-angellist"></i></div>
+                        <div id="highscore-lable" class="details-section">Top Score</div>
+                        <div id="highscore-value" class="details-section">1234</div>
+                    </div>
+                </div>
+                <div id="profile-badges">
+                    <div id="badge-sec1" class="badge-section">
+                        <img src="img/badgeicon.png" alt="">
+                    </div>
+                    <div id="badge-sec3" class="badge-section"></div>
+                </div>
+            </div>
+            <div id="profile-bottom">
+                <div id="player-paddle" class="slider"></div>
+                <div id="player-ball" class="slider"></div>
+            </div>
+          </div>
+        </div>
+        <div id="usermod" class="window" style="display:none">
           <div class="menu-bar">
             <button class="btn" onclick="navigateFromTo('profile','menu','table')">
             <i class="icon-home-1"></i>
@@ -160,9 +183,9 @@
                             <input type="text">
                         </div>
                         <div class="details-section details-lable">Gender</div>
-                        <div class="details-section details-input">
-                            <input type="radio" name="gender" value="m"> Male
-                            <input type="radio" name="gender" value="f"> Female
+                        <div class="details-section details-input" id="gender-input">
+                            <div class="gender-control"><div class="gender-btn icon-male" id="gender-selected"></div></div>
+                            <div class="gender-control"><div class="gender-btn icon-female"></div></div>
                         </div>
                     </div>
                 </div>
@@ -184,14 +207,12 @@
             </div>
             <div id="profile-bottom">
                 <div id="paddle-slider" class="slider">
-                  <span class="btn-nav right-nav"><i class="icon-right-open"></i></span>
-                  <span class="btn-nav left-nav"><i class="icon-left-open"></i></span>
-                  <div class="paddle-img"><img src="img/bluepaddle.png" alt=""></div>
+                  <span class="btn-nav right-nav" onclick="slider.Slide('paddle','right')"><i class="icon-right-open"></i></span>
+                  <span class="btn-nav left-nav" onclick="slider.Slide('paddle','left')"><i class="icon-left-open"></i></span>
                 </div>
                 <div id="ball-slider" class="slider">
-                  <span class="btn-nav right-nav"><i class="icon-right-open"></i></span>
-                  <span class="btn-nav left-nav"><i class="icon-left-open"></i></span>
-                  <div class="paddle-img"><img src="img/blueball.png" alt=""></div>
+                  <span class="btn-nav right-nav" onclick="slider.Slide('ball','right')"><i class="icon-right-open"></i></span>
+                  <span class="btn-nav left-nav" onclick="slider.Slide('ball','left')"><i class="icon-left-open"></i></span>
                 </div>
             </div>
           </div>
@@ -261,5 +282,7 @@
       <script src="source/player.js"></script>
       <script src="source/game.js"></script>
       <script src="source/runloop.js"></script>
+      <script src="source/slider.js"></script>
+      <script src="source/gui.js"></script>
     </body>
 </html>

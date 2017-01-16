@@ -288,22 +288,20 @@ var Gift = function (src, spos) {
   var bonuses=[
 function(board){
  
-  console.log(board.paddle.frame.size.width);
 board.paddle.frame.size.width+=boni;
 if(board.paddle.frame.origin.x-boni >=0)
  board.paddle.frame.origin.x-=10
 },
 function(board){
  
-  console.log(board.paddle.frame.size.width);
+  
 board.paddle.frame.size.width+=boni;
 if(board.paddle.frame.origin.x-boni >=0)
  board.paddle.frame.origin.x-=10
 }
 ,
 function(board){
- 
-  console.log(board.paddle.frame.size.width);
+ if(board.paddle.frame.size.width>2*boni)
 board.paddle.frame.size.width-=boni;
 
 }
@@ -325,7 +323,12 @@ if(board.ball.dx>1)
 }
 ,
 function(board){
+  if(board.lives<3)
 board.lives++;
+}
+,
+function(board){
+board.lives--;
 }
 
 

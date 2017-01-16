@@ -42,7 +42,7 @@ function collisionDetectingBricks(ball, bricks) {
 						x: b.frame.origin.x,
 						y: b.frame.origin.y
 					};
-					game.nextgift = randomGift(giftpos);
+					game.nextgift[ String(Math.floor(Math.random()*3000))+new Date().getTime() ] = randomGift(giftpos);
 				}
 
 			}

@@ -197,6 +197,7 @@ body{
     background-color: #000;
     position: absolute;
     left: 0;
+    background-size: contain;
 }
 #score-lable{
     width: 80px;
@@ -331,14 +332,15 @@ body{
     display: table;
     background: radial-gradient(rgba(255,255,0,0.5), rgba(0,0,0,0));
 }
-#ball-slider{
+#ball-slider, #player-ball{
     right: 0;
 }
-#paddle-slider{
+#paddle-slider, #player-paddle{
     left: 0;
+    overflow: scroll;
 }
-.paddle-img{
-    width: 100%;
+.slider-img{
+    width: 375px;
     display: table-cell;
     vertical-align: middle;
 }
@@ -367,30 +369,92 @@ body{
     background-image: url("../img/profile.jpg");
     background-size: contain;
 }
-#profile-details{
+#profile-details, #user-details{
     display: block;
     width: 50%;
     height: 100%;
     position: absolute;
     right: 0;
 }
+#user-details{
+    //background-color: aquamarine;
+}
+#user-name{
+    display: inline-block;
+    width: 70%;
+    text-align: left;
+    padding-left: 5%;
+}
+#user-gender{
+    display: inline-block;
+    width: 32px;
+    line-height: 32px;
+    font-size: 22px;
+    border-radius: 20px;
+    border: 4px solid #000;
+}
+#highscore-icon{
+    font-size: 50px;
+}
+#highscore-lable{
+    font-size: 25px;
+}
+#highscore-value{
+    font-size: 35px;
+    font-weight: bold;
+    color: #F00;
+}
 .details-section{
     width: 100%;
 }
 .details-lable{
     line-height: 40px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
 }
 .details-input{
     line-height: 60px;
 }
 .details-input input[type="text"]{
-    height: 30px;
-    width: 180px;
-    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    border-radius: 20px;
     text-align: center;
     border: 2px solid #999;
+    font-size: 25px;
+    outline: 0;
+}
+.details-input input[type="text"]:focus{
+    box-shadow: 0px 0px 5px #f00;
+}
+#gender-input{
+    display: table;
+}
+#gender-input .gender-control{
+    display: table-cell;
+}
+.gender-btn{
+    margin: auto;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 29px;
+    line-height: 50px;
+    font-size: 30px;
+    border: 4px solid #000;
+}
+.gender-btn:hover{
+    color: #F00;
+    border: 4px solid #F00;
+    cursor: pointer;
+}
+.gender-selected{
+    color: #FFF;
+    background-color: #F00;
+    border: 4px solid #F00;
+}
+.gender-selected:hover{
+    color: #FFF;
 }
 #profile-badges{
     display: block;
@@ -401,6 +465,9 @@ body{
 #badge-sec1{
     line-height: 60px;
     font-size: 30px;
+}
+#badge-sec1 img{
+    width: 100px;
 }
 #badge-sec2{
     line-height: 60px;
@@ -421,11 +488,9 @@ body{
 }
 .left-nav{
     left: 0px;
-    //background: linear-gradient(to left,rgba(0,0,0,0), rgba(0,0,0,0.5));
 }
 .right-nav{
     right: 0px;
-    //background: linear-gradient(to right,rgba(0,0,0,0), rgba(0,0,0,0.5));
 }
 .btn-nav{
     width: 50px;
@@ -435,4 +500,5 @@ body{
 }
 .btn-nav:hover{
     cursor: pointer;
+    color: #F00;
 }

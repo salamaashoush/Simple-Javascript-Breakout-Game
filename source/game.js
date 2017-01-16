@@ -1,6 +1,6 @@
 var Game = function (ctx, dimensions, board ,player) {
 	this.player = player;
-	this.nextgift = null;
+	this.nextgift = {};
 	this.dimensions = dimensions;
 	this.ctx = ctx;
 	this.currentLevel = 0;
