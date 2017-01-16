@@ -1,11 +1,14 @@
-var Ball = function (x, y, radius, src, speed)
+var Ball = function (x, y, radius, src, speed,dx,dy)
 {
   this.center = new Point(x,y)
   this.radius = radius
   this.speed = speed
   this.src = src;
+  this.dx=dx||2;
+  this.dy=dy||2;
   this.draw = function (ctx)
   {
+    
     var center = this.center
     var img = new Image();
     img.src = this.src; 
@@ -14,8 +17,8 @@ var Ball = function (x, y, radius, src, speed)
 
   this.move = function (dx, dy)
   {
-    this.center.y += dy;
-    this.center.x += dx;
+    this.center.y += this.dy;
+    this.center.x += this.dx;
   }
 
   this.place = function (dx, dy)

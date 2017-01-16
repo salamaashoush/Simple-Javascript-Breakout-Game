@@ -42,7 +42,7 @@ function reset(level, court) {
 					hit: false,
 					strenght:1,
 					unbreakable:c==='x'||c==='X'?true:false,
-					hasGift: false,
+					hasGift: Boolean (Math.floor(Math.random() *(2-0.2*(level)))) ,
 					c: c,
 					pos: {
 						x1: x,

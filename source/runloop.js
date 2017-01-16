@@ -50,13 +50,19 @@ function togglePlaying() {
 function startGame(game) {
 	if (play) {		
 		this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height);
-		this.game.board.ball.move(dx, dy);
+		this.game.board.ball.move();
+
 		this.game.board.draw(this.game.ctx);
 		updateScore(this.game.player.score);
 		checkHighScore(this.game.player.score);
 		collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
 		if (this.game.nextgift !== null) {
 			this.game.nextgift.draw(this.game.ctx);
+			
+			if(this.game.nextgift.hascollided(this.game.board.paddle.frame)){
+				this.game.nextgift.bonusfun(this.game.board);
+				this.game.nextgift=null;
+			}
 		}
 		if (this.game.board.ball.top().y > this.game.dimensions.height - (this.game.board.paddle.frame.size.height/2)) {
 			var ballX = this.game.board.ball.center.x;

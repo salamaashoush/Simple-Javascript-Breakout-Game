@@ -275,13 +275,79 @@ Levels = [
 
 ];
 
+
+
+
+
+
+
 var Gift = function (src, spos) {
-  var src = src;
-  var spos = spos;
+  this.src = src;
+  this.spos = spos;
+   var boni=10;
+  var bonuses=[
+function(board){
+ 
+  console.log(board.paddle.frame.size.width);
+board.paddle.frame.size.width+=boni;
+if(board.paddle.frame.origin.x-boni >=0)
+ board.paddle.frame.origin.x-=10
+},
+function(board){
+ 
+  console.log(board.paddle.frame.size.width);
+board.paddle.frame.size.width+=boni;
+if(board.paddle.frame.origin.x-boni >=0)
+ board.paddle.frame.origin.x-=10
+}
+,
+function(board){
+ 
+  console.log(board.paddle.frame.size.width);
+board.paddle.frame.size.width-=boni;
+
+}
+,
+function(board){
+if(board.ball.dx<4)
+{
+  board.ball.dx*=2;
+  board.ball.dy*=2;
+}
+}
+,
+function(board){
+if(board.ball.dx>1)
+{
+  board.ball.dx/=2;
+  board.ball.dy/=2;
+}
+}
+,
+function(board){
+board.lives++;
+}
+
+
+]
   this.draw = function (ctx) {
     var img = new Image();
     img.src = src;
     ctx.drawImage(img, spos.x, spos.y++);
+  }
+  this.bonusfun=bonuses[Math.floor(Math.random() * bonuses.length)];
+  this.hascollided=function(rect){
+      var interval=50;
+      if(spos.y+interval>=rect.origin.y){
+          if(spos.x>=rect.origin.x && spos.x<=rect.origin.x+rect.size.width )
+            return true
+          if(spos.x+interval>=rect.origin.x && spos.x+interval<=rect.origin.x+rect.size.width )
+             return true
+
+
+      }
+return false;
+
   }
 
 }
