@@ -142,8 +142,7 @@ function lost(game) {
     this.game.player.score = 0;
     levelChanger(player.currentLevel);
     updateScore(this.game.player.score);
-    //updateLives(this.game.board.lives);
-    gui.bindLives();
+    updateLives(this.game.board.lives);
     navigateFromTo('play', 'menu');
 
 }
