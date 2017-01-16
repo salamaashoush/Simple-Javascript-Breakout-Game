@@ -70,6 +70,10 @@ body{
     line-height: 350px;
     font-size: 200px;
 }
+#menu-logo img{
+    margin-top: 50px;
+    width: 80%;
+}
 #menu-volume-btn{
     right: 10px;
 }

@@ -28,13 +28,13 @@ var GUI = function(){
         document.getElementById("user-name").innerHTML = player.name;
         document.getElementById("player-name").innerHTML = player.name;
         document.getElementById("highscore-value").innerHTML = player.highscore;
-        if(player.gender == "male"){
-            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/male.jpg)';
-            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.jpg)';
+        if(player.gender == "female"){
+            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/female.png)';
+            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/female.png)';
         }
         else{
-            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/female.jpg)';
-            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/female.jpg)';
+            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/male.png)';
+            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.png)';
         }
         
     }
@@ -81,6 +81,7 @@ var GUI = function(){
             btn.className = "icon-music-outline";
         else
             btn.className = "icon-music-1";
+        document.getElementById("menu-volume-btn").children[0].className = btn.className;
     }
     this.toggleSound = function(){
         soundManager.setMute();
