@@ -24,6 +24,7 @@ var Player = function (name, gender, paddleColor, ballColor) {
             paddleColor: this.paddleColor,
             ballColor: this.ballColor,
             badges: this.badges,
+            lives: this.lives,
             currentLevel: this.currentLevel
         };
     }

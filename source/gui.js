@@ -12,23 +12,32 @@ var GUI = function(){
     var playerBadges = document.getElementById("player-badges");
     var playerPaddle = document.getElementById("player-paddle");
     var playerBall = document.getElementById("player-ball");
+    var playerLives = document.getElementById("lives");
+    var playerScore = document.getElementById("score");
     
-    this.initLevels = function(){
+    this.bindLevels = function(){
         var lvlContainer = document.getElementById("lvl-container");
         for (var i=0; i < lvlContainer.children.length; i++){
             lvlContainer.children[i].children[2].style.display = "none";
-            if(i >= player.currentLevel)
+            if(i > player.currentLevel)
                 lvlContainer.children[i].children[2].style.display = "block";
         }
     }
-    this.initProfile = function(){
+    this.bindProfile = function(){
         document.getElementById("user-name").innerHTML = player.name;
         document.getElementById("player-name").innerHTML = player.name;
-        if(player.gender == "male")
-            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/profile.jpg)';
+        document.getElementById("highscore-value").innerHTML = player.highscore;
+        if(player.gender == "male"){
+            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/male.jpg)';
+            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.jpg)';
+        }
+        else{
+            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/male.jpg)';
+            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.jpg)';
+        }
         
     }
-    this.initBadges = function(){
+    this.bindBadges = function(){
         badgesSection.innerHTML = "";
         playerBadges.innerHTML = "";
         for(var bdg in player.badges){
@@ -48,7 +57,39 @@ var GUI = function(){
             playerBadges.appendChild(divObj2);
         }
     }
-    this.initToolKit = function(){
+    this.bindLives = function(){
+        var lives = document.getElementById("lives").children;
+          for(var i=0; i<playerLives.length; i++){
+              if(i<player.lives)
+                  playerLives[i].className = "icon-heart-2";
+              else
+                  playerLives[i].className = "icon-heart-empty-2";
+          }
+    }
+    this.bindScore = function(){
+        playerScore.innerHTML = player.score;
+    }
+    this.navigate = function(sender,target,display='block'){
+        document.getElementById(sender).style.display='none';
+        document.getElementById(target).style.display=display;
+    }
+    this.toggleMusic = function(){
+        soundManager.toggleBackground();
+        var btn = document.getElementById("btn-toggle-music");
+        if(btn.className=="icon-music-1")
+            btn.className = "icon-music-outline";
+        else
+            btn.className = "icon-music-1";
+    }
+    this.toggleSound = function(){
+        soundManager.setMute();
+        var btn = document.getElementById("btn-toggle-sound");
+        if(btn.className=="icon-volume-high")
+            btn.className = "icon-volume-off-1";
+        else
+            btn.className = "icon-volume-high";
+    }
+    this.bindToolKit = function(){
         var paddleDiv = document.createElement("div");
         var paddleImg = document.createElement("img");
         var ballDiv = document.createElement("div");
@@ -119,10 +160,26 @@ var GUI = function(){
         
         console.log("game state ",state," playing ",play);
     }
+    this.changeLevel = function(lvlNumber){
+        if(lvlNumber<=player.currentLevel){
+            levelChanger(lvlNumber);
+            this.navigate('level','play');
+        }
+    }
+    this.leaveGame = function(){
+        this.togglePlaying("pause");
+        this.navigate("play","menu");
+    }
+    
+    this.init = function(){
+        this.bindProfile();
+        this.bindBadges();
+        this.bindToolKit();
+        this.bindLevels();
+        this.bindScore();
+    }
 }
 
 gui = new GUI();
-gui.initLevels();
-gui.initProfile();
-gui.initBadges();
-gui.initToolKit();
+gui.init();
+gui.navigate("menu","menu");

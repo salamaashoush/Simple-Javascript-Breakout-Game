@@ -12,13 +12,13 @@
     </head>
     <body>
       <div class="container">
-        <div id="splash" class="window" style="display:none">
+        <div id="splash" class="window">
           <img src="img/logo.jpg" alt="" class="splash-logo">
           <div id="progress-bar">
             <div id="bar"></div>
           </div>
         </div>
-        <div id="menu" class="window" style="display:none">
+        <div id="menu" class="window">
             <div id="menu-top">
                 <div id="menu-logo">
                     <i class="icon-pied-piper"></i>
@@ -48,7 +48,7 @@
             <div id="menu-clouds-bottom"></div>
             <div id="menu-clouds"></div>
         </div>
-        <div id="level" class="window" style="display:none">
+        <div id="level" class="window">
           <div class="menu-bar">
             <button class="btn" onclick="navigateFromTo('level','menu','table')">
             <i class="icon-home-1"></i>
@@ -56,47 +56,47 @@
             <span>Levels</span>
           </div>
           <div id="lvl-container">
-            <div class="lvl-card" onclick="navigateFromTo('level','play')">
+            <div class="lvl-card" onclick="gui.changeLevel(0)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 1</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(1)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 2</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(2)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 3</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(3)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 4</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(4)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 5</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(5)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 6</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(6)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 7</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(7)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 8</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(8)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 9</span>
             <div class="lvl-lock"><i class="icon-lock"></i></div>
@@ -116,9 +116,9 @@
               <span id="score" class="btn player-btn">0</span>
               <span id="player-badges" class="player-btn"></span>
               <span id="btn-pause" class="btn player-btn" onclick="gui.togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
-              <span id="btn-sound" class="btn player-btn" onclick="toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
-              <span id="btn-music" class="btn player-btn" onclick="toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
-              <span id="player-home" class="btn player-btn" onclick="navigateFromTo('play','menu','table')">
+              <span id="btn-sound" class="btn player-btn" onclick="gui.toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
+              <span id="btn-music" class="btn player-btn" onclick="gui.toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
+              <span id="player-home" class="btn player-btn" onclick="gui.leaveGame()">
                   <i class="icon-home-1"></i>
               </span>
           </div>
@@ -131,10 +131,6 @@
                     <div class="splash-control-msg">Start Playing!</div>
                 </div>
             </div>
-            <!--<div id="player-splash"></div>
-            <div id="player-splash-control" onclick="togglePlaying()">
-                <i class="icon-play-circled2"></i>
-            </div>-->
             <canvas id="gamecanvas" width="750" height="500"></canvas>  
             <div id="clouds">
                 <div class="cloud x1"></div>
@@ -148,7 +144,7 @@
             </div>
           </div>
         </div>
-        <div id="profile" class="window"  style="display:none">
+        <div id="profile" class="window">
           <div class="menu-bar">
             <button class="btn" onclick="navigateFromTo('profile','menu','table')">
             <i class="icon-home-1"></i>
@@ -181,7 +177,7 @@
             </div>
           </div>
         </div>
-        <div id="usermod" class="window" style="display:none">
+        <div id="usermod" class="window">
           <div class="menu-bar">
             <button class="btn" onclick="navigateFromTo('profile','menu','table')">
             <i class="icon-home-1"></i>

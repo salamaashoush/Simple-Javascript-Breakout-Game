@@ -48,7 +48,7 @@ function togglePlaying() {
 
 
 function startGame(game) {
-	if (play) {		
+	if (play) {
 		this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height);
 		this.game.board.ball.move();
 
@@ -56,17 +56,18 @@ function startGame(game) {
 		updateScore(this.game.player.score);
 		checkHighScore(this.game.player.score);
 		collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
-		for ( var giftname in this.game.nextgift ) 
-		
+		for ( var giftname in this.game.nextgift )
+
 		{
-			
+
 			this.game.nextgift[giftname].draw(this.game.ctx);
-			
+
 			if(this.game.nextgift[giftname].hascollided(this.game.board.paddle.frame)){
 				this.game.nextgift[giftname].bonusfun(this.game);
 				delete this.game.nextgift[giftname];
 				updateLives(this.game.board.lives);
 				updateScore(this.game.player.score);
+				updateLives(this.game.player.lives);
 			}
 		}
 
@@ -80,9 +81,9 @@ function startGame(game) {
 			var paddleY = this.game.board.paddle.frame.origin.y;
 			var paddleH = this.game.board.paddle.frame.size.height;
 
-			this.game.board.lives--;
-			updateLives(this.game.board.lives);
-			if (outOflives(this.game.board.lives)) {
+			this.game.player.lives--;
+			updateLives(this.game.player.lives);
+			if (outOflives(this.game.player.lives)) {
 				soundManager.gameOver();
 				checkSlug(this.game);
 				this.game.player.highscore = this.game.player.score;
@@ -120,7 +121,7 @@ function levelChanger (level)
 	var board = levelGenerator(dimensions,level,player);
 	game.board = board;
 	}
-	
+
 }
 
 function finishgame ()
@@ -129,12 +130,13 @@ function finishgame ()
 }
 
 function lost (game)
-{	
+{
 	this.game.player.lives = 3;
 	this.game.player.score = 0;
 	levelChanger(player.currentLevel);
 	updateScore(this.game.player.score);
-	updateLives(this.game.board.lives);
-	navigateFromTo('play','menu');	
+	//updateLives(this.game.board.lives);
+    gui.bindLives();
+	navigateFromTo('play','menu');
 
 }
