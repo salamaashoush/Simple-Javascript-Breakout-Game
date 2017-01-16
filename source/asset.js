@@ -53,11 +53,11 @@ Levels = [
  { colors:Colors.pastel,
     bricks: [
       "", "",
-      "xxxxxYYYYYyyyyyYYYYYyyyyyxxxxx",
-      "pppppPPPPPpppppPPPPPpppppPPPPP",
-      "bbbbbBBBBBxxxxxXXXXXbbbbbBBBBB",
-      "gggggGGGGGgggggGGGGGgggggGGGGG",
-      "XXXXXOOOOOoooooOOOOOoooooxxxxx"
+      "yyyyyxxxxxyyyyyYYYYYyyyyyYYYYY",
+      "ppxxxPPPPPpppppPPPPPpppppPPPPP",
+      "xxbbbBBBBBbbbbbBBBBBbbbbbBBBBB",
+      "ggxxxGGGGGgggggGGGGGgggggGGGGG",
+      "oooooOOOOOoooooOOOOOoooooOOOOO"
     ]
   },
 
