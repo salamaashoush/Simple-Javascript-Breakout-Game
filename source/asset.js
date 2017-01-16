@@ -325,7 +325,12 @@ if(board.ball.dx>1)
 }
 ,
 function(board){
+  if(board.lives<3)
 board.lives++;
+}
+,
+function(board){
+board.lives--;
 }
 
 
