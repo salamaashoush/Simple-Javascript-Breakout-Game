@@ -12,16 +12,14 @@
     </head>
     <body>
       <div class="container">
-        <div id="splash" class="window" style="display:none">
+        <div id="splash" class="window">
           <img src="img/logo.jpg" alt="" class="splash-logo">
           <div id="progress-bar">
             <div id="bar"></div>
           </div>
         </div>
-        <div id="menu" class="window" style="display:none">
+        <div id="menu" class="window">
             <div id="menu-top">
-                <span id="menu-music-btn" class="btn player-btn"><i class="icon-music"></i></span>
-                <span id="menu-volume-btn" class="btn player-btn"><i class="icon-volume-up"></i></span>
                 <div id="menu-logo">
                     <i class="icon-pied-piper"></i>
                 </div>
@@ -50,7 +48,7 @@
             <div id="menu-clouds-bottom"></div>
             <div id="menu-clouds"></div>
         </div>
-        <div id="level" class="window" style="display:none">
+        <div id="level" class="window">
           <div class="menu-bar">
             <button class="btn" onclick="navigateFromTo('level','menu','table')">
             <i class="icon-home-1"></i>
@@ -58,49 +56,56 @@
             <span>Levels</span>
           </div>
           <div id="lvl-container">
-            <div class="lvl-card" onclick="navigateFromTo('level','play')">
+            <div class="lvl-card" onclick="gui.changeLevel(0)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 1</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(1)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 2</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(2)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 3</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(3)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 4</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(4)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 5</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(5)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 6</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(6)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 7</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(7)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 8</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
-            <div class="lvl-card">
+            <div class="lvl-card" onclick="gui.changeLevel(8)">
             <img src="img/poster.png" alt="" class="lvl-poster">
             <span class="lvl-name">Level 9</span>
+            <div class="lvl-lock"><i class="icon-lock"></i></div>
             </div>
           </div>
         </div>
-        <div id="play" class="window" style="display:none">
+        <div id="play" class="window">
           <div id="player-controls">
-              <span id="profile-thumbnail" class="btn player-btn">
-                  <i class="icon-user-1"></i>
-              </span>
+              <span id="profile-thumbnail" class="btn player-btn"></span>
               <span id="player-name" class="btn player-btn">Ehab</span>
               <span id="lives" class="btn player-btn">
                   <i class="icon-heart-2"></i>
@@ -109,17 +114,22 @@
               </span>
               <span id="score-lable" class="btn player-btn">Score:</span>
               <span id="score" class="btn player-btn">0</span>
-              <span id="btn-pause" class="btn player-btn" onclick="togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
-              <span id="btn-sound" class="btn player-btn" onclick="toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
-              <span id="btn-music" class="btn player-btn" onclick="toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
-              <span id="player-home" class="btn player-btn" onclick="navigateFromTo('play','menu','table')">
+              <span id="player-badges" class="player-btn"></span>
+              <span id="btn-pause" class="btn player-btn" onclick="gui.togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
+              <span id="btn-sound" class="btn player-btn" onclick="gui.toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
+              <span id="btn-music" class="btn player-btn" onclick="gui.toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
+              <span id="player-home" class="btn player-btn" onclick="gui.leaveGame()">
                   <i class="icon-home-1"></i>
               </span>
           </div>
           <div id="player">
-            <div id="player-splash"></div>
-            <div id="player-splash-control" onclick="togglePlaying()">
-                <i class="icon-play-circled2"></i>
+            <div id="splashCard" class="splash-card" state="pending">
+                <div id="splashControl" onclick="gui.togglePlaying()" class="splash-control">
+                    <div class="splash-control-icon">
+                        <i class="icon-gamepad"></i>
+                    </div>
+                    <div class="splash-control-msg">Start Playing!</div>
+                </div>
             </div>
             <canvas id="gamecanvas" width="750" height="500"></canvas>  
             <div id="clouds">
@@ -146,15 +156,48 @@
                 <div id="profile-charachter">
                     <div id="profile-avatar">
                     </div>
+                    <div id="user-details">
+                        <div id="user-gender"><i class="icon-male"></i></div>
+                        <div id="user-name" class="details-section details-lable">Nickname</div>
+                        <div id="highscore-icon" class="details-section"><i class="icon-angellist"></i></div>
+                        <div id="highscore-lable" class="details-section">Top Score</div>
+                        <div id="highscore-value" class="details-section">1234</div>
+                    </div>
+                </div>
+                <div id="profile-badges">
+                    <div id="badge-sec1" class="badge-section">
+                        <img src="img/badgeicon.png" alt="">
+                    </div>
+                    <div id="badge-sec3" class="badge-section"></div>
+                </div>
+            </div>
+            <div id="profile-bottom">
+                <div id="player-paddle" class="slider"></div>
+                <div id="player-ball" class="slider"></div>
+            </div>
+          </div>
+        </div>
+        <div id="usermod" class="window">
+          <div class="menu-bar">
+            <button class="btn" onclick="navigateFromTo('profile','menu','table')">
+            <i class="icon-home-1"></i>
+            </button>
+            <span>Profile</span>
+          </div>
+          <div id="profile-container" class="profile">
+            <div id="profile-top">
+                <div id="profile-charachter">
+                    <div id="profile-avatar">
+                    </div>
                     <div id="profile-details">
                         <div class="details-section details-lable">Nickname</div>
                         <div class="details-section details-input">
                             <input type="text">
                         </div>
                         <div class="details-section details-lable">Gender</div>
-                        <div class="details-section details-input">
-                            <input type="radio" name="gender" value="m"> Male
-                            <input type="radio" name="gender" value="f"> Female
+                        <div class="details-section details-input" id="gender-input">
+                            <div class="gender-control"><div class="gender-btn icon-male" id="gender-selected"></div></div>
+                            <div class="gender-control"><div class="gender-btn icon-female"></div></div>
                         </div>
                     </div>
                 </div>
@@ -239,21 +282,19 @@
       }
       //loading();
       </script>
+      <script src="source/soundManager.js"></script>
       <script src="source/session.js"></script>
-      <script src="source/levels2.js"></script>
-      <script src="source/size.js"></script>
-      <script src="source/accel.js"></script>
-      <script src="source/line.js"></script>
-      <script src="source/point.js"></script>
-      <script src="source/rect.js"></script>
+      <script src="source/asset.js"></script>
+      <script src="source/component.js"></script>
       <script src="source/hithelpers.js"></script>
       <script src="source/ball.js"></script>
       <script src="source/paddle.js"></script>
       <script src="source/Board.js"></script>
-      <script src="source/levels.js"></script>
-      <script src="source/game2.js"></script>
+      <script src="source/levelsGenerator.js"></script>
       <script src="source/player.js"></script>
+      <script src="source/game.js"></script>
       <script src="source/runloop.js"></script>
       <script src="source/slider.js"></script>
+      <script src="source/gui.js"></script>
     </body>
 </html>

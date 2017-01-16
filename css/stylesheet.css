@@ -53,6 +53,7 @@ body{
   position: relative;
   background-color: #FFF;
   box-shadow: 0px 0px 20px #ccc;
+    display: none;
 }
 #menu{
     background-color: rgba(0,0,0,0);
@@ -197,6 +198,7 @@ body{
     background-color: #000;
     position: absolute;
     left: 0;
+    background-size: contain;
 }
 #score-lable{
     width: 80px;
@@ -260,6 +262,41 @@ body{
 }
 #gamecanvas{
   border:1px solid #ccc;
+}
+.splash-card{
+    display: block;
+    position: absolute;
+    width: 751px;
+    height: 501px;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.75);
+}
+.splash-control{
+    display: block;
+    width: 375px;
+    height: 275px;
+    margin-top: 125px;
+    margin-left: 187px;
+    color: #FFF;
+    //text-shadow: 0px 0px 50px #F00;
+    text-shadow: -1px -1px 10px #F00,
+                1px -1px 10px #F00,
+                -1px 1px 10px #F00,
+                1px 1px 10px #F00;
+}
+.splash-control-icon{
+    display: block;
+    width: 100%;
+    height: 175px;
+    line-height: 175px;
+    font-size: 150px;
+}
+.splash-control-msg{
+    display: block;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    font-size: 50px;
 }
 #player-splash{
     display: block;
@@ -331,10 +368,10 @@ body{
     display: table;
     background: radial-gradient(rgba(255,255,0,0.5), rgba(0,0,0,0));
 }
-#ball-slider{
+#ball-slider, #player-ball{
     right: 0;
 }
-#paddle-slider{
+#paddle-slider, #player-paddle{
     left: 0;
     overflow: scroll;
 }
@@ -368,30 +405,96 @@ body{
     background-image: url("../img/profile.jpg");
     background-size: contain;
 }
-#profile-details{
+#profile-details, #user-details{
     display: block;
     width: 50%;
     height: 100%;
     position: absolute;
     right: 0;
 }
+#user-details{
+    //background-color: aquamarine;
+}
+#user-name{
+    display: inline-block;
+    width: 60%;
+    line-height: 32px;
+    text-align: left;
+    padding-left: 5%;
+    text-align: center;
+    border-radius: 20px;
+    border: 4px solid #000;
+}
+#user-gender{
+    display: inline-block;
+    width: 32px;
+    line-height: 32px;
+    font-size: 22px;
+    border-radius: 20px;
+    border: 4px solid #000;
+}
+#highscore-icon{
+    font-size: 50px;
+}
+#highscore-lable{
+    font-size: 25px;
+}
+#highscore-value{
+    font-size: 35px;
+    font-weight: bold;
+    color: #F00;
+}
 .details-section{
     width: 100%;
 }
 .details-lable{
     line-height: 40px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
 }
 .details-input{
     line-height: 60px;
 }
 .details-input input[type="text"]{
-    height: 30px;
-    width: 180px;
-    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    border-radius: 20px;
     text-align: center;
     border: 2px solid #999;
+    font-size: 25px;
+    outline: 0;
+}
+.details-input input[type="text"]:focus{
+    box-shadow: 0px 0px 5px #f00;
+}
+#gender-input{
+    display: table;
+}
+#gender-input .gender-control{
+    display: table-cell;
+}
+.gender-btn{
+    margin: auto;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 29px;
+    line-height: 50px;
+    font-size: 30px;
+    border: 4px solid #000;
+}
+.gender-btn:hover{
+    color: #F00;
+    border: 4px solid #F00;
+    cursor: pointer;
+}
+.gender-selected{
+    color: #FFF;
+    background-color: #F00;
+    border: 4px solid #F00;
+}
+.gender-selected:hover{
+    color: #FFF;
 }
 #profile-badges{
     display: block;
@@ -399,9 +502,29 @@ body{
     width: 350px;
     height: 200px;
 }
+#player-badges{
+    display: block;
+    border-radius: 20px;
+    height: 40px;
+    width: 220px;
+    right: 160px;
+    text-align: right;
+}
+#player-badges .badge-icon{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+#player-badges .badge-icon img{
+    width: 40px;
+    height: 40px;
+}
 #badge-sec1{
     line-height: 60px;
     font-size: 30px;
+}
+#badge-sec1 img{
+    width: 100px;
 }
 #badge-sec2{
     line-height: 60px;
@@ -409,8 +532,10 @@ body{
 }
 #badge-sec3{
     display: table;
-    width: 100%;
-    height: 80px;
+    width: 340px;
+    height: 70px;
+    border-radius: 40px;
+    border: 2px solid #F00;
 }
 .badge-icon{
     display: table-cell;
@@ -422,11 +547,9 @@ body{
 }
 .left-nav{
     left: 0px;
-    //background: linear-gradient(to left,rgba(0,0,0,0), rgba(0,0,0,0.5));
 }
 .right-nav{
     right: 0px;
-    //background: linear-gradient(to right,rgba(0,0,0,0), rgba(0,0,0,0.5));
 }
 .btn-nav{
     width: 50px;
@@ -436,4 +559,5 @@ body{
 }
 .btn-nav:hover{
     cursor: pointer;
+    color: #F00;
 }
