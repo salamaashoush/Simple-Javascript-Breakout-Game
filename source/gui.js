@@ -31,12 +31,14 @@ var GUI = function(){
     this.initBadges = function(){
         badgesSection.innerHTML = "";
         playerBadges.innerHTML = "";
-        for(var bdg in badgesObj){
+        for(var bdg in player.badges){
+            if(!player.badges.hasOwnProperty(bdg)) continue;
+            
             var divObj = document.createElement("div");
             var imgObj = document.createElement("img");
             
             divObj.className = "badge-icon";
-            imgObj.setAttribute("src",badgesObj[bdg]);
+            imgObj.setAttribute("src",player.badges[bdg]);
             
             var divObj2 = divObj.cloneNode();
             var imgObj2 = imgObj.cloneNode();
