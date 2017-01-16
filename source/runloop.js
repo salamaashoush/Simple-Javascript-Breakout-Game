@@ -5,11 +5,10 @@ var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
 var player=null;
 if(restorePlayerSession()){
-	player=restorePlayerSession();
+    player = restorePlayerSession();
+    document.getElementById("menu").style.display = "block";
 }else{
-	player=new Player("Ali","male", Paddles.blue, Balls.orange);
-	savePlayer(player);
-	console.log("saved");
+    document.getElementById("usermod").style.display = "block";
 }
 soundManager.toggleBackground();
 var board = levelGenerator(dimensions, player.currentLevel, player);
