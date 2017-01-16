@@ -70,8 +70,12 @@ function startGame(game) {
 				updateLives(this.game.player.lives);
 			}
 		}
-
-
+		if (outOflives(this.game.player.lives)) {
+				soundManager.gameOver();
+				checkSlug(this.game);
+				this.game.player.highscore = this.game.player.score;
+				lost(this.game);
+			}
 		if (this.game.board.ball.top().y > this.game.dimensions.height - (this.game.board.paddle.frame.size.height/2)) {
 			var ballX = this.game.board.ball.center.x;
 			var ballY = this.game.board.ball.center.y;
