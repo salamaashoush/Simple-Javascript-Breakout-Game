@@ -370,7 +370,16 @@ var Gift = function(src, spos) {
     }
 
 }
-gifts = ["img/gifts/ballspeeddown.png", "img/gifts/ballspeedup.png", "img/gifts/expandpaddle.png", "img/gifts/shrinkpaddle.png", "img/gifts/winlive.png", "img/gifts/loselive.png", "img/gifts/scoreup.png", "img/gifts/scoredown.png"];
+gifts = [
+    "img/gifts/expandpaddle.png",
+    "img/gifts/shrinkpaddle.png",
+    "img/gifts/ballspeedup.png",
+    "img/gifts/ballspeeddown.png",
+    "img/gifts/winlive.png",
+    "img/gifts/loselive.png",
+    "img/gifts/scoredown.png",
+    "img/gifts/scoreup.png"
+];
 
 function randomGift(spos) {
     return new Gift(gifts[Math.floor(Math.random() * gifts.length)], spos);
