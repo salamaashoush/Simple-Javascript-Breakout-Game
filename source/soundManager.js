@@ -47,28 +47,32 @@
              audio.play();
          }
      };
-     this.gameBackground = function () {
-         if (!mute) {
-             var audio = new Audio('sound/Hit_It_Hard.mp3');
-             audio.addEventListener('ended', function () {
+     music = new Audio('sound/Hit_It_Hard.mp3');
+     this.toggleBackground = function () {
+         if (music.paused) {
+             music.addEventListener('ended', function () {
                  this.currentTime = 0;
                  this.play();
              }, false);
-             audio.play();
-             audio.volume=0.2
+             music.play();
+         } else {
+             music.pause();
          }
+
+
      };
-    //   this.menuBackground = function () {
-    //      if (!mute) {
-    //          var audio = new Audio('sound/menu.wav');
-    //          audio.addEventListener('ended', function () {
-    //              this.currentTime = 0;
-    //              this.play();
-    //          }, false);
-    //          audio.play();
-    //          audio.volume=0.5
-    //      }
-    //  };
+
+     //   this.menuBackground = function () {
+     //      if (!mute) {
+     //          var audio = new Audio('sound/menu.wav');
+     //          audio.addEventListener('ended', function () {
+     //              this.currentTime = 0;
+     //              this.play();
+     //          }, false);
+     //          audio.play();
+     //          audio.volume=0.5
+     //      }
+     //  };
      this.setMute = function () {
          mute = !mute;
      }
