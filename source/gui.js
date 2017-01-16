@@ -18,6 +18,7 @@ var GUI = function(){
     this.bindLevels = function(){
         var lvlContainer = document.getElementById("lvl-container");
         for (var i=0; i < lvlContainer.children.length; i++){
+            lvlContainer.children[i].children[0].setAttribute("src","img/levels/level"+i+".png");
             lvlContainer.children[i].children[2].style.display = "none";
             if(i > player.currentLevel)
                 lvlContainer.children[i].children[2].style.display = "block";
@@ -112,6 +113,7 @@ var GUI = function(){
         var splash = document.getElementById("splashCard");
         var control = document.getElementById("splashControl");
         var attr = splash.getAttribute("state");
+        var btn = document.getElementById("play-btn");
         
         if(!state){
             if(attr=="pending")
@@ -151,14 +153,12 @@ var GUI = function(){
         if(play){
             startGame(game);
             splash.style.height = "0px";
+            btn.className = "icon-pause-2";
         }else{
             splash.style.height = "501px";
-            console.log("inside else should show the splash");
+            btn.className = "icon-play";
         }
-        
         splash.setAttribute("state",state);
-        
-        console.log("game state ",state," playing ",play);
     }
     this.changeLevel = function(lvlNumber){
         if(lvlNumber<=player.currentLevel){
