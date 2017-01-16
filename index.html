@@ -18,7 +18,7 @@
             <div id="bar"></div>
           </div>
         </div>
-        <div id="menu" class="window">
+        <div id="menu" class="window" style="display:none">
             <div id="menu-top">
                 <div id="menu-logo">
                     <i class="icon-pied-piper"></i>
@@ -103,7 +103,7 @@
             </div>
           </div>
         </div>
-        <div id="play" class="window" style="display:none">
+        <div id="play" class="window">
           <div id="player-controls">
               <span id="profile-thumbnail" class="btn player-btn"></span>
               <span id="player-name" class="btn player-btn">Ehab</span>
@@ -115,7 +115,7 @@
               <span id="score-lable" class="btn player-btn">Score:</span>
               <span id="score" class="btn player-btn">0</span>
               <span id="player-badges" class="player-btn"></span>
-              <span id="btn-pause" class="btn player-btn" onclick="togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
+              <span id="btn-pause" class="btn player-btn" onclick="gui.togglePlaying()"><i id="play-btn" class="icon-play"></i></span>
               <span id="btn-sound" class="btn player-btn" onclick="toggleSound()"><i id="btn-toggle-sound" class="icon-volume-high"></i></span>
               <span id="btn-music" class="btn player-btn" onclick="toggleMusic()"><i id="btn-toggle-music" class="icon-music-1"></i></span>
               <span id="player-home" class="btn player-btn" onclick="navigateFromTo('play','menu','table')">
@@ -123,10 +123,18 @@
               </span>
           </div>
           <div id="player">
-            <div id="player-splash"></div>
+            <div id="splashCard" class="splash-card" state="pending">
+                <div id="splashControl" onclick="gui.togglePlaying()" class="splash-control">
+                    <div class="splash-control-icon">
+                        <i class="icon-gamepad"></i>
+                    </div>
+                    <div class="splash-control-msg">Start Playing!</div>
+                </div>
+            </div>
+            <!--<div id="player-splash"></div>
             <div id="player-splash-control" onclick="togglePlaying()">
                 <i class="icon-play-circled2"></i>
-            </div>
+            </div>-->
             <canvas id="gamecanvas" width="750" height="500"></canvas>  
             <div id="clouds">
                 <div class="cloud x1"></div>

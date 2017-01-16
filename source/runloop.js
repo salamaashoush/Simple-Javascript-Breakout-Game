@@ -20,7 +20,7 @@ var play = false;
 var requestId = 0;
 
 
-document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
+//document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
 
 
 
@@ -91,7 +91,7 @@ function startGame(game) {
 			this.game.ctx.clearRect(0 ,0 , this.game.dimensions.width , this.game.dimensions.height)
 			this.game.board.paddle.frame.origin = new Point (ballFall - (paddleW / 2), (this.game.dimensions.height - paddleH))
 			render(this.game.ctx,this.game.board.bricks)
-			togglePlaying()
+			gui.togglePlaying("pause");
 		} else {
 			if (win(this.game.board.bricks.bricks)) {
 				checkThugLife(this.game);
@@ -104,7 +104,7 @@ function startGame(game) {
 				else{
 				this.game.board = levelGenerator(this.game.dimensions, this.game.player.currentLevel, this.game.player)
 				this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
-				togglePlaying()
+				gui.togglePlaying("finish");
 				}
 			} else {
 				requestId = requestAnimationFrame(startGame);

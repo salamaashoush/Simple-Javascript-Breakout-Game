@@ -31,12 +31,14 @@ var GUI = function(){
     this.initBadges = function(){
         badgesSection.innerHTML = "";
         playerBadges.innerHTML = "";
-        for(var bdg in badgesObj){
+        for(var bdg in player.badges){
+            if(!player.badges.hasOwnProperty(bdg)) continue;
+            
             var divObj = document.createElement("div");
             var imgObj = document.createElement("img");
             
             divObj.className = "badge-icon";
-            imgObj.setAttribute("src",badgesObj[bdg]);
+            imgObj.setAttribute("src",player.badges[bdg]);
             
             var divObj2 = divObj.cloneNode();
             var imgObj2 = imgObj.cloneNode();
@@ -64,6 +66,58 @@ var GUI = function(){
         console.log(ballDiv);
         playerPaddle.appendChild(paddleDiv);
         playerBall.appendChild(ballDiv);
+    }
+    this.togglePlaying = function(state){
+        var splash = document.getElementById("splashCard");
+        var control = document.getElementById("splashControl");
+        var attr = splash.getAttribute("state");
+        
+        if(!state){
+            if(attr=="pending")
+                state="start";
+            if(attr=="start")
+                state="pause";
+            else if(attr=="pause")
+                state="resume";
+            else if(attr=="resume")
+                state="pause";
+            else if(attr=="finish"){
+                state="pending";
+                levelChanger(player.currentLevel);
+            }
+        }
+        
+        if(state=="start" || state=="resume"){
+            play = true;
+        }else if(state=="pending"){
+            play = false;
+            control.children[0].children[0].className = "icon-gamepad";
+            control.children[1].innerHTML = "Start Playing!";
+        }else if(state=="pause"){
+            play = false;
+            control.children[0].children[0].className = "icon-play-circled";
+            control.children[1].innerHTML = "Resume Playing!";
+        }else if(state=="gameover"){
+            play = false;
+            control.children[0].children[0].className = "icon-emo-cry";
+            control.children[1].innerHTML = "Game Over!";
+        }else if(state=="finish"){
+            play = false;
+            control.children[0].children[0].className = "icon-emo-thumbsup";
+            control.children[1].innerHTML = "Good Job!";
+        }
+        
+        if(play){
+            startGame(game);
+            splash.style.height = "0px";
+        }else{
+            splash.style.height = "501px";
+            console.log("inside else should show the splash");
+        }
+        
+        splash.setAttribute("state",state);
+        
+        console.log("game state ",state," playing ",play);
     }
 }
 
