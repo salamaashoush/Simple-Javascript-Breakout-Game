@@ -56,14 +56,19 @@ function startGame(game) {
 		updateScore(this.game.player.score);
 		checkHighScore(this.game.player.score);
 		collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
-		if (this.game.nextgift !== null) {
-			this.game.nextgift.draw(this.game.ctx);
+		for ( var giftname in this.game.nextgift ) 
+		
+		{
+			//console.log(giftname);
+			this.game.nextgift[giftname].draw(this.game.ctx);
 			
-			if(this.game.nextgift.hascollided(this.game.board.paddle.frame)){
-				this.game.nextgift.bonusfun(this.game.board);
-				this.game.nextgift=null;
+			if(this.game.nextgift[giftname].hascollided(this.game.board.paddle.frame)){
+				this.game.nextgift[giftname].bonusfun(this.game.board);
+				delete this.game.nextgift[giftname];
 			}
 		}
+
+
 		if (this.game.board.ball.top().y > this.game.dimensions.height - (this.game.board.paddle.frame.size.height/2)) {
 			var ballX = this.game.board.ball.center.x;
 			var ballY = this.game.board.ball.center.y;
