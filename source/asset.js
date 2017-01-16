@@ -11,7 +11,7 @@ Colors = {
     y: "#FC9838", // yellow
     s: "#BCBCBC", // silver
     d: "#F0BC3C", // gold
-    x: "#000000"
+    x: "#8e44ad"
   },
 
   pastel: {
@@ -20,7 +20,7 @@ Colors = {
     b: "#A5B3FF", // blue
     g: "#BFFFA5", // green
     o: "#FFCBA5", // orange
-    x: "#000000"
+    x: "#8e44ad"
   },
 
   vintage: {
@@ -35,26 +35,29 @@ Colors = {
     i: "#75D7AF", // mint
     j: "#694702", // brown
     k: "#E9CB95", // peach
-    l: "#79D2EF" // blue
+    l: "#79D2EF",// blue
+    x: "#8e44ad"
   },
 
   liquidplanner: {
     a: '#62C4E7', // light blue
     b: '#00A5DE', // dark  blue
-    x: '#969699', // light gray
-    y: '#7B797E' // dark  gray
+    x: '#8e44ad', // light gray
+    y: '#7B797E'// dark  gray
   },
 
 
 };
 Levels = [
 
-  {
-    colors: Colors.pastel,
+ { colors:Colors.pastel,
     bricks: [
-
-      "yyyyyYYY",
-  
+      "", "",
+      "xxxxxYYYYYyyyyyYYYYYyyyyyxxxxx",
+      "pppppPPPPPpppppPPPPPpppppPPPPP",
+      "bbbbbBBBBBxxxxxXXXXXbbbbbBBBBB",
+      "gggggGGGGGgggggGGGGGgggggGGGGG",
+      "XXXXXOOOOOoooooOOOOOoooooxxxxx"
     ]
   },
 
