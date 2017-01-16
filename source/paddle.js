@@ -2,8 +2,22 @@ var Paddle = function (rect, src, dimensions) {
   var rightPressed, leftPressed;;
   document.addEventListener("keydown", keyDownHandler.bind(this), false);
   document.addEventListener("keyup", keyUpHandler.bind(this), false);
-
+  /*
+  document.addEventListener("mousemove", mouseHandler.bind(this), false);
   
+  function mouseHandler(e) {
+  
+    var pos=e.clientX+canvas.offsetLeft;
+    console.log("POS:", pos , "OFFSET",canvas.offsetParent);
+    if(pos+this.frame.size.width<=canvas.width && pos>= 0)
+    {
+        canvas.offsetWidth
+        this.frame.origin.x = pos;
+        console.log(e.clientX ,e.clientX-canvas.offsetWidth, "IN",canvas.offsetWidth+canvas.width)
+        
+    }
+}
+*/
 function keyDownHandler(e) {
     if (e.keyCode == 39) {
         rightPressed = true;

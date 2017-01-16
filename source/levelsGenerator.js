@@ -37,12 +37,12 @@ function reset(level, court) {
 			}
 
 			if (!brick && (c != ' '))
-				brick = {
+			{	brick = {
 					isbrick: true,
 					hit: false,
 					strenght:1,
 					unbreakable:c==='x'||c==='X'?true:false,
-					hasGift: Boolean (Math.floor(Math.random() *(1.3-0.05*(level)))) ,
+					hasGift: Boolean (Math.floor(Math.random() *(1.3-0.03*(level))))  ,
 					c: c,
 					pos: {
 						x1: x,
@@ -52,6 +52,11 @@ function reset(level, court) {
 					score: score,
 					color: layout.colors[c.toLowerCase()]
 				};
+				
+				brick.hasGift= Boolean(brick.hasGift * !brick.unbreakable )
+				
+			}
+				
 		}
 	}
 	var numbricks = bricks.length;
