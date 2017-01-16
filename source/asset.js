@@ -288,50 +288,66 @@ var Gift = function (src, spos) {
   this.src = src;
   this.spos = spos;
    var boni=10;
+   var intervalscore=50;
   var bonuses=[
-function(board){
- 
-board.paddle.frame.size.width+=boni;
-if(board.paddle.frame.origin.x-boni >=0)
- board.paddle.frame.origin.x-=10
+function(tgame){
+ console.log(tgame);
+tgame.board.paddle.frame.size.width+=boni;
+if(tgame.board.paddle.frame.origin.x-boni >=0)
+ tgame.board.paddle.frame.origin.x-=10
 },
-function(board){
- 
-  
-board.paddle.frame.size.width+=boni;
-if(board.paddle.frame.origin.x-boni >=0)
- board.paddle.frame.origin.x-=10
+
+function(tgame){
+
+  console.log(tgame);
+tgame.board.paddle.frame.size.width+=boni;
+if(tgame.board.paddle.frame.origin.x-boni >=0)
+ tgame.board.paddle.frame.origin.x-=10
 }
 ,
-function(board){
- if(board.paddle.frame.size.width>2*boni)
-board.paddle.frame.size.width-=boni;
+
+function(tgame){
+  console.log(tgame);
+ if(tgame.board.paddle.frame.size.width>2*boni)
+tgame.board.paddle.frame.size.width-=boni;
 
 }
 ,
-function(board){
-if(board.ball.dx<4)
+function(tgame){
+  console.log(tgame);
+if(tgame.board.ball.dx<4)
 {
-  board.ball.dx*=2;
-  board.ball.dy*=2;
+  tgame.board.ball.dx*=2;
+  tgame.board.ball.dy*=2;
 }
 }
 ,
-function(board){
-if(board.ball.dx>1)
+function(tgame){
+  console.log(tgame);
+if(tgame.board.ball.dx>1)
 {
-  board.ball.dx/=2;
-  board.ball.dy/=2;
+  tgame.board.ball.dx/=2;
+  tgame.board.ball.dy/=2;
 }
 }
 ,
-function(board){
-  if(board.lives<3)
-board.lives++;
+function(tgame){
+  console.log(tgame);
+  if(tgame.board.lives<3)
+tgame.board.lives++;
 }
 ,
-function(board){
-board.lives--;
+function(tgame){
+  console.log(tgame);
+tgame.board.lives--;
+}
+,
+function(tgame){
+game.player.score-=intervalscore;
+}
+,
+function(tgame){
+game.player.score+=intervalscore
 }
 
 
@@ -342,6 +358,7 @@ board.lives--;
     ctx.drawImage(img, spos.x, spos.y++);
   }
   this.bonusfun=bonuses[Math.floor(Math.random() * bonuses.length)];
+  console.log(this.bonusfun);
   this.hascollided=function(rect){
       var interval=50;
       if(spos.y+interval>=rect.origin.y){
@@ -384,7 +401,7 @@ Badges={
   skip:"img/badges/skiplevel.png"
 }
 var Badge=function(){
-  
+
 }
 Defaults = {
   sounds: {

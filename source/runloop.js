@@ -59,13 +59,14 @@ function startGame(game) {
 		for ( var giftname in this.game.nextgift ) 
 		
 		{
-			//console.log(giftname);
+			
 			this.game.nextgift[giftname].draw(this.game.ctx);
 			
 			if(this.game.nextgift[giftname].hascollided(this.game.board.paddle.frame)){
-				this.game.nextgift[giftname].bonusfun(this.game.board);
+				this.game.nextgift[giftname].bonusfun(this.game);
 				delete this.game.nextgift[giftname];
 				updateLives(this.game.board.lives);
+				updateScore(this.game.player.score);
 			}
 		}
 
