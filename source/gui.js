@@ -16,14 +16,9 @@ var GUI = function(){
     this.initLevels = function(){
         var lvlContainer = document.getElementById("lvl-container");
         for (var i=0; i < lvlContainer.children.length; i++){
-            if(i >= player.currentLevel){
-                var lock = document.createElement("div");
-                var icon = document.createElement("i");
-                lock.className = "lvl-lock";
-                icon.className = "icon-lock";
-                lock.appendChild(icon);
-                lvlContainer.children[i].appendChild(lock);
-            }
+            lvlContainer.children[i].children[2].style.display = "none";
+            if(i >= player.currentLevel)
+                lvlContainer.children[i].children[2].style.display = "block";
         }
     }
     this.initProfile = function(){
@@ -42,9 +37,13 @@ var GUI = function(){
             
             divObj.className = "badge-icon";
             imgObj.setAttribute("src",badgesObj[bdg]);
+            
+            var divObj2 = divObj.cloneNode();
+            var imgObj2 = imgObj.cloneNode();
             divObj.appendChild(imgObj);
+            divObj2.appendChild(imgObj2);
             badgesSection.appendChild(divObj);
-            playerBadges.appendChild(divObj);
+            playerBadges.appendChild(divObj2);
         }
     }
     this.initToolKit = function(){
@@ -69,7 +68,7 @@ var GUI = function(){
 }
 
 gui = new GUI();
-//gui.initLevels();
-//gui.initProfile();
-//gui.initBadges();
-//gui.initToolKit();
+gui.initLevels();
+gui.initProfile();
+gui.initBadges();
+gui.initToolKit();
