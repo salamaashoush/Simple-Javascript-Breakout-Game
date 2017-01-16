@@ -402,8 +402,63 @@ body{
     height: 160px;
     margin: 20px;
     border-radius: 100px;
-    background-image: url("../img/profile.jpg");
     background-size: contain;
+}
+.usermod-details{
+    display: block;
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+#usermod-avatar{
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background-image: url('../img/male.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.usermod-info{
+    display: block;
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+}
+.usermod-section{
+    display: block;
+    width: 100%;
+    height: 100px;
+    line-height: 50px;
+    position: relative;
+}
+.usermod-lable{
+    display: block;
+    width: 50%;
+    height: 100px;
+    line-height: 100px;
+    font-size: 25px;
+}
+.usermod-control{
+    display: block;
+    width: 50%;
+    height: 100px;
+    line-height: 100px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.usermod-control div{
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+    font-size: 35px;
+    cursor: pointer;
+}
+.usermod-gender{
+    color: #F00;
 }
 #profile-details, #user-details{
     display: block;
@@ -411,9 +466,6 @@ body{
     height: 100%;
     position: absolute;
     right: 0;
-}
-#user-details{
-    //background-color: aquamarine;
 }
 #user-name{
     display: inline-block;
@@ -455,7 +507,7 @@ body{
 .details-input{
     line-height: 60px;
 }
-.details-input input[type="text"]{
+.usermod-control input[type="text"]{
     height: 40px;
     width: 200px;
     border-radius: 20px;
@@ -464,7 +516,7 @@ body{
     font-size: 25px;
     outline: 0;
 }
-.details-input input[type="text"]:focus{
+.usermod-control input[type="text"]:focus{
     box-shadow: 0px 0px 5px #f00;
 }
 #gender-input{
@@ -495,6 +547,13 @@ body{
 }
 .gender-selected:hover{
     color: #FFF;
+}
+#usermod-save{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
+    font-size: 25px;
 }
 #profile-badges{
     display: block;

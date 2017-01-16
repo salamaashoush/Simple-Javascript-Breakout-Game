@@ -60,6 +60,13 @@ var Slider = function(){
             BallSlider.children[CurrentBall+2].style.display = "table-cell";
         }
     }
+    
+    this.currentPaddle = function(){
+        return PaddleSlider.children[CurrentPaddle+2].children[0].getAttribute("src");
+    }
+    this.currentBall = function(){
+        return BallSlider.children[CurrentBall+2].children[0].getAttribute("src");
+    }
 }
 
 var slider = new Slider();

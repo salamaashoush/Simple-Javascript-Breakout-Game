@@ -33,8 +33,8 @@ var GUI = function(){
             document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.jpg)';
         }
         else{
-            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/male.jpg)';
-            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.jpg)';
+            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/female.jpg)';
+            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/female.jpg)';
         }
         
     }
@@ -104,8 +104,6 @@ var GUI = function(){
         paddleDiv.appendChild(paddleImg);
         ballDiv.appendChild(ballImg);
         
-        console.log(paddleDiv);
-        console.log(ballDiv);
         playerPaddle.appendChild(paddleDiv);
         playerBall.appendChild(ballDiv);
     }
@@ -179,7 +177,6 @@ var GUI = function(){
         this.bindScore();
     }
 }
-
 gui = new GUI();
-gui.init();
-gui.navigate("menu","menu");
+if(restorePlayerSession())
+    gui.init();

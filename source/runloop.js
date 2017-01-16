@@ -3,14 +3,21 @@ var soundManager = new soundManager();
 var players = {};
 var canvas = document.getElementById("gamecanvas");
 var ctx = canvas.getContext("2d");
-var player = null;
+var player=null;
+if(restorePlayerSession()){
+    player = restorePlayerSession();
+    document.getElementById("menu").style.display = "block";
+}else{
+    document.getElementById("usermod").style.display = "block";
+}
+/*var player = null;
 if (restorePlayerSession()) {
     player = restorePlayerSession();
 } else {
     player = new Player("Ali", "male", Paddles.orange, Balls.orange);
     savePlayer(player);
     console.log("saved");
-}
+}*/
 soundManager.toggleBackground();
 var board = levelGenerator(dimensions, player.currentLevel, player);
 var game = new Game(ctx, dimensions, board, player);
