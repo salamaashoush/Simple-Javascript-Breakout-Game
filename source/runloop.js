@@ -65,6 +65,7 @@ function startGame(game) {
 			if(this.game.nextgift[giftname].hascollided(this.game.board.paddle.frame)){
 				this.game.nextgift[giftname].bonusfun(this.game.board);
 				delete this.game.nextgift[giftname];
+				updateLives(this.game.board.lives);
 			}
 		}
 
