@@ -103,6 +103,7 @@ function startGame(game) {
                 soundManager.gameOver();
                 checkSlug(this.game);
                 this.game.player.highscore = this.game.player.score;
+                savePlayer(this.game.player);
                 lost(this.game);
             }
             this.game.board.ball.place(ballFall, ballY - 50)
@@ -124,6 +125,7 @@ function startGame(game) {
                     gui.togglePlaying("finish");
                 }
             } else {
+                savePlayer(this.game.player);
                 requestId = requestAnimationFrame(startGame);
             }
         }
@@ -135,6 +137,7 @@ function levelChanger(level) {
         var board = levelGenerator(dimensions, level, player);
         game.board = board;
     }
+    gui.bindBadges();
 
 }
 
@@ -149,6 +152,7 @@ function lost(game) {
     levelChanger(player.currentLevel);
     updateScore(this.game.player.score);
     updateLives(this.game.player.lives);
+     gui.bindBadges();
     navigateFromTo('play', 'menu');
 
 }

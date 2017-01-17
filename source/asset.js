@@ -461,8 +461,11 @@ function checkThugLife(game) {
 
 function checkSlug(game) {
     if (game.player.currentLevel == 0)
-        game.player.addBadge(Badges.slug);
-
+        {
+          
+            game.player.addBadge(Badges.slug);
+      
+}
 }
 
 function calcBricksCount(bricks) {

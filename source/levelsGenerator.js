@@ -88,7 +88,7 @@ function render(ctx, bricks) {
 }
 
 function levelGenerator(dimensions, level ,player) {
-	console.log(player);
+	
 	var paddleX = (dimensions.width - 90) / 2
 	var paddleY = (dimensions.height - 20)
 	var paddleFrame = new Rect(paddleX, paddleY, 90, 20)

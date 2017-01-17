@@ -163,6 +163,7 @@ var GUI = function(){
         if(lvlNumber<=player.currentLevel){
             levelChanger(lvlNumber);
             this.navigate('level','play');
+            this.togglePlaying('pending');
         }
     }
     this.leaveGame = function(){
