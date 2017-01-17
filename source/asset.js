@@ -283,54 +283,50 @@ Levels = [
 ];
 
 var Gift = function (src, spos) {
-    this.src = src;
+   
+    
     this.spos = spos;
     var boni = 10;
     var intervalscore = 50;
     var bonuses = [
         function (tgame) {
-            console.log(tgame);
             tgame.board.paddle.frame.size.width += boni;
             if (tgame.board.paddle.frame.origin.x - boni >= 0)
                 tgame.board.paddle.frame.origin.x -= 10
         },
-
         function (tgame) {
-
-            console.log(tgame);
-            tgame.board.paddle.frame.size.width += boni;
-            if (tgame.board.paddle.frame.origin.x - boni >= 0)
-                tgame.board.paddle.frame.origin.x -= 10
-        },
-
-        function (tgame) {
-            console.log(tgame);
+           
             if (tgame.board.paddle.frame.size.width > 2 * boni)
                 tgame.board.paddle.frame.size.width -= boni;
 
         },
         function (tgame) {
-            console.log(tgame);
-            if (tgame.board.ball.dx < 4) {
+           
+            if (Math.abs(tgame.board.ball.dx) < 4) {
                 tgame.board.ball.dx *= 2;
                 tgame.board.ball.dy *= 2;
             }
+            
         },
         function (tgame) {
-            console.log(tgame);
-            if (tgame.board.ball.dx > 1) {
+           
+            if (Math.abs(tgame.board.ball.dx) > 1) {
                 tgame.board.ball.dx /= 2;
                 tgame.board.ball.dy /= 2;
             }
         },
         function (tgame) {
-            console.log(tgame);
-            if (tgame.player.lives < 3)
-                tgame.player.lives++;
+            
+            if (tgame.board.lives < 3)
+                tgame.board.lives++;
+           
+                 
         },
         function (tgame) {
-            console.log(tgame);
-            tgame.player.lives--;
+             
+            
+            tgame.board.lives--;
+             
         },
         function (tgame) {
             game.player.score -= intervalscore;
@@ -341,16 +337,20 @@ var Gift = function (src, spos) {
 
 
     ]
-    this.draw = function (ctx) {
+    
+     var selector=Math.floor(Math.random() * bonuses.length);
+
+    this.bonusfun = bonuses[selector];
+    this.src = gifts[selector];
+        this.draw = function (ctx) {
         var img = new Image();
         img.width = "30px";
-        img.src = src;
+        img.src = this.src;
         ctx.drawImage(img, spos.x, spos.y++);
     }
-    this.bonusfun = bonuses[Math.floor(Math.random() * bonuses.length)];
-    console.log(this.bonusfun);
+  
     this.hascollided = function (rect) {
-        var interval = 50;
+        var interval = 30;
         if (spos.y + interval >= rect.origin.y) {
             if (spos.x >= rect.origin.x && spos.x <= rect.origin.x + rect.size.width)
                 return true
@@ -453,8 +453,8 @@ function outOflives(lives) {
 
 function checkThugLife(game) {
 
-    if (game.player.lives == 3) {
-        game.player.addBadge(Badges.thug);
+    if (game.board.lives == 3) {
+        game.board.addBadge(Badges.thug);
     }
 }
 

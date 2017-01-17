@@ -74,10 +74,10 @@ function startGame(game) {
                 delete this.game.nextgift[giftname];
                 updateLives(this.game.board.lives);
                 updateScore(this.game.player.score);
-                updateLives(this.game.player.lives);
+              
             }
         }
-        if (outOflives(this.game.player.lives)) {
+        if (outOflives(this.game.board.lives)) {
             soundManager.gameOver();
             checkSlug(this.game);
             this.game.player.highscore = this.game.player.score;
@@ -92,9 +92,9 @@ function startGame(game) {
             var paddleY = this.game.board.paddle.frame.origin.y;
             var paddleH = this.game.board.paddle.frame.size.height;
 
-            this.game.player.lives--;
-            updateLives(this.game.player.lives);
-            if (outOflives(this.game.player.lives)) {
+            this.game.board.lives--;
+            updateLives(this.game.board.lives);
+            if (outOflives(this.game.board.lives)) {
                 soundManager.gameOver();
                 checkSlug(this.game);
                 this.game.player.highscore = this.game.player.score;
@@ -138,11 +138,12 @@ function finishgame() {
 }
 
 function lost(game) {
+    
     this.game.player.lives = 3;
     this.game.player.score = 0;
     levelChanger(player.currentLevel);
     updateScore(this.game.player.score);
-    updateLives(this.game.board.lives);
+    updateLives(this.game.player.lives);
     navigateFromTo('play', 'menu');
 
 }
