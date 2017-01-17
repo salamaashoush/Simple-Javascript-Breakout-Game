@@ -282,10 +282,10 @@ Levels = [
 
 ];
 
-var Gift = function (src, spos) {
-   
-    
-    this.spos = spos;
+var Gift = function (src, spos2) {
+ 
+    this.spos=new Point(spos2.x,spos2.y)
+      
     var boni = 10;
     var intervalscore = 50;
     var bonuses = [
@@ -346,15 +346,15 @@ var Gift = function (src, spos) {
         var img = new Image();
         img.width = "30px";
         img.src = this.src;
-        ctx.drawImage(img, spos.x, spos.y++);
+        ctx.drawImage(img, this.spos.x, this.spos.y++);
     }
   
     this.hascollided = function (rect) {
         var interval = 30;
-        if (spos.y + interval >= rect.origin.y) {
-            if (spos.x >= rect.origin.x && spos.x <= rect.origin.x + rect.size.width)
+        if (this.spos.y + interval >= rect.origin.y) {
+            if (this.spos.x >= rect.origin.x && this.spos.x <= rect.origin.x + rect.size.width)
                 return true
-            if (spos.x + interval >= rect.origin.x && spos.x + interval <= rect.origin.x + rect.size.width)
+            if (this.spos.x + interval >= rect.origin.x && this.spos.x + interval <= rect.origin.x + rect.size.width)
                 return true
 
 
@@ -376,6 +376,7 @@ gifts = [
 ];
 
 function randomGift(spos) {
+    
     return new Gift(gifts[Math.floor(Math.random() * gifts.length)], spos);
 }
 Paddles = {

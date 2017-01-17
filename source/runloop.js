@@ -68,13 +68,18 @@ function startGame(game) {
         {
 
             this.game.nextgift[giftname].draw(this.game.ctx);
-
-            if (this.game.nextgift[giftname].hascollided(this.game.board.paddle.frame)) {
+            
+            if ( this.game.nextgift[giftname].spos.y> this.game.dimensions.height )
+                delete this.game.nextgift[giftname];
+            else
+           { 
+               if (this.game.nextgift[giftname].hascollided(this.game.board.paddle.frame)) {
                 this.game.nextgift[giftname].bonusfun(this.game);
                 delete this.game.nextgift[giftname];
                 updateLives(this.game.board.lives);
                 updateScore(this.game.player.score);
               
+                }
             }
         }
         if (outOflives(this.game.board.lives)) {
