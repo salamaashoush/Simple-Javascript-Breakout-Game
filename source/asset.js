@@ -389,6 +389,7 @@ Balls = {
     green: "img/greenball.png",
     orange: "img/orangeball.png",
     blue: "img/blueball.png",
+    foot: "img/football.png",
 }
 Badges = {
     slug: "img/badges/slug.png",
