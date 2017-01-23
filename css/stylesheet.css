@@ -6,6 +6,10 @@
     font-family: robotolight;
     src: url("../fonts/Roboto-Light.ttf");
 }
+@font-face{
+    font-family: showg;
+    src: url("../fonts/showg.ttf");
+}
 @font-face {
     font-family: 'fontello';
     src: url('../font/fontello.eot?57285040');
@@ -19,7 +23,7 @@
 *{
   margin:0;
   padding:0;
-  font-family: robotoregular;
+  font-family: showg;
 }
 html,body{
   height: 100%;
@@ -28,7 +32,9 @@ html,body{
 body{
   display: table;
   text-align: center;
-  background-image: url("../img/skulls.png");
+  //background-image: url("../img/skulls.png");
+  background-image: url("../img/pattern.png");
+  background-size: 200px;
     
 }
 .btn{
@@ -52,10 +58,10 @@ body{
   border: 0;
   position: relative;
   background-color: #FFF;
-  box-shadow: 0px 0px 20px #ccc;
-    display: none;
+  box-shadow: 0px 0px 20px 5px #999;
+  display: none;
 }
-#menu{
+#menu,#splash{
     background-color: rgba(0,0,0,0);
 }
 #menu-top{
@@ -76,6 +82,7 @@ body{
 }
 #menu-volume-btn{
     right: 10px;
+    color: #FFF;
 }
 #menu-music-btn{
     right: 50px;
@@ -131,11 +138,11 @@ body{
   border: 0px solid #ccc;
   position: relative;
   box-shadow: 0px 0px 10px #ccc;
-  animation: 2s lvl-show ease-in-out;
+  animation: 1s lvl-show ease-out;
 }
 @keyframes lvl-show{
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% { opacity: 0; transform: translateY(50px);}
+    100% { opacity: 1;  transform: translateY(0px);}
 }
 .lvl-poster{
   width: 100%;
@@ -216,7 +223,7 @@ body{
     font-size: 25px;
     font-weight: bold;
     text-align: left;
-    left: 240px;
+    left: 250px;
 }
 .player-btn{
     display: block;
@@ -256,20 +263,24 @@ body{
 }
 #play{
     overflow: hidden;
-    background-color: rgba(255,255,255,0.5);
 }
 #player{
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 750px;
+    height: 500px;
     position: relative;
 }
 #gamecanvas{
-  border:1px solid #ccc;
+    border:1px solid #ccc;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
 }
 .splash-card{
     display: block;
     position: absolute;
+    z-index: 3;
     width: 751px;
     height: 501px;
     overflow: hidden;
@@ -300,7 +311,7 @@ body{
     width: 100%;
     height: 100px;
     line-height: 100px;
-    font-size: 50px;
+    font-size: 40px;
 }
 #player-splash{
     display: block;
@@ -338,18 +349,28 @@ body{
   position: relative;
 }
 #splash img{
-  width: 300px;
+  margin-top: 50px;
+  width: 80%;
+}
+#progress-lable{
+    width: 100%;
+    font-size: 30px;
+    display: block;
+    position: absolute;
+    bottom: 25%;
 }
 #progress-bar{
   width: 600px;
   height: 25px;
-  margin: auto 60px;
-  background-color: #ccc;
+  margin: auto 75px;
   position: absolute;
   bottom: 15%;
 }
 #bar{
-  background-color: #057068;
+  background-image: url(../img/pattern.png);
+  background-size: 50px;
+  box-shadow: 0px 0px 10px 5px #FFF;
+  border-radius: 13px;
   width: 1%;
   height: 25px;
 }
@@ -599,6 +620,7 @@ body{
     height: 70px;
     border-radius: 40px;
     border: 2px solid #F00;
+    overflow: hidden;
 }
 .badge-icon{
     display: table-cell;

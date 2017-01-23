@@ -29,11 +29,11 @@ var GUI = function(){
         document.getElementById("player-name").innerHTML = player.name;
         document.getElementById("highscore-value").innerHTML = player.highscore;
         if(player.gender == "female"){
-            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/female.png)';
+            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/female.jpg)';
             document.getElementById("profile-avatar").style.backgroundImage = 'url(img/female.png)';
         }
         else{
-            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/male.png)';
+            document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/male.jpg)';
             document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.png)';
         }
         
@@ -59,16 +59,15 @@ var GUI = function(){
         }
     }
     this.bindLives = function(){
-        var lives = document.getElementById("lives").children;
-          for(var i=0; i<playerLives.length; i++){
-              if(i<player.lives)
-                  playerLives[i].className = "icon-heart-2";
-              else
-                  playerLives[i].className = "icon-heart-empty-2";
-          }
+        for(var i=0; i<playerLives.children.length; i++){
+            if(i<game.board.lives)
+                playerLives.children[i].className = "icon-heart-2";
+            else
+                playerLives.children[i].className = "icon-heart-empty-2";
+        }
     }
     this.bindScore = function(){
-        playerScore.innerHTML = player.score;
+        playerScore.innerHTML = game.player.score;
     }
     this.navigate = function(sender,target,display='block'){
         document.getElementById(sender).style.display='none';
@@ -105,6 +104,8 @@ var GUI = function(){
         paddleDiv.appendChild(paddleImg);
         ballDiv.appendChild(ballImg);
         
+        playerPaddle.innerHTML = "";
+        playerBall.innerHTML = "";
         playerPaddle.appendChild(paddleDiv);
         playerBall.appendChild(ballDiv);
     }
@@ -123,9 +124,10 @@ var GUI = function(){
                 state="resume";
             else if(attr=="resume")
                 state="pause";
-            else if(attr=="finish"){
+            else if(attr=="finish" || attr=="gameover"){
                 state="pending";
                 levelChanger(player.currentLevel);
+                this.bindLives();
             }
         }
         

@@ -1,3 +1,21 @@
+function loading() {
+    document.getElementById("splash").style.display = "block";
+    var elem = document.getElementById("bar");
+    var lbl = document.getElementById("progress-lable");
+    var width = 1;
+    var id = setInterval(progress, 35);
+    function progress() {
+        if (width >= 100) {
+            clearInterval(id);
+            document.getElementById("splash").style.display = "none";
+            document.getElementById("menu").style.display = "block";
+        } else {
+        width++;
+            elem.style.width = width + '%';
+        }
+    }
+}
+
 var dimensions = new Size(750, 500);
 var soundManager = new soundManager();
 var players = {};
@@ -6,18 +24,11 @@ var ctx = canvas.getContext("2d");
 var player=null;
 if(restorePlayerSession()){
     player = restorePlayerSession();
-    document.getElementById("menu").style.display = "block";
+    loading();
 }else{
+    soundManager.toggleBackground();
     document.getElementById("usermod").style.display = "block";
 }
-/*var player = null;
-if (restorePlayerSession()) {
-    player = restorePlayerSession();
-} else {
-    player = new Player("Ali", "male", Paddles.orange, Balls.orange);
-    savePlayer(player);
-    console.log("saved");
-}*/
 soundManager.toggleBackground();
 var board = levelGenerator(dimensions, player.currentLevel, player);
 var game = new Game(ctx, dimensions, board, player);
@@ -25,11 +36,6 @@ var dx = 2
 var dy = 2
 var play = false;
 var requestId = 0;
-
-
-//document.getElementById("gamecanvas").addEventListener("click", togglePlaying, false);
-
-
 
 function togglePlaying() {
     play = !play;
@@ -49,18 +55,13 @@ function togglePlaying() {
     }
 }
 
-
-
-
-
-
 function startGame(game) {
     if (play) {
         this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height);
         this.game.board.ball.move();
 
         this.game.board.draw(this.game.ctx);
-        updateScore(this.game.player.score);
+        gui.bindScore();
         checkHighScore(this.game.player.score);
         collisionDetecting(this.game.board.ball, this.game.board.bricks.bricks, this.game.board)
         for (var giftname in this.game.nextgift)
@@ -76,9 +77,8 @@ function startGame(game) {
                if (this.game.nextgift[giftname].hascollided(this.game.board.paddle.frame)) {
                 this.game.nextgift[giftname].bonusfun(this.game);
                 delete this.game.nextgift[giftname];
-                updateLives(this.game.board.lives);
-                updateScore(this.game.player.score);
-              
+                gui.bindLives();
+                gui.bindScore();
                 }
             }
         }
@@ -97,8 +97,9 @@ function startGame(game) {
             var paddleY = this.game.board.paddle.frame.origin.y;
             var paddleH = this.game.board.paddle.frame.size.height;
 
+            gui.togglePlaying("pause");
             this.game.board.lives--;
-            updateLives(this.game.board.lives);
+            gui.bindLives();
             if (outOflives(this.game.board.lives)) {
                 soundManager.gameOver();
                 checkSlug(this.game);
@@ -110,7 +111,6 @@ function startGame(game) {
             this.game.ctx.clearRect(0, 0, this.game.dimensions.width, this.game.dimensions.height)
             this.game.board.paddle.frame.origin = new Point(ballFall - (paddleW / 2), (this.game.dimensions.height - paddleH))
             render(this.game.ctx, this.game.board.bricks)
-            gui.togglePlaying("pause");
         } else {
             if (win(this.game.board.bricks.bricks)) {
                 checkThugLife(this.game);
@@ -146,13 +146,10 @@ function finishgame() {
 }
 
 function lost(game) {
-    
+    gui.togglePlaying("gameover");
     this.game.player.lives = 3;
     this.game.player.score = 0;
-    levelChanger(player.currentLevel);
-    updateScore(this.game.player.score);
-    updateLives(this.game.player.lives);
-     gui.bindBadges();
-    navigateFromTo('play', 'menu');
-
+    gui.bindLives();
+    gui.bindScore();
+    gui.bindBadges();
 }

@@ -1,5 +1,5 @@
 /* { background:#C0DEED}*/
-#menu-clouds-top{
+.menu-clouds-top{
     position: absolute;
     width: 100%;
     height: 200px;
@@ -7,7 +7,7 @@
     background-color: #8EC1DA;
     z-index: -1;
 }
-#menu-clouds-bottom{
+.menu-clouds-bottom{
     position: absolute;
     width: 100%;
     height: 200px;
@@ -15,7 +15,7 @@
     background-color: #C0DEED;
     z-index: -1;
 }
-#menu-clouds {
+.menu-clouds {
 position:absolute;
 top:200px;left:0px;
 z-index: -1;

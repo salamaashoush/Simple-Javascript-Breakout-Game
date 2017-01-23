@@ -383,6 +383,7 @@ Paddles = {
     green: "img/greenpaddle.png",
     orange: "img/orangepaddle.png",
     blue: "img/bluepaddle.png",
+    bat: "img/batmanpaddle.png",
 }
 Balls = {
     green: "img/greenball.png",

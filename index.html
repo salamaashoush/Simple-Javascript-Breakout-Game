@@ -13,10 +13,14 @@
     <body>
       <div class="container">
         <div id="splash" class="window">
-          <img src="img/logo.jpg" alt="" class="splash-logo">
+          <img src="img/logo.png" alt="" class="splash-logo">
+          <span id="progress-lable">Loading..</span>
           <div id="progress-bar">
             <div id="bar"></div>
           </div>
+          <div class="menu-clouds-top"></div>
+          <div class="menu-clouds-bottom"></div>
+          <div class="menu-clouds"></div>
         </div>
         <div id="menu" class="window">
             <div id="menu-top">
@@ -46,9 +50,9 @@
                     </div>
                 </div>
             </div>
-            <div id="menu-clouds-top"></div>
-            <div id="menu-clouds-bottom"></div>
-            <div id="menu-clouds"></div>
+            <div class="menu-clouds-top"></div>
+            <div class="menu-clouds-bottom"></div>
+            <div class="menu-clouds"></div>
         </div>
         <div id="level" class="window">
           <div class="menu-bar">
@@ -222,58 +226,6 @@
           </div>
         </div>
       </div>
-      <script>
-      var switchSound = false;
-      var switchMusic = false;
-      function toggleSound(){
-          var btn = document.getElementById("btn-toggle-sound");
-          switchSound = !switchSound;
-          if(switchSound)
-              btn.className = "icon-volume-off-1";
-          else
-              btn.className = "icon-volume-high";
-      }
-      function toggleMusic(){
-          var btn = document.getElementById("btn-toggle-music");
-          switchSound = !switchSound;
-          if(switchSound)
-              btn.className = "icon-music-1";
-          else
-              btn.className = "icon-music-outline";
-      }
-      function updateLives(value){
-          var lives = document.getElementById("lives").children;
-          for(var i=0; i<lives.length; i++){
-              if(i<value)
-                  lives[i].className = "icon-heart-2";
-              else
-                  lives[i].className = "icon-heart-empty-2";
-          }
-      }
-      function updateScore(score){
-          var scoreDiv = document.getElementById("score");
-          scoreDiv.textContent = score.toString();
-      }
-      function navigateFromTo(sender,id,display='block'){
-        document.getElementById(sender).style.display='none';
-        document.getElementById(id).style.display=display;
-      }
-      /*function loading() {
-        var elem = document.getElementById("bar");
-        var width = 1;
-        var id = setInterval(progress, 25);
-        function progress() {
-          if (width >= 100) {
-            clearInterval(id);
-            navigateFromTo('splash','menu','table');
-          } else {
-            width++;
-            elem.style.width = width + '%';
-          }
-        }
-      }*/
-      //loading();*/
-      </script>
       <script src="source/soundManager.js"></script>
       <script src="source/session.js"></script>
       <script src="source/asset.js"></script>
