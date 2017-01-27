@@ -30,11 +30,11 @@ var GUI = function(){
         document.getElementById("highscore-value").innerHTML = player.highscore;
         if(player.gender == "female"){
             document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/female.jpg)';
-            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/female.png)';
+            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/female.jpg)';
         }
         else{
             document.getElementById("profile-thumbnail").style.backgroundImage = 'url(img/male.jpg)';
-            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.png)';
+            document.getElementById("profile-avatar").style.backgroundImage = 'url(img/male.jpg)';
         }
         
     }

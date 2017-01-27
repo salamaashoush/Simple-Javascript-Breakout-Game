@@ -3,13 +3,13 @@ function toggleGender(gender){
         document.getElementById("male").className = "usermod-gender";
         document.getElementById("female").className = "";
         document.getElementById("male").parentElement.setAttribute("value","male");
-        document.getElementById("usermod-avatar").style.backgroundImage = "url(img/male.png)";
+        document.getElementById("usermod-avatar").style.backgroundImage = "url(img/male.jpg)";
     }
     else{
         document.getElementById("male").className = "";
         document.getElementById("female").className = "usermod-gender";
         document.getElementById("male").parentElement.setAttribute("value","female");
-        document.getElementById("usermod-avatar").style.backgroundImage = "url(img/female.png)";
+        document.getElementById("usermod-avatar").style.backgroundImage = "url(img/female.jpg)";
     }
 }
 

@@ -91,6 +91,10 @@ body{
     display: table-cell;
     vertical-align: middle;
 }
+.btn{
+    transition: color;
+    transition-duration: 0.5s;
+}
 .menu-control{
     width: 150px;
     height: 150px;
@@ -409,6 +413,27 @@ body{
     max-width: 75%;
     max-height: 75%;
 }
+#player-ball img, #ball-slider img{
+    animation: 1s ballMove;
+    animation-iteration-count: infinite;
+}
+@keyframes ballMove{
+    from, to{
+        transform: translateY(50px); 
+        animation-timing-function: ease-out;
+    }
+    50%{
+        transform: translateY(-50px);
+        animation-timing-function: ease-in;
+    }
+}
+#player-paddle img, #paddle-slider img{
+    animation: 4s paddleMove linear infinite;
+}
+@keyframes paddleMove{
+    from{transform: rotateY(0deg);}
+    to{transform: rotateY(360deg);}
+}
 #img-middle{
     height: 100%;
     display: inline-block;
@@ -441,7 +466,7 @@ body{
     left: 0;
     width: 30%;
     height: 100%;
-    background-image: url('../img/male.png');
+    background-image: url('../img/male.jpg');
     background-size: contain;
     background-repeat: no-repeat;
 }

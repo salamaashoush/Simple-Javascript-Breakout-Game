@@ -380,16 +380,19 @@ function randomGift(spos) {
     return new Gift(gifts[Math.floor(Math.random() * gifts.length)], spos);
 }
 Paddles = {
-    green: "img/greenpaddle.png",
-    orange: "img/orangepaddle.png",
-    blue: "img/bluepaddle.png",
-    bat: "img/batmanpaddle.png",
+    bat: "img/paddles/batmanpaddle.png",
+    green: "img/paddles/greenpaddle.png",
+    orange: "img/paddles/orangepaddle.png",
+    blue: "img/paddles/bluepaddle.png",
 }
 Balls = {
-    green: "img/greenball.png",
-    orange: "img/orangeball.png",
-    blue: "img/blueball.png",
-    foot: "img/football.png",
+    bat: "img/balls/batball.png",
+    eye: "img/balls/eyeball.png",
+    foot: "img/balls/football.png",
+    basket: "img/balls/basketball.png",
+    green: "img/balls/greenball.png",
+    orange: "img/balls/orangeball.png",
+    blue: "img/balls/blueball.png",
 }
 Badges = {
     slug: "img/badges/slug.png",
